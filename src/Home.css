@@ -1,0 +1,35 @@
+.main {
+    border-top-left-radius: 25px;
+    background-color: #fff;
+    height: 600px;
+    display: flex;
+    align-items: center;
+  }
+  section {
+      flex: 0.7;
+      padding: 40px 35px 40px 70px;
+  }
+  aside {
+      flex: 0.3;
+      display: flex;
+      flex-direction: column;
+      background-color: #F6F5FA;
+      padding: 10px 20px;
+  }
+  aside button {
+      background-color: #3444CE;
+      color: #fff;
+      align-self: flex-end;
+      border: none;
+      outline: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px 0 0 8px;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+      .main {
+          flex-direction: column;
+      }
+  }
