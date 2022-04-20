@@ -1,22 +1,22 @@
 .main {
     border-top-left-radius: 25px;
     background-color: #fff;
-    height: 600px;
+    /* height: 600px; */
     display: flex;
-    align-items: center;
+    /* align-items: center; */
   }
-  section {
-      flex: 0.7;
-      padding: 40px 35px 40px 70px;
+  .main section {
+      flex: 0.6;
+      padding: 50px 35px 40px 70px;
   }
-  aside {
-      flex: 0.3;
+  .main aside {
+      flex: 0.4;
       display: flex;
       flex-direction: column;
       background-color: #F6F5FA;
-      padding: 10px 20px;
+      padding: 10px 0px;
   }
-  aside button {
+  .main aside button {
       background-color: #3444CE;
       color: #fff;
       align-self: flex-end;
@@ -31,5 +31,19 @@
   @media only screen and (max-width: 768px) {
       .main {
           flex-direction: column;
+          align-items: center;
+      }
+      .main section {
+        padding: 20px 20px 40px 20px;
+        width: 80%;
+      }
+      .main aside {
+        width: 80%;
+      }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .main section {
+        padding: 40px 0;
       }
   }

@@ -2,14 +2,18 @@ import './Home.css';
 import Header from './Header';
 import Overall from './Overall';
 import Transaction from './Transaction';
+import Wallet from './Wallet';
+import Budgets from './Budgets';
 
 function Home() {
   return (
     <div className="home">
       <Header />
       <div className='main'>
+        <Wallet />
         <section>
             <Overall />
+            <Budgets />  
         </section>
         <aside>
             All transactions:
