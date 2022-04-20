@@ -1,12 +1,13 @@
 .overall__main {
     display: flex;
+    align-items: center;
 }
 .overall__main-chart {
     width: 50%;
 }
 .overall__main-expense {
     width: 50%;
-    padding: 20px 30px
+    padding: 10px 30px
 }
 .overall__icon {
     font-size:30px;
@@ -54,6 +55,9 @@
     .overall__main {
         flex-direction: column;
         justify-content: center;
-        border: 1px solid red
+    }
+    .overall__main-expense {
+        width: 100%;
+        padding: 10px 20px
     }
 }

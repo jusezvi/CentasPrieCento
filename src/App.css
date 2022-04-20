@@ -1,15 +1,16 @@
 .app {
-  /* height: 80vh; */
+  position: relative;
+  height: auto;
   /* width: 80vw; */
   background-color: #E6E9F1;
   margin: 40px auto;
   border-radius: 20px;
-  padding: 10px 0 30px 90px;
+  padding: 10px 0 30px 110px;
 }
 
 @media only screen and (min-width: 1025px) {
   .app {
-    width: 80vw;
+    width: 85vw;
     margin: 70px auto;
   }
 }
