@@ -7,9 +7,10 @@ import { AiOutlineHome } from 'react-icons/ai';
 
 function Overall() {
     const data = {
-        labels: ['red', 'orange', 'blue', 'green', 'purple'],
+        labels: ['Home', 'Car', 'Food', 'Other'],
         datasets: [{
-            data: [12, 5, 20, 9, 2]
+            data: [12, 5, 20, 9, 2],
+            backgroundColor: ['#5C6FE4', '#E9DEF6', '#E6E9F1', 'blue']
         }]
     }
 
@@ -35,7 +36,7 @@ function Overall() {
                             <div className='category__transaction-info'>
                                 <div className='category__transaction-price'> - 50.50 Eur</div>
                                 <div className='category__transaction-name'>Food</div>
-                            </div>                           
+                            </div>
                         </div>
                         <div className='category__transaction'>
                             <div className='category__transaction-icon'>
@@ -44,7 +45,7 @@ function Overall() {
                             <div className='category__transaction-info'>
                                 <div className='category__transaction-price'> - 800 Eur</div>
                                 <div className='category__transaction-name'>New laptop</div>
-                            </div>                           
+                            </div>
                         </div>
                     </div>
                 </div>
