@@ -1,28 +1,50 @@
 import './Home.css';
 import Header from './Header';
 import Overall from './Overall';
-import Transaction from './Transaction';
+import Transactions from './Transactions';
 import Wallet from './Wallet';
 import Budgets from './Budgets';
+import { useEffect, useState } from 'react';
+import { exVar } from './ExtendVariables';
 
 function Home() {
+  const [earnings, setEarnings] = useState([]);
+  const [transactions, setTransactions] = useState([]);
+  const [user, setUser] = useState('Vardenis');
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    callAPI(exVar.IS_NEW_EARNING)
+    setCount(count + 1);
+
+  }, [count]);
+
+  function callAPI(check = false) {
+    if (!check) {
+      return;
+    }
+    exVar.IS_NEW_EARNING = false;
+    fetch('http://localhost:8000/budget')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setTransactions(data);
+        setEarnings(data);
+      });
+  }
+
   return (
     <div className="home">
       <Header />
       <div className='main'>
-        <Wallet />
+        <Wallet earnings={earnings} user={user} />
         <section>
-            <Overall />
-            <Budgets />  
+          <Overall />
+          <Budgets />
         </section>
         <aside>
-            All transactions:
-            <Transaction name="New Laptop" category="Home" price="580"/>
-            <Transaction name="New TV" category="Home" price="900"/>
-            <Transaction name="Repair" category="Car" price="150"/>
-            <Transaction name="Fuel" category="Car" price="53.99"/>
-            <Transaction name="Tickets" category="Journey" price="45.50"/>
-            <button>Add new transaction</button>
+          <Transactions transactions={transactions} user={user} />
         </aside>
       </div>
     </div>

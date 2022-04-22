@@ -6,32 +6,13 @@ import { IoMdNotificationsOutline } from 'react-icons/io';
 function Header() {
     return (
         <div className="header">
-            {/* <div className="nav">
-                <a href="#">Overview</a>
-                <a href="#">Transactions</a>
-                <a href="#">Budgets</a>
-                <a href="#">Goals</a>
-            </div>
-            <div className="icons">
-                <GoSearch className='icon'/>
-                <IoMdNotificationsOutline className='icon'/>
-            </div>
-            <div className="user">
-                <div className="user__name">
-                    <h3>Vardas Pavarde</h3>
-                    <p>customer</p>
-                </div>
-                <div className="user__icon">
-                    V
-                </div>
-            </div> */}
 
             <nav className="nav navbar navbar-light navbar-expand-md">
                 <div className="containerx-fluid">
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div className="offcanvas-header">
                             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
                             <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -56,13 +37,13 @@ function Header() {
                 </div>
             </nav>
             <div className="user">
-                                <div className="user__name">
-                                    <h3>Vardas Pavarde</h3>
-                                    <p>customer</p>
-                                </div>
-                                <div className="user__icon">
-                                    V
-                                </div>
+                <div className="user__name">
+                    <h3>Vardas Pavarde</h3>
+                    <p>customer</p>
+                </div>
+                <div className="user__icon">
+                    V
+                </div>
             </div>
         </div>
     )
