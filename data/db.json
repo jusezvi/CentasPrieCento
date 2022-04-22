@@ -1,14 +1,6 @@
 {
   "budget": [
     {
-      "expense_sum": "100",
-      "expense_name": "remontas",
-      "category": "Car",
-      "type": "expense",
-      "user": "Vardenis",
-      "id": 1
-    },
-    {
       "earning_sum": "1000",
       "earning_name": "salary",
       "user": "Vardenis",
@@ -21,6 +13,21 @@
       "user": "Vardenis",
       "type": "earning",
       "id": 3
+    },
+    {
+      "earning_sum": "50",
+      "earning_name": "bonus",
+      "user": "Vardenis",
+      "type": "earning",
+      "id": 4
+    },
+    {
+      "expense_sum": "20",
+      "expense_name": "food",
+      "category": "Home",
+      "type": "expense",
+      "user": "Vardenis",
+      "id": 5
     }
   ]
 }
