@@ -28,20 +28,6 @@
       "type": "expense",
       "user": "Vardenis",
       "id": 5
-    },
-    {
-      "earning_sum": "458",
-      "earning_name": "bonus",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 6
-    },
-    {
-      "earning_sum": "478",
-      "earning_name": "vesia",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 7
     }
   ]
 }
