@@ -6,11 +6,19 @@
     align-items: center;
 }
 
-.nav li a {
+.nav ul  {
     margin-right: 15px;
+    list-style-type: none;
+    color: #929CAB
+}
+.nav ul li  {
+    display: inline;
+}
+.text-link{
     text-decoration: none;
     color: #929CAB
 }
+
 
 .user {
     display: flex;
