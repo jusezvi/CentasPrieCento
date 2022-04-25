@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './Home';
-import AllTransaction from './AllTransaction';
+import Testas from './AllTransaction';
 import { BrowserRouter ,  Route,  Routes } from 'react-router-dom';
 import Header from './Header';
 
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route>
             <Route exact path="/Home" element={<Home />} />
-            <Route path="/AllTransaction" element={<AllTransaction />} />
+            <Route path="/Testas" element={<Testas/>} />
             {/* <Route path="/login" element={<Login />} />
             
             <Route path="/profile" element={<Profile />} /> */}

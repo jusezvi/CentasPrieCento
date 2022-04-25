@@ -5,17 +5,14 @@ import AllTransaction from './AllTransaction';
 import { Link} from 'react-router-dom';
 
 
-function ButtonHtml() {
-    return (<> <Link to="/AllTransaction">vesia</Link>
-    </>)
-}
+
 function Header() {
     return (
         <div className="header">
             <div className="nav">
                 <ul>
                     <li> <Link to="/Home" className='text-link'>Home</Link></li>
-                    <li><Link to="/AllTransaction" className='text-link'>Transaction</Link></li>
+                    <li><Link to="/Testas" className='text-link'>Transaction</Link></li>
                 </ul>
         
                

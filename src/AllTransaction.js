@@ -1,65 +1,73 @@
+import './Home.css';
 import Header from './Header';
+import Overall from './Overall';
+import { useEffect, useState } from 'react';
+import { exVar } from './ExtendVariables';
 import './AllTransaction.css';
-function AllTransaction() {
+import { useTable } from 'react-router-dom';
+
+
+function Testas({ cost, index }) {
+  const [transactionDate, setTransactionDate] = useState([]);
+  // let {id} =useParams()
+
+  useEffect(() => {
+    fetch('http://localhost:8000/budget/')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setTransactionDate(data);
+        console.log(transactionDate)
+
+      });
+
+
+  }, []);
+
+  //   var index=0
+  function EditClick(){
+    alert ("edit")
+  }
+  function DeleteClick(){
+    alert ("delete")
+   
+  }
+
   return (
-
-    // <div className="allTransaction">
-    //     <Header /> 
-
-    // </div>
-    <div className='table'>
-
-    
-    <center>
-      
-
-
-        <table className='tableTransacation' striped bordered hover>
-          <thead>
+    <div className='tablte-container'>
+      <table className='tr'>
+        <thead>
+          <tr>
+          <th className='number'></th>
+          {/* <th>&#8470;</th> */}
+          <th> icon</th>
+          <th>Sum</th>
+          <th>Category</th>
+          <th>Type</th>
+          <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactionDate.map((transactionBudget, index) => (
             <tr>
-              <th>#</th>
-              <th>Date </th>
-              <th>Name???</th>
-              <th>Category</th>
-              <th>Suma</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
+              <td>{index+1}</td>
               <td>icon</td>
-              <td>2022-04-04</td>
-              <td>cleaning</td>
-              <td>Home</td>
-              <td>12.5$</td>
-              <td><button>Delete</button></td>
-              <td><button>Edit</button></td>
-            </tr>
-            <tr>
-              <td>icon</td>
-              <td>2022-05-12</td>
-              <td>tires</td>
-              <td>car</td>
-              <td>0.12$</td>
-              <td><button>Delete</button></td>
-              <td><button>Edit</button></td>
-            </tr>
-            <tr>
-              <td>icon</td>
-              <td>2022-04-04</td>
-              <td>cleaning</td>
-              <td>Home</td>
-              <td>0.12$</td>
-              <td><button>Delete</button></td>
-              <td><button>Edit</button></td>
-              
-            </tr>
+              <td>{transactionBudget.earning_sum}Eur  </td>
+              <td>{transactionBudget.earning_name}</td>
+              <td>{transactionBudget.type}</td>
+              <td><button onClick={EditClick} className='button-transaction'>Edit</button></td>
+              <td><button onClick={DeleteClick}  className='button-transaction'>Delete</button></td>
 
-          </tbody>
-        </table>
-     
+            </tr>
+            // <p>{transactionBudget .earning_sum} Eur - <span>{transactionBudget .earning_name}</span></p>
+          ))}
+        </tbody>
 
-    </center>
+      </table>
     </div>
-  )
+
+  );
 }
-export default AllTransaction;
+
+export default Testas;
