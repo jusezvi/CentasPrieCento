@@ -1,68 +1,18 @@
 {
   "budget": [
     {
-      "earning_sum": "1000",
-      "earning_name": "salary",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 1
-    },
-    {
-      "earning_sum": "100.0005",
-      "earning_name": "bonus",
+      "earning_sum": "45678x",
+      "earning_name": "cvv",
       "user": "Vardenis",
       "type": "earning",
       "id": 2
     },
     {
-      "earning_sum": "50",
-      "earning_name": "bonus",
+      "earning_sum": "4897",
+      "earning_name": "tyasf",
       "user": "Vardenis",
       "type": "earning",
-      "id": 3
-    },
-    {
-      "expense_sum": "20",
-      "expense_name": "food",
-      "category": "Home",
-      "type": "expense",
-      "user": "Vardenis",
       "id": 4
-    },
-    {
-      "earning_sum": "458",
-      "earning_name": "bonus",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 5
-    },
-    {
-      "earning_sum": "478",
-      "earning_name": "vesia",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 6
-    },
-    {
-      "earning_sum": "45",
-      "earning_name": "a",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 15
-    },
-    {
-      "earning_sum": "45",
-      "earning_name": "gyh",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 8
-    },
-    {
-      "earning_sum": "1993",
-      "earning_name": "vesia",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 9
     }
   ]
 }

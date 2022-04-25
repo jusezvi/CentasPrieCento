@@ -5,10 +5,12 @@ import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import './AllTransaction.css';
 import { useTable } from 'react-router-dom';
+import AllTransactionItem from './AlltransactionItem';
 
 
-function Testas({ cost, index }) {
+function AllTransaction({ cost, index }) {
   const [transactionDate, setTransactionDate] = useState([]);
+  const [isUpdated, setIsUpdated]= useState(false);
   // let {id} =useParams()
 
   useEffect(() => {
@@ -25,14 +27,11 @@ function Testas({ cost, index }) {
 
   }, []);
 
-  //   var index=0
-  function EditClick(){
-    alert ("edit")
+  function updateState(){
+    setIsUpdated(!isUpdated);
+    window.location.reload();
   }
-  function DeleteClick(){
-    alert ("delete")
-   
-  }
+  
 
   return (
     <div className='tablte-container'>
@@ -50,16 +49,8 @@ function Testas({ cost, index }) {
         </thead>
         <tbody>
           {transactionDate.map((transactionBudget, index) => (
-            <tr>
-              <td>{index+1}</td>
-              <td>icon</td>
-              <td>{transactionBudget.earning_sum}Eur  </td>
-              <td>{transactionBudget.earning_name}</td>
-              <td>{transactionBudget.type}</td>
-              <td><button onClick={EditClick} className='button-transaction'>Edit</button></td>
-              <td><button onClick={DeleteClick}  className='button-transaction'>Delete</button></td>
-
-            </tr>
+            <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index} updateState={updateState}/>
+           
             // <p>{transactionBudget .earning_sum} Eur - <span>{transactionBudget .earning_name}</span></p>
           ))}
         </tbody>
@@ -70,4 +61,4 @@ function Testas({ cost, index }) {
   );
 }
 
-export default Testas;
+export default AllTransaction;
