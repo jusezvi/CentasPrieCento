@@ -31,6 +31,7 @@ function Home() {
       .then(data => {
         setTransactions(data);
         setEarnings(data);
+        console.log(earnings)
       });
   }
 
@@ -40,7 +41,7 @@ function Home() {
       <div className='main'>
         <Wallet earnings={earnings} user={user} />
         <section>
-          <Overall />
+          <Overall transactions={transactions} />
           <Budgets />
         </section>
         <aside>

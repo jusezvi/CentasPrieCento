@@ -2,31 +2,32 @@
   "budget": [
     {
       "earning_sum": "1000",
-      "earning_name": "salary",
+      "earning_name": "alga",
       "user": "Vardenis",
-      "type": "earning",
-      "id": 2
+      "earningType": "earning",
+      "id": 1
     },
     {
-      "earning_sum": "100.0005",
-      "earning_name": "bonus",
+      "expense_sum": "200",
+      "expense_name": "maistas",
+      "category": "Home",
+      "expenseType": "expense",
       "user": "Vardenis",
-      "type": "earning",
       "id": 3
     },
     {
-      "earning_sum": "50",
-      "earning_name": "bonus",
+      "expense_sum": "50",
+      "expense_name": "degalai",
+      "category": "Car",
+      "expenseType": "expense",
       "user": "Vardenis",
-      "type": "earning",
       "id": 4
     },
     {
-      "expense_sum": "20",
-      "expense_name": "food",
-      "category": "Home",
-      "type": "expense",
+      "earning_sum": "500",
+      "earning_name": "Priedas",
       "user": "Vardenis",
+      "earningType": "earning",
       "id": 5
     }
   ]
