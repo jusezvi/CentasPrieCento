@@ -1,30 +1,12 @@
 import './Wallet.css';
 import { BiWallet } from 'react-icons/bi';
 import { useState } from 'react';
-import { exVar } from './ExtendVariables';
+// import { exVar } from './ExtendVariables';
+import EarningItem from './EarningItem';
+
 
 function Wallet({ earnings, user }) {
-    const [earning_sum, setEarning_sum] = useState('');
-    const [earning_name, setEarning_name] = useState('');
-    const [type, setType] = useState('earning')
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const newEarning = { earning_sum, earning_name, user, type };
-
-        fetch('http://localhost:8000/budget', {
-            method: 'POST',
-            headers: { 'Content-Type': "application/json" },
-            body: JSON.stringify(newEarning)
-        }).then(() => {
-            console.log('earning added');
-            exVar.IS_NEW_EARNING = true;
-            // console.log(exVar.IS_NEW_CONTENT)
-        });
-        setEarning_sum('');
-        setEarning_name('');
-
-    }
 
     return (
         <>
@@ -42,23 +24,18 @@ function Wallet({ earnings, user }) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Your Earnings</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Jūsų pajamos</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form onSubmit={handleSubmit}>
-                                <input type="text" required placeholder='Enter new earning sum' value={earning_sum} onChange={e => setEarning_sum(e.target.value)} />
-                                <input type="text" required placeholder='Enter earning name' value={earning_name} onChange={e => setEarning_name(e.target.value)} />
-                                <input type="submit" value="Submit" />
-                            </form>
                             <div className='wallet__list'>
-                                {earnings.filter(earning => earning.type == "earning").map(filteredEarning => (
-                                    <p>{filteredEarning.earning_sum} Eur - <span>{filteredEarning.earning_name}</span></p>
+                                {earnings.filter(earning => earning.earningType === "earning").map(filteredEarning => (
+                                    <EarningItem key={filteredEarning.id} earning={filteredEarning} />
                                 ))}
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ function Header() {
                     </button>
                     <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div className="offcanvas-header">
-                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">CentasPrieCento</h5>
                             <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div className="offcanvas-body">
@@ -39,7 +39,7 @@ function Header() {
             <div className="user">
                 <div className="user__name">
                     <h3>Vardas Pavarde</h3>
-                    <p>customer</p>
+                    <p>Vartotojas</p>
                 </div>
                 <div className="user__icon">
                     V
