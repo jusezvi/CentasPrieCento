@@ -25,12 +25,9 @@ function AllTransaction({ cost, index }) {
       });
 
 
-  }, []);
+  }, [isUpdated]);
 
-  function updateState(){
-    setIsUpdated(!isUpdated);
-    window.location.reload();
-  }
+  
   
 
   return (
@@ -49,9 +46,10 @@ function AllTransaction({ cost, index }) {
         </thead>
         <tbody>
           {transactionDate.map((transactionBudget, index) => (
-            <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index} updateState={updateState}/>
+            <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index} 
+            isUpdated={isUpdated} setIsUpdated={setIsUpdated}/>
            
-            // <p>{transactionBudget .earning_sum} Eur - <span>{transactionBudget .earning_name}</span></p>
+            
           ))}
         </tbody>
 

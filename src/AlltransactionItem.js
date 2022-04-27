@@ -1,20 +1,18 @@
 import { exVar } from "./ExtendVariables";
 // import AllTransaction from './Alltransaction';
 
-function AllTransactionItem({ transactionBudget, index, updateState }) {
+function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated }) {
     function DeleteClick() {
         fetch('http://localhost:8000/budget/' + transactionBudget.id, {
             method: 'DELETE',
 
         })
-            .then(res => {
-                res.json();
-                console.log(exVar.IS_NEW_EARNING);
-                updateState();
-            
-                console.log(exVar.IS_NEW_EARNING);
+            .then(res => res.json()
+           )
+            .then(() =>{
+                setIsUpdated(!isUpdated)
             });
-        
+
 
     }
 

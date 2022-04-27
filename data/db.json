@@ -1,18 +1,11 @@
 {
   "budget": [
     {
-      "earning_sum": "45678x",
-      "earning_name": "cvv",
+      "earning_sum": "1058",
+      "earning_name": "pc",
       "user": "Vardenis",
       "type": "earning",
-      "id": 2
-    },
-    {
-      "earning_sum": "4897",
-      "earning_name": "tyasf",
-      "user": "Vardenis",
-      "type": "earning",
-      "id": 4
+      "id": 3
     }
   ]
 }
