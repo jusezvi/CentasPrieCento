@@ -1,13 +1,6 @@
 {
   "budget": [
     {
-      "earning_sum": "900",
-      "earning_name": "alga",
-      "earningType": "earning",
-      "user": "Vardenis",
-      "id": 1
-    },
-    {
       "expense_sum": "50",
       "expense_name": "kuras",
       "category": "Car",

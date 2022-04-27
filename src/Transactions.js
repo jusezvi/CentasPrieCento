@@ -68,7 +68,6 @@ function Transactions({ transactions, user }) {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Išlaidų įvedimas</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
@@ -80,12 +79,13 @@ function Transactions({ transactions, user }) {
                                         <option value="Car">Automobilis</option>
                                         <option value="Other">Kita</option>
                                     </select>
-                                    <input type="submit" value="Submit" />
+                                    <div className="modal-footer">
+                                        <input type="submit" value="Submit" />
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                                    </div>
                                 </form>
                             </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -96,17 +96,16 @@ function Transactions({ transactions, user }) {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Pajamų įvedimas</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
                                     <input type="text" required placeholder='Įveskite pajamų sumą' value={earning_sum} onChange={e => setEarning_sum(e.target.value)} />
                                     <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={earning_name} onChange={e => setEarning_name(e.target.value)} />
-                                    <input type="submit" value="Submit" />
+                                    <div className="modal-footer">
+                                        <input type="submit" className="btn btn-secondary" value="Submit" />
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                             </div>
                         </div>
                     </div>
