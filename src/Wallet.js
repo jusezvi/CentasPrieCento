@@ -1,12 +1,41 @@
 import './Wallet.css';
 import { BiWallet } from 'react-icons/bi';
-import { useState } from 'react';
-// import { exVar } from './ExtendVariables';
+import { useEffect, useState } from 'react';
+import { exVar } from './ExtendVariables';
 import EarningItem from './EarningItem';
 
 
 function Wallet({ earnings, user }) {
+    const [balance, setBalance] = useState();
 
+    useEffect(() => {
+        fetch('http://localhost:8000/budget')
+            .then(res => res.json())
+            .then(costs => {
+                calculateSum(costs);
+            })
+    }, []);
+
+    function financial(x) {
+        return Number.parseFloat(x).toFixed(2);
+    }
+
+    function calculateSum(costs) {
+        let inn = 0;
+        let out = 0;
+
+        costs.forEach((cost) => {
+            if (cost.hasOwnProperty('expenseType')) {
+                out += Number(cost.expense_sum)
+            } else {
+                if (cost.hasOwnProperty('earningType')) {
+                    inn += Number(cost.earning_sum)
+                }
+            }
+
+        })
+        setBalance(Number(inn - out));
+    }
 
     return (
         <>
@@ -15,12 +44,13 @@ function Wallet({ earnings, user }) {
                     <div className='wallet__top-icon'>
                         <BiWallet />
                     </div>
-                    <p>2450 Eur</p>
+                    <p>{balance}</p>
+                    {/* <p>2450 Eur</p> */}
                 </div>
                 <p>Vardas Pavarde</p>
             </div>
 
-            <div className="modal fade" id="wallet" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="wallet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
