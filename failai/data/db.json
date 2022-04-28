@@ -1,0 +1,42 @@
+{
+  "budget": [
+    {
+      "expense_sum": "50",
+      "expense_name": "kuras",
+      "category": "Car",
+      "expenseType": "expense",
+      "user": "Vardenis",
+      "id": 2
+    },
+    {
+      "expense_sum": "20",
+      "expense_name": "maistas",
+      "category": "Home",
+      "expenseType": "expense",
+      "user": "Vardenis",
+      "id": 3
+    },
+    {
+      "expense_sum": "200",
+      "expense_name": "kuras",
+      "category": "Car",
+      "expenseType": "expense",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
+      "earning_sum": "900",
+      "earning_name": "alga",
+      "earningType": "earning",
+      "user": "Vardenis",
+      "id": 5
+    },
+    {
+      "earning_sum": "500",
+      "earning_name": "priedas",
+      "user": "Vardenis",
+      "earningType": "earning",
+      "id": 6
+    }
+  ]
+}
