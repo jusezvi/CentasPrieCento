@@ -1,6 +1,10 @@
 {
   "budget": [
     {
+<<<<<<< HEAD
+      "earning_sum": "1058",
+      "earning_name": "pc",
+=======
       "expense_sum": "50",
       "expense_name": "kuras",
       "category": "Car",
@@ -13,8 +17,11 @@
       "expense_name": "maistas",
       "category": "Home",
       "expenseType": "expense",
+>>>>>>> main
       "user": "Vardenis",
       "id": 3
+<<<<<<< HEAD
+=======
     },
     {
       "earning_sum": "100",
@@ -29,6 +36,7 @@
       "earningType": "earning",
       "user": "Vardenis",
       "id": 5
+>>>>>>> main
     }
   ]
 }
