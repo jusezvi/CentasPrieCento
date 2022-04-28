@@ -1,0 +1,80 @@
+.overall__main {
+    display: flex;
+}
+
+.overall__main-chart {
+    width: 50%;
+}
+
+.overall__main-expense {
+    width: 50%;
+    padding: 10px 20px
+}
+
+.overall__icon {
+    font-size: 30px;
+}
+
+.overall__sum h3 {
+    color: #3444CE;
+    font-size: 30px;
+    font-weight: 400;
+    border-bottom: 1px solid #7d899b;
+    padding-bottom: 5px;
+}
+
+.category__transaction {
+    display: flex;
+    align-items: center;
+}
+
+.category__transaction-icon {
+    font-size: 24px;
+    background-color: #3444CE;
+    color: #fff;
+    ;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category__transaction-info {
+    display: flex;
+    margin-left: 15px;
+}
+
+.category__transaction-name {
+    color: #c5cbd3;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.category__transaction-price {
+    color: #7d899b;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .overall__main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .overall__main-expense {
+        width: 100%;
+        padding: 10px 20px
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .overall__main-chart {
+        width: 80%;
+    }
+}
