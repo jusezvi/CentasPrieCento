@@ -5,13 +5,15 @@ import { exVar } from './ExtendVariables';
 import EarningItem from './EarningItem';
 
 
-function Wallet({ earnings, user }) {
+function Wallet({ user }) {
     const [balance, setBalance] = useState();
+    const [earnings, setEarnings] = useState(0);
 
     useEffect(() => {
         fetch('http://localhost:8000/budget')
             .then(res => res.json())
             .then(costs => {
+                setEarnings(costs);
                 calculateSum(costs);
             })
     }, []);
@@ -59,7 +61,7 @@ function Wallet({ earnings, user }) {
                         </div>
                         <div className="modal-body">
                             <div className='wallet__list'>
-                                {earnings.filter(earning => earning.earningType === "earning").map(filteredEarning => (
+                                {earnings && earnings.filter(earning => earning.earningType === "earning").map(filteredEarning => (
                                     <EarningItem key={filteredEarning.id} earning={filteredEarning} />
                                 ))}
                             </div>
