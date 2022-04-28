@@ -1,0 +1,26 @@
+{
+  "budget": [
+    {
+      "earning_sum": "50",
+      "earning_name": "priedas",
+      "earningType": "earning",
+      "user": "Vardenis",
+      "id": 5
+    },
+    {
+      "earning_sum": "879",
+      "earning_name": "bubu",
+      "user": "Vardenis",
+      "earningType": "earning",
+      "id": 6
+    },
+    {
+      "expense_sum": "98",
+      "expense_name": "auto",
+      "category": "Home",
+      "expenseType": "expense",
+      "user": "Vardenis",
+      "id": 7
+    }
+  ]
+}
