@@ -1,42 +1,26 @@
 {
   "budget": [
     {
-<<<<<<< HEAD
-      "earning_sum": "1058",
-      "earning_name": "pc",
-=======
-      "expense_sum": "50",
-      "expense_name": "kuras",
-      "category": "Car",
-      "expenseType": "expense",
-      "user": "Vardenis",
-      "id": 2
-    },
-    {
-      "expense_sum": "20",
-      "expense_name": "maistas",
-      "category": "Home",
-      "expenseType": "expense",
->>>>>>> main
-      "user": "Vardenis",
-      "id": 3
-<<<<<<< HEAD
-=======
-    },
-    {
-      "earning_sum": "100",
-      "earning_name": "priedas",
-      "earningType": "earning",
-      "user": "Vardenis",
-      "id": 4
-    },
-    {
       "earning_sum": "50",
       "earning_name": "priedas",
       "earningType": "earning",
       "user": "Vardenis",
       "id": 5
->>>>>>> main
+    },
+    {
+      "earning_sum": "879",
+      "earning_name": "bubu",
+      "user": "Vardenis",
+      "earningType": "earning",
+      "id": 6
+    },
+    {
+      "expense_sum": "98",
+      "expense_name": "auto",
+      "category": "Home",
+      "expenseType": "expense",
+      "user": "Vardenis",
+      "id": 7
     }
   ]
 }

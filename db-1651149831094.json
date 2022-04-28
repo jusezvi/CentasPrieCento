@@ -1,0 +1,18 @@
+{
+  "budget": [
+    {
+      "earning_sum": "100",
+      "earning_name": "priedas",
+      "earningType": "earning",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
+      "earning_sum": "50",
+      "earning_name": "priedas",
+      "earningType": "earning",
+      "user": "Vardenis",
+      "id": 5
+    }
+  ]
+}

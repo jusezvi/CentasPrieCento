@@ -37,7 +37,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Header />
+      {/* <Header /> */}
       <div className='main'>
         <Wallet earnings={earnings} user={user} />
         <section>

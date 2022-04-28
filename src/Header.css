@@ -7,7 +7,20 @@
     align-items: center;
 }
 
-.nav li a {
+
+/* .nav ul{
+    list-style: none; 
+} */
+.nav ul li {
+    margin-right: 15px;
+    /* text-decoration: none; */
+    /* color: #929CAB; */
+    list-style-type: none;
+    display: inline;
+   
+    
+}
+.nav ul li a {
     margin-right: 15px;
     text-decoration: none;
     color: #929CAB

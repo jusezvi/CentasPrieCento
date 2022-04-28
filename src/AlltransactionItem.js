@@ -26,7 +26,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             <td>icon</td>
             <td>{transactionBudget.earning_sum}Eur  </td>
             <td>{transactionBudget.earning_name}</td>
-            <td>{transactionBudget.type}</td>
+            <td>{transactionBudget.expenseType}</td>
             <td><button onClick={EditClick} className='button-transaction'>Edit</button></td>
             <td><button onClick={DeleteClick} className='button-transaction'>Delete</button></td>
 
