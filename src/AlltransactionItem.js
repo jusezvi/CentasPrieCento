@@ -10,8 +10,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
 
         })
             .then(res => res.json()
-           )
-            .then(() =>{
+            )
+            .then(() => {
                 setIsUpdated(!isUpdated)
             });
 
@@ -26,9 +26,9 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
         <tr>
             <td>{index + 1}</td>
             <td className='transaction__icon'><GrTransaction /></td>
-            <td>{transactionBudget.earning_sum}Eur  </td>
-            <td>{transactionBudget.earning_name||transactionBudget.expense_name}</td>
-            <td>{transactionBudget.expenseType||transactionBudget.expense_sum}</td>
+            <td>{transactionBudget.expenseType == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
+            <td>{transactionBudget.earning_sum || transactionBudget.expense_sum} Eur  </td>
+            <td>{transactionBudget.earning_name || transactionBudget.expense_name}</td>
             <td><button onClick={EditClick} className='button-transaction'>Edit</button></td>
             <td><button onClick={DeleteClick} className='button-transaction'>Delete</button></td>
 
