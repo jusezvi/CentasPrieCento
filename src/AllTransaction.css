@@ -19,3 +19,9 @@ tr:hover {
   .button-transaction{
     border-radius: 5px;
   }
+
+  .transaction__icon {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+}
