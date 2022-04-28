@@ -1,3 +1,26 @@
 {
-  "budget": []
+  "budget": [
+    {
+      "expense_sum": "20",
+      "expense_name": "maistas",
+      "category": "Home",
+      "expenseType": "expense",
+      "user": "Vardenis",
+      "id": 2
+    },
+    {
+      "earning_sum": "20",
+      "earning_name": "aaa",
+      "user": "Vardenis",
+      "earningType": "earning",
+      "id": 3
+    },
+    {
+      "earning_sum": "1500",
+      "earning_name": "bonus",
+      "user": "Vardenis",
+      "earningType": "earning",
+      "id": 4
+    }
+  ]
 }

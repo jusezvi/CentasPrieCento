@@ -13,6 +13,7 @@ function Home() {
   const [user, setUser] = useState('Vardenis');
   const [count, setCount] = useState(0);
 
+
   useEffect(() => {
     callAPI(exVar.IS_NEW_EARNING)
     setCount(count + 1);

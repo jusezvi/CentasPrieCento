@@ -10,7 +10,7 @@ import AllTransactionItem from './AlltransactionItem';
 
 function AllTransaction({ cost, index }) {
   const [transactionDate, setTransactionDate] = useState([]);
-  const [isUpdated, setIsUpdated]= useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
   // let {id} =useParams()
 
   useEffect(() => {
@@ -27,29 +27,29 @@ function AllTransaction({ cost, index }) {
 
   }, [isUpdated]);
 
-  
-  
+
+
 
   return (
     <div className='tablte-container'>
       <table className='tr'>
         <thead>
           <tr>
-          <th className='number'></th>
-          {/* <th>&#8470;</th> */}
-          <th className='transaction__icon'> </th>
-          <th>Sum</th>
-          <th>Category</th>
-          <th>Type</th>
-          <th></th>
+            <th className='number'></th>
+            {/* <th>&#8470;</th> */}
+            <th className='transaction__icon'> </th>
+            <th>Išlaidos/pajamos</th>
+            <th>Sum</th>
+            <th>Category</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {transactionDate.map((transactionBudget, index) => (
-            <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index} 
-            isUpdated={isUpdated} setIsUpdated={setIsUpdated}/>
-           
-            
+            <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index}
+              isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+
+
           ))}
         </tbody>
 
