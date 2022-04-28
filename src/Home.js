@@ -16,9 +16,9 @@ function Home() {
 
   useEffect(() => {
     callAPI(exVar.IS_NEW_EARNING)
-    setCount(count + 1);
+    // setCount(count + 1);
 
-  }, [count]);
+  }, []);
 
   function callAPI(check = false) {
     if (!check) {
@@ -40,13 +40,13 @@ function Home() {
     <div className="home">
       {/* <Header /> */}
       <div className='main'>
-        <Wallet earnings={earnings} user={user} />
+        <Wallet user={user} />
         <section>
           <Overall transactions={transactions} />
           <Budgets />
         </section>
         <aside>
-          <Transactions transactions={transactions} user={user} />
+          <Transactions user={user} />
         </aside>
       </div>
     </div>

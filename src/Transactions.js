@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Transactions.css';
 import Transaction from './Transaction';
 import { exVar } from './ExtendVariables';
 
 
-function Transactions({ transactions, user }) {
+function Transactions({ user }) {
 
     const [expense_sum, setExpense_sum] = useState('');
     const [expense_name, setExpense_name] = useState('');
@@ -13,7 +13,19 @@ function Transactions({ transactions, user }) {
     const [earning_sum, setEarning_sum] = useState('');
     const [earning_name, setEarning_name] = useState('');
     const [earningType, setEarningType] = useState('earning');
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+    const [transactions, setTransactions] = useState([]);
+
+    useEffect(() => {
+
+        fetch('http://localhost:8000/budget')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setTransactions(data);
+            });
+    }, [])
 
     const submitExpense = e => {
         e.preventDefault();
@@ -32,6 +44,7 @@ function Transactions({ transactions, user }) {
             setExpense_name('');
             setCategory('Home');
             setError(false);
+            window.location.reload();
         } else {
             setError(true)
         }
@@ -53,6 +66,7 @@ function Transactions({ transactions, user }) {
             setEarning_sum('');
             setEarning_name('');
             setError(false);
+            window.location.reload();
         } else {
             setError(true)
         }
@@ -82,7 +96,7 @@ function Transactions({ transactions, user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
-                                    {error && <p className='error'>Įvestas turi skaičius!</p>}
+                                    {error && <p className='error'>Įvestas turi būti skaičius!</p>}
                                     <input type="text" required placeholder='Įveskite išlaidų sumą' value={expense_sum} onChange={e => setExpense_sum(e.target.value)} />
                                     <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={expense_name} onChange={e => setExpense_name(e.target.value)} />
                                     <label>Pasirinkite kategoriją:</label>
@@ -97,7 +111,7 @@ function Transactions({ transactions, user }) {
                                     </div>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

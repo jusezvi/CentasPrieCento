@@ -22,6 +22,7 @@ function EarningItem({ earning }) {
     })
       .then(res => res.json());
     exVar.IS_NEW_EARNING = !exVar.IS_NEW_EARNING;
+    window.location.reload();
   }
   function handleEdit() {
     setDisplay('block');
@@ -57,7 +58,7 @@ function EarningItem({ earning }) {
   return (
     <>
       <div style={{ 'display': display }}>
-        {error && <p className='error'>Įvestas turi skaičius!</p>}
+        {error && <p className='error'>Įvestas turi būti skaičius!</p>}
         <form onSubmit={editItem}>
           <input type="text" required placeholder='Įveskite naują pajamų sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
           <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
