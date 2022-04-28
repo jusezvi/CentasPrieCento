@@ -3,18 +3,18 @@ import Home from './Home';
 import Testas from './AllTransaction';
 import { BrowserRouter ,  Route,  Routes } from 'react-router-dom';
 import Header from './Header';
+import AllTransaction from './AllTransaction';
 
 function App() {
   return (
     <div className="app">
-<<<<<<< HEAD
     
       <BrowserRouter>
       <Header/>
         <Routes>
           <Route>
-            <Route exact path="/Home" element={<Home />} />
-            <Route path="/Testas" element={<Testas/>} />
+            <Route exact path="/home" element={<Home />} />
+            <Route path="/alltransaction" element={<AllTransaction/>} />
             {/* <Route path="/login" element={<Login />} />
             
             <Route path="/profile" element={<Profile />} /> */}
@@ -22,9 +22,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-=======
-      <Home />
->>>>>>> main
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import './Header.css';
 import { GoSearch } from 'react-icons/go';
 import { IoMdNotificationsOutline } from 'react-icons/io';
+// import AllTransaction from './Alltransaction';
+import { Link } from "react-router-dom";
+
 
 
 
@@ -9,8 +12,8 @@ function Header() {
         <div className="header">
             <div className="nav">
                 <ul>
-                    <li> <Link to="/Home" className='text-link'>Home</Link></li>
-                    <li><Link to="/Testas" className='text-link'>Transaction</Link></li>
+                    <li><Link to="/home" className='text-link'>Home</Link></li>
+                    <li><Link to="/alltransaction" className='text-link'>Transaction</Link></li>
                 </ul>
         
                
