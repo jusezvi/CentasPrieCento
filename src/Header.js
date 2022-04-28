@@ -1,8 +1,6 @@
 import './Header.css';
 import { GoSearch } from 'react-icons/go';
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import AllTransaction from './AllTransaction';
-import { Link} from 'react-router-dom';
 
 
 
@@ -24,7 +22,7 @@ function Header() {
             <div className="user">
                 <div className="user__name">
                     <h3>Vardas Pavarde</h3>
-                    <p>customer</p>
+                    <p>Vartotojas</p>
                 </div>
                 <div className="user__icon">
                     V

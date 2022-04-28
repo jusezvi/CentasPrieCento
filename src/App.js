@@ -7,6 +7,7 @@ import Header from './Header';
 function App() {
   return (
     <div className="app">
+<<<<<<< HEAD
     
       <BrowserRouter>
       <Header/>
@@ -21,6 +22,9 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+=======
+      <Home />
+>>>>>>> main
     </div>
   );
 }

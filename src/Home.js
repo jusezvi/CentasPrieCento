@@ -31,16 +31,17 @@ function Home() {
       .then(data => {
         setTransactions(data);
         setEarnings(data);
+        console.log(earnings)
       });
   }
 
   return (
     <div className="home">
-      {/* <Header /> */}
+      <Header />
       <div className='main'>
         <Wallet earnings={earnings} user={user} />
         <section>
-          <Overall />
+          <Overall transactions={transactions} />
           <Budgets />
         </section>
         <aside>

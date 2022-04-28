@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Transactions.css';
 import Transaction from './Transaction';
 import { exVar } from './ExtendVariables';
 
@@ -8,11 +9,14 @@ function Transactions({ transactions, user }) {
     const [expense_sum, setExpense_sum] = useState('');
     const [expense_name, setExpense_name] = useState('');
     const [category, setCategory] = useState('Home');
-    const [type, setType] = useState('expense')
+    const [expenseType, setexpenseType] = useState('expense');
+    const [earning_sum, setEarning_sum] = useState('');
+    const [earning_name, setEarning_name] = useState('');
+    const [earningType, setEarningType] = useState('earning');
 
-    const handleSubmit = e => {
+    const submitExpense = e => {
         e.preventDefault();
-        const newExpense = { expense_sum, expense_name, category, type, user };
+        const newExpense = { expense_sum, expense_name, category, expenseType, user };
 
         fetch('http://localhost:8000/budget', {
             method: 'POST',
@@ -27,42 +31,87 @@ function Transactions({ transactions, user }) {
         setCategory('Home');
     }
 
+    const submitEarning = e => {
+        e.preventDefault();
+        const newEarning = { earning_sum, earning_name, user, earningType };
+
+        fetch('http://localhost:8000/budget', {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify(newEarning)
+        }).then(() => {
+            console.log('earning added');
+            exVar.IS_NEW_EARNING = true;
+        });
+        setEarning_sum('');
+        setEarning_name('');
+    }
+
     return (
         <>
-            <h4>All transactions:</h4>
-            <Transaction name="New Laptop" category="Home" price="580" />
-            <Transaction name="New TV" category="Home" price="900" />
-            <Transaction name="Repair" category="Car" price="150" />
-            <Transaction name="Fuel" category="Car" price="53.99" />
-            <Transaction name="Tickets" category="Journey" price="45.50" />
-            <button data-bs-toggle="modal" data-bs-target="#transactions">Add new transaction</button>
-
-            <div className="modal fade" id="transactions" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Your Expense</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <form onSubmit={handleSubmit}>
-                                <input type="text" required placeholder='Enter new expense sum' value={expense_sum} onChange={e => setExpense_sum(e.target.value)} />
-                                <input type="text" required placeholder='Enter expense name' value={expense_name} onChange={e => setExpense_name(e.target.value)} />
-                                <label>Choose a Category:</label>
-                                <select value={category} onChange={e => setCategory(e.target.value)}>
-                                    <option value="Home">Home</option>
-                                    <option value="Car">Car</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <input type="submit" value="Submit" />
-                            </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <h4>Visos piniginės operacijos:</h4>
+            <div>
+                {transactions.map(transaction => (
+                    <Transaction key={transaction.id} name={transaction.expense_name || transaction.earning_name}
+                        category={transaction.category} price={transaction.expense_sum || transaction.earning_sum}
+                        type={transaction.expenseType}
+                    />
+                ))}
+            </div>
+            <div className='buttons'>
+                <button data-bs-toggle="modal" data-bs-target="#expense">Įvesti išlaidas</button>
+                <button data-bs-toggle="modal" data-bs-target="#earning">Įvesti pajamas</button>
+            </div>
+            <div className='expense__modal'>
+                <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Išlaidų įvedimas</h5>
+                            </div>
+                            <div className="modal-body">
+                                <form onSubmit={submitExpense}>
+                                    <input type="text" required placeholder='Įveskite išlaidų sumą' value={expense_sum} onChange={e => setExpense_sum(e.target.value)} />
+                                    <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={expense_name} onChange={e => setExpense_name(e.target.value)} />
+                                    <label>Pasirinkite kategoriją:</label>
+                                    <select value={category} onChange={e => setCategory(e.target.value)}>
+                                        <option value="Home">Namai</option>
+                                        <option value="Car">Automobilis</option>
+                                        <option value="Other">Kita</option>
+                                    </select>
+                                    <div className="modal-footer">
+                                        <input type="submit" value="Submit" />
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            <div className='earning__modal'>
+                <div className="modal fade" id="earning" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Pajamų įvedimas</h5>
+                            </div>
+                            <div className="modal-body">
+                                <form onSubmit={submitEarning}>
+                                    <input type="text" required placeholder='Įveskite pajamų sumą' value={earning_sum} onChange={e => setEarning_sum(e.target.value)} />
+                                    <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={earning_name} onChange={e => setEarning_name(e.target.value)} />
+                                    <div className="modal-footer">
+                                        <input type="submit" className="btn btn-secondary" value="Submit" />
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </>
     );
 }

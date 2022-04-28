@@ -5,11 +5,11 @@ import { GrTransaction } from 'react-icons/gr';
 import { AiOutlineHome } from 'react-icons/ai';
 
 
-function Overall() {
+function Overall({ transactions }) {
     const data = {
         labels: ['Home', 'Car', 'Food', 'Other'],
         datasets: [{
-            data: [12, 5, 20, 9, 2],
+            data: [12, 5, 20, 9],
             backgroundColor: ['#5C6FE4', '#E9DEF6', '#E6E9F1', 'blue']
         }]
     }

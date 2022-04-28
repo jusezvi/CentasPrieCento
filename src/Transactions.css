@@ -1,0 +1,46 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1156px) and (min-width: 868px) {
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 442px) {
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
+}
+input {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type=submit] {
+  background-color: #3444CE;
+  color: #fff;
+  align-self: flex-end;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+  align-self: flex-end;
+}
