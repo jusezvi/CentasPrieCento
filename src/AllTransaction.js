@@ -37,7 +37,7 @@ function AllTransaction({ cost, index }) {
           <tr>
           <th className='number'></th>
           {/* <th>&#8470;</th> */}
-          <th> icon</th>
+          <th className='transaction__icon'> </th>
           <th>Sum</th>
           <th>Category</th>
           <th>Type</th>
