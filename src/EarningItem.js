@@ -8,6 +8,7 @@ function EarningItem({ earning }) {
   const [newSum, setNewSum] = useState('');
   const [newName, setNewName] = useState('');
   const [earningType, setEarningType] = useState(earning.earningType);
+  const [date, setDate] = useState(earning.date);
   const [user, setUser] = useState(earning.user);
   const [display, setDisplay] = useState('none');
   const [error, setError] = useState(false);
@@ -34,7 +35,7 @@ function EarningItem({ earning }) {
     e.preventDefault();
 
     if (!isNaN(Number(newSum)) && newName.length < 10) {
-      const editEarning = { earning_sum: newSum, earning_name: newName, earningType, user };
+      const editEarning = { earning_sum: newSum, earning_name: newName, earningType, date, user };
 
       fetch('http://localhost:8000/budget/' + earning.id, {
         method: 'PUT',

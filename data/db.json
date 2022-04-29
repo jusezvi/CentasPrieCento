@@ -1,11 +1,11 @@
 {
   "budget": [
     {
-      "earning_sum": "1000",
+      "earning_sum": "1500",
       "earning_name": "alga",
-      "user": "Vardenis",
       "earningType": "earning",
-      "date": "2022-04-29",
+      "date": "2022-04-10",
+      "user": "Vardenis",
       "id": 1
     }
   ]
