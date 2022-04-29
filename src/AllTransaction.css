@@ -16,12 +16,83 @@ tr:hover {
     color: #fff;
     
   } 
-  .button-transaction{
+  /* .button-transaction-edit{
     border-radius: 5px;
+    background-color: #cc2900;
+    color:#fff
   }
+  .button-transaction-delete{
+    border-radius: 5px;
+    background-color: #009116;
+    color:#fff
+  } */
 
   .transaction__icon {
     font-size: 30px;
     display: flex;
     align-items: center;
+}
+.button-transaction-edit2{
+  display: flex;
+  color: green;
+  
+}
+.button-transaction-delete2{
+  display: flex;
+  color: red;
+  
+}
+@media only screen and (max-width: 867px) {
+  .tablte-container {
+    display: flex;
+    width: 80%;
+    
+    
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  
+  
+
+  .button-transaction-edit2{
+    display: flex;
+    color: green;
+    
+  }
+  .button-transaction-delete2{
+    display: flex;
+    color: red;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .tablte-container {
+    display: block;
+    width: 80%;
+    
+    
+  }
+  .transaction__icon{
+    display: none;
+  }
+
+  .button-transaction-edit{
+    display:none;
+  }
+  .button-transaction-edit2{
+    display: flex;
+    color: red;
+  }
+  .button-transaction-delete2{
+    display: flex;
+    color: green;
+  margin-right: 10px;
+  }
+  .button-transaction-delete{
+    display: none;
+  }
 }
