@@ -47,7 +47,6 @@ function Wallet({ user }) {
                         <BiWallet />
                     </div>
                     <p>{balance}</p>
-                    {/* <p>2450 Eur</p> */}
                 </div>
                 <p>Vardas Pavarde</p>
             </div>

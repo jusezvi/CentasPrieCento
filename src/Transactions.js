@@ -6,6 +6,7 @@ import { exVar } from './ExtendVariables';
 
 function Transactions({ user }) {
 
+    const [date, setDate] = useState('');
     const [expense_sum, setExpense_sum] = useState('');
     const [expense_name, setExpense_name] = useState('');
     const [category, setCategory] = useState('Home');
@@ -29,8 +30,8 @@ function Transactions({ user }) {
 
     const submitExpense = e => {
         e.preventDefault();
-        if (!isNaN(Number(expense_sum))) {
-            const newExpense = { expense_sum, expense_name, category, expenseType, user };
+        if (!isNaN(Number(expense_sum)) && earning_name.length < 10) {
+            const newExpense = { expense_sum, expense_name, category, expenseType, date, user };
 
             fetch('http://localhost:8000/budget', {
                 method: 'POST',
@@ -43,6 +44,7 @@ function Transactions({ user }) {
             setExpense_sum('');
             setExpense_name('');
             setCategory('Home');
+            setDate('');
             setError(false);
             window.location.reload();
         } else {
@@ -52,8 +54,8 @@ function Transactions({ user }) {
 
     const submitEarning = e => {
         e.preventDefault();
-        if (!isNaN(Number(earning_sum))) {
-            const newEarning = { earning_sum, earning_name, user, earningType };
+        if (!isNaN(Number(earning_sum)) && earning_name.length < 10) {
+            const newEarning = { earning_sum, earning_name, user, earningType, date };
 
             fetch('http://localhost:8000/budget', {
                 method: 'POST',
@@ -96,15 +98,17 @@ function Transactions({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius!</p>}
+                                    {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
                                     <input type="text" required placeholder='Įveskite išlaidų sumą' value={expense_sum} onChange={e => setExpense_sum(e.target.value)} />
                                     <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={expense_name} onChange={e => setExpense_name(e.target.value)} />
                                     <label>Pasirinkite kategoriją:</label>
-                                    <select value={category} onChange={e => setCategory(e.target.value)}>
+                                    <select required value={category} onChange={e => setCategory(e.target.value)}>
                                         <option value="Home">Namai</option>
                                         <option value="Car">Automobilis</option>
                                         <option value="Other">Kita</option>
                                     </select>
+                                    <label>Pasirinkite datą:</label>
+                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     <div className="modal-footer">
                                         <input type="submit" value="Submit" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
@@ -125,9 +129,11 @@ function Transactions({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
-                                    {error && <p className='error'>Įvestas turi skaičius!</p>}
+                                    {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
                                     <input type="text" required placeholder='Įveskite pajamų sumą' value={earning_sum} onChange={e => setEarning_sum(e.target.value)} />
                                     <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={earning_name} onChange={e => setEarning_name(e.target.value)} />
+                                    <label>Pasirinkite datą:</label>
+                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     <div className="modal-footer">
                                         <input type="submit" className="btn btn-secondary" value="Submit" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>

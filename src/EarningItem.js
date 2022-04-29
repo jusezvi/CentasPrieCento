@@ -33,7 +33,7 @@ function EarningItem({ earning }) {
   function editItem(e) {
     e.preventDefault();
 
-    if (!isNaN(Number(newSum))) {
+    if (!isNaN(Number(newSum)) && newName.length < 10) {
       const editEarning = { earning_sum: newSum, earning_name: newName, earningType, user };
 
       fetch('http://localhost:8000/budget/' + earning.id, {
@@ -58,7 +58,7 @@ function EarningItem({ earning }) {
   return (
     <>
       <div style={{ 'display': display }}>
-        {error && <p className='error'>Įvestas turi būti skaičius!</p>}
+        {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
         <form onSubmit={editItem}>
           <input type="text" required placeholder='Įveskite naują pajamų sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
           <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
