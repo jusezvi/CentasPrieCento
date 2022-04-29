@@ -26,7 +26,7 @@ function Overall({ transactions }) {
                         <GrTransaction />
                     </div>
                     <div className='overall__sum'>
-                        <h3>10000 Eur</h3>
+                        <h3>10000 &euro;</h3>
                     </div>
                     <div className='overall__category-transactions'>
                         <div className='category__transaction'>
@@ -34,7 +34,7 @@ function Overall({ transactions }) {
                                 <AiOutlineHome />
                             </div>
                             <div className='category__transaction-info'>
-                                <div className='category__transaction-price'> - 50.50 Eur</div>
+                                <div className='category__transaction-price'> - 50.50 &euro;</div>
                                 <div className='category__transaction-name'>Food</div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@ function Overall({ transactions }) {
                                 <AiOutlineHome />
                             </div>
                             <div className='category__transaction-info'>
-                                <div className='category__transaction-price'> - 800 Eur</div>
+                                <div className='category__transaction-price'> - 800 &euro;</div>
                                 <div className='category__transaction-name'>New laptop</div>
                             </div>
                         </div>
