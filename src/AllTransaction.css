@@ -32,6 +32,14 @@ tr:hover {
     display: flex;
     align-items: center;
 }
+.button-transaction-edit2{
+  display: none;
+  
+}
+.button-transaction-delete2{
+  display: none;
+  
+}
 @media only screen and (max-width: 867px) {
   .tablte-container {
     display: flex;
