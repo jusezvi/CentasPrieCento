@@ -66,7 +66,7 @@ function EarningItem({ earning }) {
         </form>
       </div>
       <div className='wallet__list-item'>
-        <p>{financial(earning.earning_sum)} Eur - <span>{earning.earning_name}</span></p>
+        <p>{financial(earning.earning_sum)} &euro; - <span>{earning.earning_name}</span></p>
         <div className='buttons'>
           <p className='edit' onClick={handleEdit}><AiOutlineEdit /></p>
           <p className='delete' onClick={handleDelete}><AiOutlineDelete /></p>

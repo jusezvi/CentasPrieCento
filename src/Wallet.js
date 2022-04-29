@@ -46,7 +46,7 @@ function Wallet({ user }) {
                     <div className='wallet__top-icon'>
                         <BiWallet />
                     </div>
-                    <p>{balance}</p>
+                    <p>{balance} &euro;</p>
                 </div>
                 <p>Vardas Pavarde</p>
             </div>
