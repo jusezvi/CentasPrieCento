@@ -39,8 +39,9 @@ function AllTransaction({ cost, index }) {
             {/* <th>&#8470;</th> */}
             <th className='transaction__icon'> </th>
             <th>Išlaidos/pajamos</th>
-            <th>Sum</th>
-            <th>Category</th>
+            <th>Suma</th>
+            <th>Pavadinimas</th>
+            <th>Data</th>
             <th></th>
           </tr>
         </thead>
@@ -48,8 +49,6 @@ function AllTransaction({ cost, index }) {
           {transactionDate.map((transactionBudget, index) => (
             <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index}
               isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
-
-
           ))}
         </tbody>
 

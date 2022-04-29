@@ -1,33 +1,3 @@
 {
-  "budget": [
-    {
-      "expense_sum": "25",
-      "expense_name": "maistas",
-      "category": "Home",
-      "id": 3
-    },
-    {
-      "expense_sum": "10",
-      "expense_name": "kazkas",
-      "category": "Home",
-      "expenseType": "expense",
-      "user": "Vardenis",
-      "id": 4
-    },
-    {
-      "expense_sum": "10",
-      "expense_name": "aa",
-      "category": "Home",
-      "expenseType": "expense",
-      "user": "Vardenis",
-      "id": 5
-    },
-    {
-      "earning_sum": "1000",
-      "earning_name": "alga",
-      "earningType": "earning",
-      "user": "Vardenis",
-      "id": 6
-    }
-  ]
+  "budget": []
 }
