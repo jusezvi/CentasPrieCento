@@ -80,9 +80,9 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <td>{transactionBudget.earning_sum || transactionBudget.expense_sum} Eur  </td>
                 <td>{transactionBudget.earning_name || transactionBudget.expense_name}</td>
                 <td>{transactionBudget.date}</td>
-                <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td>
+                {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
-                <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td>
+                {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
                 <td className='button-transaction-delete2 none'onClick={DeleteClick}><AiOutlineDelete /></td>
 
             </tr>

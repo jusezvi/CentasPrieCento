@@ -16,7 +16,7 @@ tr:hover {
     color: #fff;
     
   } 
-  .button-transaction-edit{
+  /* .button-transaction-edit{
     border-radius: 5px;
     background-color: #cc2900;
     color:#fff
@@ -25,7 +25,7 @@ tr:hover {
     border-radius: 5px;
     background-color: #009116;
     color:#fff
-  }
+  } */
 
   .transaction__icon {
     font-size: 30px;
@@ -33,11 +33,13 @@ tr:hover {
     align-items: center;
 }
 .button-transaction-edit2{
-  display: none;
+  display: flex;
+  color: green;
   
 }
 .button-transaction-delete2{
-  display: none;
+  display: flex;
+  color: red;
   
 }
 @media only screen and (max-width: 867px) {
@@ -52,17 +54,18 @@ tr:hover {
     top: -9999px;
     left: -9999px;
   }
-  .transaction__icon{
-    display: none;
-  }
+  
   
   
 
   .button-transaction-edit2{
-    display: none;
+    display: flex;
+    color: green;
+    
   }
   .button-transaction-delete2{
-    display: none;
+    display: flex;
+    color: red;
   }
 }
 
@@ -72,6 +75,9 @@ tr:hover {
     width: 80%;
     
     
+  }
+  .transaction__icon{
+    display: none;
   }
 
   .button-transaction-edit{
