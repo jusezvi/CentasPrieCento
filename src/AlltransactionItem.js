@@ -1,7 +1,10 @@
 import { exVar } from "./ExtendVariables";
 // import AllTransaction from './Alltransaction';
 import './AllTransaction.css';
+import './AllTransactionItem.css';
 import { GrTransaction } from 'react-icons/gr';
+import {FaLongArrowAltRight} from 'react-icons/fa'
+import {FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
@@ -65,9 +68,11 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
-                    <input type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
-                    <input type="text" required placeholder='Įveskite naują pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.expenseType == 'expense' ? <input type="text" required placeholder='Įveskite naują katogoriją' value={newCategory} onChange={e => setNewCategory(e.target.value)} /> : null};
+                    <label>Įveskite naują sumą:</label>
+                    <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} />
+                    <label>Įveskite naują sumą:</label>
+                    <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
+                    {transactionBudget.expenseType == 'expense' ? <><label>Įveskite naują katogoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)}  /></> : null}
                     <label>Pasirinkite datą:</label>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
                     <input type="submit" value="Submit" />
@@ -75,7 +80,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             </div>
             <tr>
                 <td>{index + 1}</td>
-                <td className='transaction__icon'><GrTransaction /></td>
+                <td>{transactionBudget.expenseType == 'expense' ? <div className="FaLongArrowAltLeft "><FaLongArrowAltLeft /> </div>: <div className="FaLongArrowAltRight"><FaLongArrowAltRight /></div>}</td>
+                {/* <td className='transaction__icon'><FaLongArrowAltRight /></td> */}
                 <td>{transactionBudget.expenseType == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
                 <td>{transactionBudget.earning_sum || transactionBudget.expense_sum} Eur  </td>
                 <td>{transactionBudget.earning_name || transactionBudget.expense_name}</td>

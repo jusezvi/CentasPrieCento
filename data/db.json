@@ -1,3 +1,30 @@
 {
-  "budget": []
+  "budget": [
+    {
+      "earning_sum": "1998",
+      "earning_name": "tadas",
+      "category": "",
+      "date": "2022-05-01",
+      "earningType": "earning",
+      "id": 2
+    },
+    {
+      "expense_sum": "879",
+      "expense_name": "vesia",
+      "category": "Home",
+      "expenseType": "expense",
+      "date": "2022-05-04",
+      "user": "Vardenis",
+      "id": 3
+    },
+    {
+      "expense_sum": "9999",
+      "expense_name": "bububububub",
+      "category": "Home",
+      "expenseType": "expense",
+      "date": "2022-05-03",
+      "user": "Vardenis",
+      "id": 4
+    }
+  ]
 }

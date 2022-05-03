@@ -1,4 +1,4 @@
-.tablte-container{
+.tablte-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -8,62 +8,68 @@
   border-radius: 15px;
 }
 
+
+ .tablte-container{
+overflow-x: scroll;
+ }
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-tr:hover {
-    background-color:  rgb(52, 68, 206);
-    color: #fff;
-    
-  } 
-  /* .button-transaction-edit{
-    border-radius: 5px;
-    background-color: #cc2900;
-    color:#fff
-  }
-  .button-transaction-delete{
-    border-radius: 5px;
-    background-color: #009116;
-    color:#fff
-  } */
 
-  .transaction__icon {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
+tr:hover {
+  background-color: #eddcfa;
+  /* color: #fff; */
+
 }
-.button-transaction-edit2{
+
+
+
+.transaction__icon {
+  font-size: 30px;
   display: flex;
+  align-items: center;
+}
+
+.button-transaction-edit2 {
+  
   color: green;
-  
+ 
+
 }
-.button-transaction-delete2{
-  display: flex;
+.button-transaction-delete2 {
+  
   color: red;
-  
 }
+
+
+.button-transaction-delete2 .button-transaction-edit2{
+  display: inline;
+}
+
 @media only screen and (max-width: 867px) {
   .tablte-container {
     display: flex;
     width: 80%;
-    
-    
+
+
   }
+
   thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-  
-  
-  
 
-  .button-transaction-edit2{
+
+
+
+  .button-transaction-edit2 {
     display: flex;
     color: green;
-    
+
   }
-  .button-transaction-delete2{
+
+  .button-transaction-delete2 {
     display: flex;
     color: red;
   }
@@ -73,26 +79,30 @@ tr:hover {
   .tablte-container {
     display: block;
     width: 80%;
-    
-    
+
+
   }
-  .transaction__icon{
+
+  .transaction__icon {
     display: none;
   }
 
-  .button-transaction-edit{
-    display:none;
+  .button-transaction-edit {
+    display: none;
   }
-  .button-transaction-edit2{
+
+  .button-transaction-edit2 {
     display: flex;
     color: red;
   }
-  .button-transaction-delete2{
+
+  .button-transaction-delete2 {
     display: flex;
     color: green;
-  margin-right: 10px;
+    margin-right: 10px;
   }
-  .button-transaction-delete{
+
+  .button-transaction-delete {
     display: none;
   }
 }
