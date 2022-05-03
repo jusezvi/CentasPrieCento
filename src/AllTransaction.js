@@ -32,7 +32,7 @@ function AllTransaction({ cost, index }) {
 
   return (
     <div className='tablte-container'>
-      <table className='tr'>
+      <table className='tr '>
         <thead>
           <tr>
             <th className='number'></th>
