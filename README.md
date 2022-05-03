@@ -5,3 +5,4 @@ Paleidimas:
 2. npx json-server --watch data/db.json --port 8000
 3. naujas punktas
 4. punktas
+5. punktas JZ
