@@ -7,15 +7,13 @@ import { exVar } from './ExtendVariables';
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [expense_sum, setExpense_sum] = useState('');
-    const [expense_name, setExpense_name] = useState('');
     const [category, setCategory] = useState('Home');
-    const [expenseType, setexpenseType] = useState('expense');
-    const [earning_sum, setEarning_sum] = useState('');
-    const [earning_name, setEarning_name] = useState('');
-    const [earningType, setEarningType] = useState('earning');
     const [error, setError] = useState(false);
     const [transactions, setTransactions] = useState([]);
+
+    const [sum, setSum] = useState('');
+    const [type, setType] = useState('');
+    const [name, setName] = useState('');
 
     useEffect(() => {
 
@@ -30,8 +28,8 @@ function Transactions({ user }) {
 
     const submitExpense = e => {
         e.preventDefault();
-        if (!isNaN(Number(expense_sum)) && earning_name.length < 10) {
-            const newExpense = { expense_sum, expense_name, category, expenseType, date, user };
+        if (!isNaN(Number(sum)) && name.length < 10 && sum > 0) {
+            const newExpense = { sum, name, category, type: "expense", date, user };
 
             fetch('http://localhost:8000/budget', {
                 method: 'POST',
@@ -41,8 +39,8 @@ function Transactions({ user }) {
                 console.log('expense added');
                 exVar.IS_NEW_EARNING = true;
             });
-            setExpense_sum('');
-            setExpense_name('');
+            setSum('');
+            setName('');
             setCategory('Home');
             setDate('');
             setError(false);
@@ -54,8 +52,8 @@ function Transactions({ user }) {
 
     const submitEarning = e => {
         e.preventDefault();
-        if (!isNaN(Number(earning_sum)) && earning_name.length < 10) {
-            const newEarning = { earning_sum, earning_name, user, earningType, date };
+        if (!isNaN(Number(sum)) && name.length < 10 && sum > 0) {
+            const newEarning = { sum, name, category: "-", type: "earning", date, user };
 
             fetch('http://localhost:8000/budget', {
                 method: 'POST',
@@ -65,8 +63,8 @@ function Transactions({ user }) {
                 console.log('earning added');
                 exVar.IS_NEW_EARNING = true;
             });
-            setEarning_sum('');
-            setEarning_name('');
+            setSum('');
+            setName('');
             setError(false);
             window.location.reload();
         } else {
@@ -79,9 +77,9 @@ function Transactions({ user }) {
             <h4>Visos piniginės operacijos:</h4>
             <div>
                 {transactions.map(transaction => (
-                    <Transaction key={transaction.id} name={transaction.expense_name || transaction.earning_name}
-                        category={transaction.category} price={transaction.expense_sum || transaction.earning_sum}
-                        type={transaction.expenseType}
+                    <Transaction key={transaction.id} name={transaction.name}
+                        category={transaction.category} price={transaction.sum}
+                        type={transaction.type} date={transaction.date} user={transaction.user}
                     />
                 ))}
             </div>
@@ -98,9 +96,9 @@ function Transactions({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
-                                    <input type="text" required placeholder='Įveskite išlaidų sumą' value={expense_sum} onChange={e => setExpense_sum(e.target.value)} />
-                                    <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={expense_name} onChange={e => setExpense_name(e.target.value)} />
+                                    {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+                                    <input type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} />
+                                    <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} />
                                     <label>Pasirinkite kategoriją:</label>
                                     <select required value={category} onChange={e => setCategory(e.target.value)}>
                                         <option value="Home">Namai</option>
@@ -129,9 +127,9 @@ function Transactions({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
-                                    <input type="text" required placeholder='Įveskite pajamų sumą' value={earning_sum} onChange={e => setEarning_sum(e.target.value)} />
-                                    <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={earning_name} onChange={e => setEarning_name(e.target.value)} />
+                                    {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+                                    <input type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} />
+                                    <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} />
                                     <label>Pasirinkite datą:</label>
                                     <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     <div className="modal-footer">

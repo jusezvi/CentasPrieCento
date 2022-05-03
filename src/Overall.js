@@ -3,6 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
 import { GrTransaction } from 'react-icons/gr';
 import { AiOutlineHome } from 'react-icons/ai';
+import MainChart from './charts/MainChart';
 
 
 function Overall({ transactions }) {
@@ -19,7 +20,8 @@ function Overall({ transactions }) {
             <h2>Overal Spent</h2>
             <div className='overall__main'>
                 <div className='overall__main-chart'>
-                    <Doughnut data={data} />
+                    {/* <Doughnut data={data} /> */}
+                    <MainChart transactions={transactions} />
                 </div>
                 <div className='overall__main-expense'>
                     <div className='overall__icon'>

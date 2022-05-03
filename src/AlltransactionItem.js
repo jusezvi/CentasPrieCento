@@ -1,5 +1,3 @@
-import { exVar } from "./ExtendVariables";
-// import AllTransaction from './Alltransaction';
 import './AllTransaction.css';
 import { GrTransaction } from 'react-icons/gr';
 import { useState } from "react";
@@ -29,16 +27,16 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
 
     function handleEdit() {
         setDisplay('block');
-        setNewSum(transactionBudget.earning_sum || transactionBudget.expense_sum);
-        setNewName(transactionBudget.earning_name || transactionBudget.expense_name);
+        setNewSum(transactionBudget.sum);
+        setNewName(transactionBudget.name);
         setNewCategory(transactionBudget.category);
         setNewDate(transactionBudget.date);
     }
 
     function editItem(e) {
         e.preventDefault();
-        if (!isNaN(Number(newSum)) && newName.length < 10) {
-            let edit = transactionBudget.expenseType == 'expense' ? { expense_sum: newSum, expense_name: newName, category: newCategory, date: newDate, expenseType: 'expense' } : { earning_sum: newSum, earning_name: newName, category: '', date: newDate, earningType: 'earning' };
+        if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
+            let edit = transactionBudget.type == 'expense' ? { sum: newSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: newSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
             fetch('http://localhost:8000/budget/' + transactionBudget.id, {
                 method: 'PUT',
@@ -60,7 +58,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
     return (
         <>
             <div style={{ 'display': display }}>
-                {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
+                {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
                     <input type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
                     <input type="text" required placeholder='Įveskite naują pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
@@ -73,9 +71,9 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             <tr>
                 <td>{index + 1}</td>
                 <td className='transaction__icon'><GrTransaction /></td>
-                <td>{transactionBudget.expenseType == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
-                <td>{transactionBudget.earning_sum || transactionBudget.expense_sum} Eur  </td>
-                <td>{transactionBudget.earning_name || transactionBudget.expense_name}</td>
+                <td>{transactionBudget.type == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
+                <td>{transactionBudget.sum} Eur  </td>
+                <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.date}</td>
                 <td><button onClick={handleEdit} className='button-transaction'>Edit</button></td>
                 <td><button onClick={DeleteClick} className='button-transaction'>Delete</button></td>
