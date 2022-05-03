@@ -1,0 +1,21 @@
+{
+  "budget": [
+    {
+      "expense_sum": "8888",
+      "expense_name": "stogas",
+      "category": "Home",
+      "expenseType": "expense",
+      "date": "2022-04-29",
+      "user": "Vardenis",
+      "id": 1
+    },
+    {
+      "earning_sum": "900",
+      "earning_name": "alga",
+      "user": "Vardenis",
+      "earningType": "earning",
+      "date": "2022-04-28",
+      "id": 2
+    }
+  ]
+}
