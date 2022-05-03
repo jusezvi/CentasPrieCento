@@ -1,8 +1,8 @@
 import './AllTransaction.css';
 import './AllTransactionItem.css';
 import { GrTransaction } from 'react-icons/gr';
-import {FaLongArrowAltRight} from 'react-icons/fa'
-import {FaLongArrowAltLeft } from 'react-icons/fa'
+import { FaLongArrowAltRight } from 'react-icons/fa'
+import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
@@ -70,7 +70,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                     <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} />
                     <label>Įveskite naują sumą:</label>
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.expenseType == 'expense' ? <><label>Įveskite naują katogoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)}  /></> : null}
+                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują katogoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null}
                     <label>Pasirinkite datą:</label>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
                     <input type="submit" value="Submit" />
@@ -78,16 +78,16 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             </div>
             <tr>
                 <td>{index + 1}</td>
-                <td>{transactionBudget.expenseType == 'expense' ? <div className="FaLongArrowAltLeft "><FaLongArrowAltLeft /> </div>: <div className="FaLongArrowAltRight"><FaLongArrowAltRight /></div>}</td>
+                <td>{transactionBudget.type == 'expense' ? <div className="FaLongArrowAltLeft "><FaLongArrowAltLeft /> </div> : <div className="FaLongArrowAltRight"><FaLongArrowAltRight /></div>}</td>
                 {/* <td className='transaction__icon'><FaLongArrowAltRight /></td> */}
-                <td>{transactionBudget.expenseType == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
-                <td>{transactionBudget.earning_sum || transactionBudget.expense_sum} Eur  </td>
-                <td>{transactionBudget.earning_name || transactionBudget.expense_name}</td>
+                <td>{transactionBudget.type == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
+                <td>{transactionBudget.sum} Eur  </td>
+                <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.date}</td>
                 {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
                 {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
-                <td className='button-transaction-delete2 none'onClick={DeleteClick}><AiOutlineDelete /></td>
+                <td className='button-transaction-delete2 none' onClick={DeleteClick}><AiOutlineDelete /></td>
 
             </tr>
         </>
