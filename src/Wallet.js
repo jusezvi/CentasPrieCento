@@ -27,11 +27,11 @@ function Wallet({ user }) {
         let out = 0;
 
         costs.forEach((cost) => {
-            if (cost.hasOwnProperty('expenseType')) {
-                out += Number(cost.expense_sum)
+            if (cost.type == 'expense') {
+                out += Number(cost.sum)
             } else {
-                if (cost.hasOwnProperty('earningType')) {
-                    inn += Number(cost.earning_sum)
+                if (cost.type == 'earning') {
+                    inn += Number(cost.sum)
                 }
             }
 
@@ -46,12 +46,12 @@ function Wallet({ user }) {
                     <div className='wallet__top-icon'>
                         <BiWallet />
                     </div>
-                    <p>{balance} &euro;</p>
+                    <p>{financial(balance)} &euro;</p>
                 </div>
                 <p>Vardas Pavarde</p>
             </div>
 
-            <div className="modal fade" id="wallet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="wallet" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -60,7 +60,7 @@ function Wallet({ user }) {
                         </div>
                         <div className="modal-body">
                             <div className='wallet__list'>
-                                {earnings && earnings.filter(earning => earning.earningType === "earning").map(filteredEarning => (
+                                {earnings && earnings.filter(earning => earning.type === "earning").map(filteredEarning => (
                                     <EarningItem key={filteredEarning.id} earning={filteredEarning} />
                                 ))}
                             </div>

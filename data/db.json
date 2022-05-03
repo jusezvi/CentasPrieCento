@@ -1,12 +1,30 @@
 {
   "budget": [
     {
-      "earning_sum": "1500",
-      "earning_name": "alga",
-      "earningType": "earning",
-      "date": "2022-04-10",
-      "user": "Vardenis",
+      "sum": "1000",
+      "name": "alga",
+      "category": "-",
+      "date": "2022-05-02",
+      "type": "earning",
       "id": 1
+    },
+    {
+      "sum": "50",
+      "name": "maistas",
+      "category": "Home",
+      "type": "expense",
+      "date": "2022-05-03",
+      "user": "Vardenis",
+      "id": 2
+    },
+    {
+      "sum": "200",
+      "name": "bonus",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-06",
+      "user": "Vardenis",
+      "id": 3
     }
   ]
 }

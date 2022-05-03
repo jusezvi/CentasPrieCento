@@ -7,7 +7,6 @@ import { exVar } from './ExtendVariables';
 function EarningItem({ earning }) {
   const [newSum, setNewSum] = useState('');
   const [newName, setNewName] = useState('');
-  const [earningType, setEarningType] = useState(earning.earningType);
   const [date, setDate] = useState(earning.date);
   const [user, setUser] = useState(earning.user);
   const [display, setDisplay] = useState('none');
@@ -27,15 +26,15 @@ function EarningItem({ earning }) {
   }
   function handleEdit() {
     setDisplay('block');
-    setNewSum(earning.earning_sum);
-    setNewName(earning.earning_name);
+    setNewSum(earning.sum);
+    setNewName(earning.name);
   }
 
   function editItem(e) {
     e.preventDefault();
 
-    if (!isNaN(Number(newSum)) && newName.length < 10) {
-      const editEarning = { earning_sum: newSum, earning_name: newName, earningType, date, user };
+    if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
+      const editEarning = { sum: newSum, name: newName, type: "earning", category: "-", date, user };
 
       fetch('http://localhost:8000/budget/' + earning.id, {
         method: 'PUT',
@@ -59,7 +58,7 @@ function EarningItem({ earning }) {
   return (
     <>
       <div style={{ 'display': display }}>
-        {error && <p className='error'>Įvestas turi būti skaičius ir pavadinimas mažiau nei 10 simbolių!</p>}
+        {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
         <form onSubmit={editItem}>
           <input type="text" required placeholder='Įveskite naują pajamų sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
           <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
@@ -67,7 +66,7 @@ function EarningItem({ earning }) {
         </form>
       </div>
       <div className='wallet__list-item'>
-        <p>{financial(earning.earning_sum)} &euro; - <span>{earning.earning_name}</span></p>
+        <p>{financial(earning.sum)} &euro; - <span>{earning.name}</span></p>
         <div className='buttons'>
           <p className='edit' onClick={handleEdit}><AiOutlineEdit /></p>
           <p className='delete' onClick={handleDelete}><AiOutlineDelete /></p>
