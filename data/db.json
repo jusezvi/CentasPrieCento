@@ -5,15 +5,6 @@
       "name": "alga",
       "category": "-",
       "type": "earning",
-      "date": "2022-05-03",
-      "user": "Vardenis",
-      "id": 1
-    },
-    {
-      "sum": "1000",
-      "name": "alga",
-      "category": "-",
-      "type": "earning",
       "date": "2022-04-06",
       "user": "Vardenis",
       "id": 2
@@ -36,22 +27,20 @@
       "id": 4
     },
     {
-      "sum": "300",
-      "name": "kazkas",
-      "category": "Home",
-      "type": "expense",
-      "date": "2022-05-03",
-      "user": "Vardenis",
-      "id": 5
-    },
-    {
-      "sum": "200",
+      "sum": "000200.555555555",
       "name": "bonus",
       "category": "-",
-      "type": "earning",
       "date": "2022-05-04",
-      "user": "Vardenis",
+      "type": "earning",
       "id": 6
+    },
+    {
+      "sum": "100.55",
+      "name": "zaislas",
+      "category": "Home",
+      "date": "2022-05-03",
+      "type": "expense",
+      "id": 7
     }
   ]
 }

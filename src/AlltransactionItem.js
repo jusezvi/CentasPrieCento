@@ -17,6 +17,10 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
     const [display, setDisplay] = useState('none');
     const [error, setError] = useState(false);
 
+    function financial(x) {
+        return Number.parseFloat(x).toFixed(2);
+    }
+
     function DeleteClick() {
         fetch('http://localhost:8000/budget/' + transactionBudget.id, {
             method: 'DELETE',
@@ -27,8 +31,6 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             .then(() => {
                 setIsUpdated(!isUpdated)
             });
-
-
     }
 
     function handleEdit() {
@@ -81,7 +83,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <td>{transactionBudget.type == 'expense' ? <div className="FaLongArrowAltLeft "><FaLongArrowAltLeft /> </div> : <div className="FaLongArrowAltRight"><FaLongArrowAltRight /></div>}</td>
                 {/* <td className='transaction__icon'><FaLongArrowAltRight /></td> */}
                 <td>{transactionBudget.type == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
-                <td>{transactionBudget.sum} &euro;  </td>
+                <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.date}</td>
                 {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
