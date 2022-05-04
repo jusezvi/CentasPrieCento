@@ -88,7 +88,6 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
                 {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
                 <td className='button-transaction-delete2 none' onClick={DeleteClick}><AiOutlineDelete /></td>
-
             </tr>
         </>
     );
