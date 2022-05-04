@@ -22,9 +22,8 @@
       "sum": "50",
       "name": "kuras",
       "category": "Car",
+      "date": "2022-04-26",
       "type": "expense",
-      "date": "2022-05-02",
-      "user": "Vardenis",
       "id": 3
     },
     {

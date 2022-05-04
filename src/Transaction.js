@@ -19,7 +19,7 @@ function Transaction({ name, category, price, type }) {
         <p>{category}</p>
       </div>
       <div className='transaction__price'>
-        <p>{type == "expense" ? '-' : '+'} {financial(price)} Eur</p>
+        <p>{type == "expense" ? '-' : '+'} {financial(price)} &euro;</p>
       </div>
     </div>
   );
