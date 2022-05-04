@@ -1,0 +1,29 @@
+.chart__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px
+}
+
+.chart__container-chart {
+  width: 80%;
+}
+
+.chart__container-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.chart__container-info p:first-child {
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .chart__container-chart {
+    /* height: 300px; */
+  }
+}

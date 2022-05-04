@@ -4,27 +4,55 @@
       "sum": "1000",
       "name": "alga",
       "category": "-",
-      "date": "2022-05-02",
       "type": "earning",
+      "date": "2022-05-03",
+      "user": "Vardenis",
       "id": 1
     },
     {
+      "sum": "1000",
+      "name": "alga",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-06",
+      "user": "Vardenis",
+      "id": 2
+    },
+    {
       "sum": "50",
+      "name": "kuras",
+      "category": "Car",
+      "type": "expense",
+      "date": "2022-05-02",
+      "user": "Vardenis",
+      "id": 3
+    },
+    {
+      "sum": "25",
       "name": "maistas",
+      "category": "Home",
+      "type": "expense",
+      "date": "2022-04-26",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
+      "sum": "300",
+      "name": "kazkas",
       "category": "Home",
       "type": "expense",
       "date": "2022-05-03",
       "user": "Vardenis",
-      "id": 2
+      "id": 5
     },
     {
       "sum": "200",
       "name": "bonus",
       "category": "-",
       "type": "earning",
-      "date": "2022-04-06",
+      "date": "2022-05-04",
       "user": "Vardenis",
-      "id": 3
+      "id": 6
     }
   ]
 }

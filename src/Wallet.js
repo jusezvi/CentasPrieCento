@@ -44,7 +44,7 @@ function Wallet({ user }) {
             <div className="wallet" data-bs-toggle="modal" data-bs-target="#wallet">
                 <div className='wallet__top'>
                     <div className='wallet__top-icon'>
-                        <BiWallet />
+                        <BiWallet /> 
                     </div>
                     <p>{financial(balance)} &euro;</p>
                 </div>
