@@ -27,11 +27,17 @@
       "id": 4
     },
     {
+<<<<<<< Updated upstream
       "sum": "000200.555555555",
       "name": "bonus",
+=======
+      "sum": "10000",
+      "name": "tgfkyjgbu",
+>>>>>>> Stashed changes
       "category": "-",
       "date": "2022-05-04",
       "type": "earning",
+<<<<<<< Updated upstream
       "id": 6
     },
     {
@@ -41,6 +47,11 @@
       "date": "2022-05-03",
       "type": "expense",
       "id": 7
+=======
+      "date": "2022-05-04",
+      "user": "Vardenis",
+      "id": 3
+>>>>>>> Stashed changes
     }
   ]
 }
