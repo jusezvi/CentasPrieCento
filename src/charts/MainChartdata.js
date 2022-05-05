@@ -67,8 +67,8 @@ function MainChartdata({ transactionss }) {
         <Chart earningForChart={earningForChart} expenseForChart={expenseForChart} />
       </div>
       <div className='chart__container-info'>
-        <p>pajamos: {monthlyEarningSum}</p>
-        <p>islaidos: {monthlyExpenseSum}</p>
+        <p>pajamos: {financial(monthlyEarningSum)}</p>
+        <p>islaidos: {financial(monthlyExpenseSum)}</p>
       </div>
     </div>
   );
