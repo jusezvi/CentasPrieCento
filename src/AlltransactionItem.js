@@ -44,7 +44,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
     function editItem(e) {
         e.preventDefault();
         if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
-            let edit = transactionBudget.type == 'expense' ? { sum: newSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: newSum, name: newName, category: '-', date: newDate, type: 'earning' };
+            let correctSum = financial(newSum);
+            let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
             fetch('http://localhost:8000/budget/' + transactionBudget.id, {
                 method: 'PUT',

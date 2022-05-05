@@ -24,12 +24,17 @@ function Transactions({ user }) {
             .then(data => {
                 setTransactions(data);
             });
-    }, [])
+    }, []);
+
+    function financial(x) {
+        return Number.parseFloat(x).toFixed(2);
+    }
 
     const submitExpense = e => {
         e.preventDefault();
         if (!isNaN(Number(sum)) && name.length < 10 && sum > 0) {
-            const newExpense = { sum, name, category, type: "expense", date, user };
+            let correctSum = financial(sum);
+            const newExpense = { sum: correctSum, name, category, type: "expense", date, user };
 
             fetch('http://localhost:8000/budget', {
                 method: 'POST',
@@ -53,7 +58,8 @@ function Transactions({ user }) {
     const submitEarning = e => {
         e.preventDefault();
         if (!isNaN(Number(sum)) && name.length < 10 && sum > 0) {
-            const newEarning = { sum, name, category: "-", type: "earning", date, user };
+            let correctSum = financial(sum);
+            const newEarning = { sum: correctSum, name, category: "-", type: "earning", date, user };
 
             fetch('http://localhost:8000/budget', {
                 method: 'POST',

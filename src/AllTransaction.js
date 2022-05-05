@@ -1,6 +1,5 @@
 import './Home.css';
 import Header from './Header';
-import Overall from './Overall';
 import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import './AllTransaction.css';
