@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import Chart from './Chart';
+import MonthlyChart from './MonthlyChart';
 import './MainChartdata.css';
 
 
-function MainChartdata({ transactionss }) {
-  const [earnings, setEarnings] = useState([]);
-  const [expenses, setExpenses] = useState([]);
-  const [monthlyEarning, setMonthlyEarning] = useState([]);
+function MainChartdata() {
   const [monthlyEarningSum, setMonthlyEarningSum] = useState([]);
   const [monthlyExpenseSum, setMonthlyExpenseSum] = useState([]);
   // const [monthlyExpenses, setMonthlyExpenses] = useState([]);
@@ -15,6 +13,8 @@ function MainChartdata({ transactionss }) {
   let months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   let currentMonth = new Date().getMonth();
   const [transactions, setTransactions] = useState([]);
+  const [monthlyIncomeForChart, setMonthlyIncomeForChart] = useState([]);
+  const [monthlyOutcomeForChart, setMonthlyOutcomeForChart] = useState([]);
 
   //   useEffect(() => {
   // //     setEarnings(transactions.filter((transaction) => transaction.type === 'earning'));
@@ -29,6 +29,7 @@ function MainChartdata({ transactionss }) {
       .then(items => {
         setTransactions(items);
         calculateSum(items);
+        sumsBymonth(items);
       })
   }, []);
 
@@ -61,14 +62,49 @@ function MainChartdata({ transactionss }) {
       setMonthlyExpenseSum(expenseSum);
     })
   }
+
+
+  function sumsBymonth(items) {
+    let monthlyIncome = [];
+    let monthlyOutcome = [];
+    months.forEach((month) => {
+      let earningByMonthSum = 0;
+      let expenseByMonthSum = 0;
+      // let sum = 0;
+      items.forEach((d) => {
+        if ((new Date(d.date)).getMonth() === month && d.type === 'earning') {
+          earningByMonthSum += Number(d.sum);
+
+        } else {
+          if ((new Date(d.date)).getMonth() === month && d.type === 'expense') {
+            expenseByMonthSum += Number(d.sum);
+          }
+        }
+      });
+
+      monthlyIncome = [...monthlyIncome, earningByMonthSum];
+      monthlyOutcome = [...monthlyOutcome, expenseByMonthSum];
+      setMonthlyIncomeForChart(monthlyIncome);
+      setMonthlyOutcomeForChart(monthlyOutcome);
+      console.log('men' + month, earningByMonthSum);
+    });
+    console.log(monthlyIncome)
+  }
+
   return (
     <div className='chart__container'>
-      <div className='chart__container-chart'>
-        <Chart earningForChart={earningForChart} expenseForChart={expenseForChart} />
+      <h2>Pajamų ir išlaidų grafinis atvaizdavimas</h2>
+      <div className='main-chart__container'>
+        <div className='main-chart'>
+          <Chart earningForChart={earningForChart} expenseForChart={expenseForChart} />
+        </div>
+        <div className='main-chart-info'>
+          <p>pajamos: {financial(monthlyEarningSum)}</p>
+          <p>islaidos: {financial(monthlyExpenseSum)}</p>
+        </div>
       </div>
-      <div className='chart__container-info'>
-        <p>pajamos: {financial(monthlyEarningSum)}</p>
-        <p>islaidos: {financial(monthlyExpenseSum)}</p>
+      <div className='monthly-chart'>
+        <MonthlyChart monthlyIncomeForChart={monthlyIncomeForChart} monthlyOutcomeForChart={monthlyOutcomeForChart} />
       </div>
     </div>
   );

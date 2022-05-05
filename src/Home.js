@@ -1,11 +1,10 @@
 import './Home.css';
-import Header from './Header';
-import Overall from './Overall';
 import Transactions from './Transactions';
 import Wallet from './Wallet';
 import Budgets from './Budgets';
 import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
+import MainChartdata from './charts/MainChartdata';
 
 function Home() {
   const [earnings, setEarnings] = useState([]);
@@ -42,7 +41,7 @@ function Home() {
       <div className='main'>
         <Wallet user={user} />
         <section>
-          <Overall transactions={transactions} />
+          <MainChartdata />
           <Budgets />
         </section>
         <aside>

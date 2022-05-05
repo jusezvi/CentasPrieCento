@@ -34,7 +34,8 @@ function EarningItem({ earning }) {
     e.preventDefault();
 
     if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
-      const editEarning = { sum: newSum, name: newName, type: "earning", category: "-", date, user };
+      let correctSum = financial(newSum);
+      const editEarning = { sum: correctSum, name: newName, type: "earning", category: "-", date, user };
 
       fetch('http://localhost:8000/budget/' + earning.id, {
         method: 'PUT',
