@@ -7,6 +7,7 @@ import { useTable } from 'react-router-dom';
 import AllTransactionItem from './AlltransactionItem';
 
 
+
 function AllTransaction({ cost, index }) {
   const [transactionDate, setTransactionDate] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -30,6 +31,8 @@ function AllTransaction({ cost, index }) {
 
 
   return (
+    <>
+    <Header />
     <div className='tablte-container'>
       <table className='tr '>
         <thead>
@@ -53,7 +56,7 @@ function AllTransaction({ cost, index }) {
 
       </table>
     </div>
-
+  </>
   );
 }
 

@@ -8,6 +8,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 
 
+
 function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated }) {
 
     const [newSum, setNewSum] = useState('');

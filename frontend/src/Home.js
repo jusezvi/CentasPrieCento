@@ -5,6 +5,7 @@ import Budgets from './Budgets';
 import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import MainChartdata from './charts/MainChartdata';
+import Header from './Header';
 
 function Home() {
   const [earnings, setEarnings] = useState([]);
@@ -37,7 +38,7 @@ function Home() {
 
   return (
     <div className="home">
-      {/* <Header /> */}
+       <Header /> 
       <div className='main'>
         <Wallet user={user} />
         <section>

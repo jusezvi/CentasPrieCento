@@ -17,7 +17,7 @@ function Registration() {
         .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Neteisingas El. Paštas'),
       password: Yup.string()
         .required('Laukas privalomas')
-        .min(4, 'Slaptažodi privalo sudaryti bent 4 simboliai'),
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$/, 'Slaptažodi privalo sudaryti bent 4 simboliai, viena didžioji raidė ir skaičius'),
       confirmPassword: Yup.string()
         .required('Laukas privalomas')
         .oneOf([Yup.ref('password')], 'Slaptažodžiai nesutampa'),
@@ -38,10 +38,6 @@ function Registration() {
   //const onSubmit = data => console.log(data);
     //console.log(errors);
     
-  
-  
-  
-  
     function TitleRegisterRender() {
         return (<h1> Registruokis į Centas Prie Cento!</h1>);
     }
@@ -57,10 +53,10 @@ function Registration() {
 
     return (
         <>
-            <TitleRegisterRender></TitleRegisterRender><br></br>
+            <TitleRegisterRender></TitleRegisterRender>
               <div className="card m-3 col-lg-4 col-lg-offset-4">
                 <div className="card-body">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-row">
                     <div className="form-group col">
                       
@@ -89,13 +85,11 @@ function Registration() {
                         
                     </div>
                 </form>
-            </div>
-        </div>
-            
+              </div>
+            </div> 
         <AlreadyHaveAcc></AlreadyHaveAcc>
         </>
-    )
-
+    );
 }
 
 export default Registration;
