@@ -6,6 +6,8 @@ import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { Alert } from 'bootstrap';
+// import { Alert } from "react-native";
 
 
 function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated }) {
@@ -21,6 +23,11 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
         return Number.parseFloat(x).toFixed(2);
     }
 
+
+
+
+
+
     function DeleteClick() {
         fetch('http://localhost:8000/budget/' + transactionBudget.id, {
             method: 'DELETE',
@@ -30,8 +37,16 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             )
             .then(() => {
                 setIsUpdated(!isUpdated)
+                
+                
             });
+            
     }
+
+    function Valio(){
+        alert ("sveikiname isitrine")
+    }
+    
 
     function handleEdit() {
         setDisplay('block');
@@ -66,6 +81,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
 
     return (
         <>
+
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
@@ -73,10 +89,10 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                     <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} />
                     <label>Įveskite naują sumą:</label>
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują katogoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null}
+                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null}
                     <label>Pasirinkite datą:</label>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Pateikti" />
                 </form>
             </div>
             <tr>
@@ -87,14 +103,39 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.date}</td>
-                {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
+                
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
-                {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
-                <td className='button-transaction-delete2 none' onClick={DeleteClick}><AiOutlineDelete /></td>
+               
+                <td className='button-transaction-delete2 none '>
+                    <span data-bs-toggle="modal" data-bs-target="#MyModal">
+                        <AiOutlineDelete />
+                    </span>
+                </td>
             </tr>
+            
+            <div className="modal fade" id="MyModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                           
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <p className='success-Delete' >Ar tikrai norite ištrinti ?</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button"  onClick={DeleteClick}  className="btn btn-primary buttons">Ištrinti</button>
+                            <button type="button" className="btn btn-secondary buttons" data-bs-dismiss="modal">Uždaryti</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </>
     );
 
 }
+
 
 export default AllTransactionItem;

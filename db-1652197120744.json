@@ -1,0 +1,54 @@
+{
+  "budget": [
+    {
+      "sum": "50",
+      "name": "kuras",
+      "category": "Car",
+      "date": "2022-04-26",
+      "type": "expense",
+      "id": 3
+    },
+    {
+      "sum": "25",
+      "name": "maistas",
+      "category": "Home",
+      "type": "expense",
+      "date": "2022-04-26",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
+      "sum": "000200.555555555",
+      "name": "bonus",
+      "category": "-",
+      "date": "2022-05-04",
+      "type": "earning",
+      "id": 6
+    },
+    {
+      "sum": "100.55",
+      "name": "zaislas",
+      "category": "Home",
+      "date": "2022-05-03",
+      "type": "expense",
+      "id": 7
+    },
+    {
+      "sum": "1500.68",
+      "name": "alga",
+      "category": "-",
+      "date": "2022-03-14",
+      "type": "earning",
+      "id": 8
+    },
+    {
+      "sum": "300.00",
+      "name": "pramogos",
+      "category": "Other",
+      "type": "expense",
+      "date": "2022-03-18",
+      "user": "Vardenis",
+      "id": 9
+    }
+  ]
+}
