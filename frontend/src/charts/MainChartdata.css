@@ -1,0 +1,59 @@
+.chart__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px
+}
+
+.chart__container h2 {
+  margin-bottom: 30px;
+}
+
+.main-chart__container {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+.main-chart {
+  width: 80%;
+}
+
+.main-chart-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.main-chart-info p:first-child {
+  margin-right: 30px;
+}
+
+.monthly-chart {
+  width: 80%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+@media screen and (min-width: 1060px) {
+  .main-chart__container {
+    width: 100%;
+  }
+
+  .monthly-chart {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .main-chart__container {
+    width: 100%;
+  }
+
+  .monthly-chart {
+    width: 100%;
+  }
+}
