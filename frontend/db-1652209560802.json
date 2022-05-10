@@ -1,6 +1,23 @@
 {
   "budget": [
     {
+      "sum": "1000",
+      "name": "alga",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-06",
+      "user": "Vardenis",
+      "id": 2
+    },
+    {
+      "sum": "50",
+      "name": "kuras",
+      "category": "Car",
+      "date": "2022-04-26",
+      "type": "expense",
+      "id": 3
+    },
+    {
       "sum": "25",
       "name": "maistas",
       "category": "Home",
