@@ -7,12 +7,7 @@ import { useTable } from 'react-router-dom';
 import AllTransactionItem from './AlltransactionItem';
 
 
-<<<<<<< Updated upstream:frontend/src/AllTransaction.js
-
-function AllTransaction({ cost, index }) {
-=======
 function AllTransaction() {
->>>>>>> Stashed changes:src/AllTransaction.js
   const [transactionDate, setTransactionDate] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
   const [type, setType] = useState('all');
@@ -71,33 +66,6 @@ function AllTransaction() {
 
   return (
     <>
-<<<<<<< Updated upstream:frontend/src/AllTransaction.js
-    <Header />
-    <div className='tablte-container'>
-      <table className='tr '>
-        <thead>
-          <tr>
-            <th className='number'></th>
-            {/* <th>&#8470;</th> */}
-            <th className='transaction__icon'> </th>
-            <th>Išlaidos/pajamos</th>
-            <th>Suma</th>
-            <th>Pavadinimas</th>
-            <th>Data</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactionDate.map((transactionBudget, index) => (
-            <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index}
-              isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
-          ))}
-        </tbody>
-
-      </table>
-    </div>
-  </>
-=======
       <form>
         <label>Tipas:</label>
         <select value={type} onChange={e => setType(e.target.value)}>
@@ -135,7 +103,6 @@ function AllTransaction() {
         </table>
       </div>
     </>
->>>>>>> Stashed changes:src/AllTransaction.js
   );
 }
 
