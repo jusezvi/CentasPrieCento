@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 
 
 function Login() {
-    /* const router = useRouter(); */ 
 
     const validationSchema = Yup.object().shape({
         username: Yup.string().required('Laukas privalomas'),
@@ -18,15 +17,30 @@ function Login() {
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
 
-     function onSubmit({ username, password }) {
-        /*return userService.login(username, password)
-            .then(() => {
-                // get return url from query parameters or default to '/'
-                const returnUrl = router.query.returnUrl || '/';
-                router.push(returnUrl);
-            })
-            /*.catch(alertService.error); */
+     function onSubmit(data) {
+        console.log(call(data));
+        return false;
     }
+
+    function call(data){
+        const serverdata = {
+          username: data.username,
+          password: data.password
+        }
+
+        let result =  fetch ('http://localhost:8080/api/auth/signin', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(serverdata)
+        })
+        return result;
+    }
+    
+
+
+
+
 
     function TittleLoginRender() {
         return (<h1> Prisijunk į Centas Prie Cento!</h1>);

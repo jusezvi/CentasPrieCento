@@ -31,8 +31,26 @@ function Registration() {
   
   function onSubmit(data) {
     alert('Sveikinu prisiregistravus prie Centas Prie Cento');
-    console.log(data);
+    
+    console.log(call(data));
     return false;
+  }
+
+  function call(data){
+    const serverdata = {
+      username: data.username,
+      email: data.email,
+      password: data.password,
+      role: ["user"]
+    }
+
+    let result =  fetch ('http://localhost:8080/api/auth/signup', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(serverdata)
+    })
+  return result;
   }
   
   //const onSubmit = data => console.log(data);

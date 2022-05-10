@@ -7,10 +7,10 @@ const dbConfig = require("./config/db.config");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8080"
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -30,7 +30,7 @@ const db = require("./models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb+srv://admin:admin@centaspriecentocluster.dkfsd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority ${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(`${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

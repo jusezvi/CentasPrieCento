@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "localhost",
-    PORT: 27017,
-    DB: "bezkoder_db"
+    HOST: "mongodb+srv://admin",
+    PORT: "admin@centaspriecentocluster.dkfsd.mongodb.net",
+    DB: "myFirstDatabase?retryWrites=true&w=majority"
   };
