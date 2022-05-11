@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 function Login() {
 
     const validationSchema = Yup.object().shape({
-        username: Yup.string().required('Laukas privalomas'),
+        email: Yup.string().required('Laukas privalomas'),
         password: Yup.string().required('Laukas privalomas')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
@@ -61,8 +61,8 @@ function Login() {
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <input name="username" type="text" placeholder='Vartotojo vardas' {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.username?.message}</div>
+                            <input name="email" type="text" placeholder='El. Paštas' {...register('email')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.email?.message}</div>
                         </div>
                         <div className="form-group">
                             <input name="password" type="password" placeholder='Slaptažodis' {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
