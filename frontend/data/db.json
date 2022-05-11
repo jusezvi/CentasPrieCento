@@ -1,47 +1,13 @@
 {
   "budget": [
     {
-      "sum": "25",
-      "name": "maistas",
-      "category": "Home",
-      "type": "expense",
-      "date": "2022-04-26",
-      "user": "Vardenis",
-      "id": 4
-    },
-    {
-      "sum": "000200.555555555",
-      "name": "bonus",
-      "category": "-",
-      "date": "2022-05-04",
-      "type": "earning",
-      "id": 6
-    },
-    {
-      "sum": "100.55",
-      "name": "zaislas",
-      "category": "Home",
-      "date": "2022-05-03",
-      "type": "expense",
-      "id": 7
-    },
-    {
-      "sum": "1000.00",
-      "name": "alga",
+      "sum": "786453.00",
+      "name": "ahgsah",
       "category": "-",
       "type": "earning",
-      "date": "2022-05-05",
+      "date": "2022-05-11",
       "user": "Vardenis",
-      "id": 8
-    },
-    {
-      "sum": "200.00",
-      "name": "bonus",
-      "category": "-",
-      "type": "earning",
-      "date": "2022-03-15",
-      "user": "Vardenis",
-      "id": 9
+      "id": 11
     }
   ]
 }

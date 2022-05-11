@@ -25,7 +25,7 @@ function Wallet({ user }) {
     function calculateSum(costs) {
         let inn = 0;
         let out = 0;
-
+        
         costs.forEach((cost) => {
             if (cost.type == 'expense') {
                 out += Number(cost.sum)
@@ -44,7 +44,7 @@ function Wallet({ user }) {
             <div className="wallet" data-bs-toggle="modal" data-bs-target="#wallet">
                 <div className='wallet__top'>
                     <div className='wallet__top-icon'>
-                        <BiWallet /> 
+                        <BiWallet />
                     </div>
                     <p>{financial(balance)} &euro;</p>
                 </div>

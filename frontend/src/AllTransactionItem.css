@@ -1,31 +1,20 @@
 .FaLongArrowAltLeft {
-    
     color: red;
 }
-.FaLongArrowAltRight{
-    color:green;
-}
-.button-transaction-edit2, 
-.button-transaction-delete2{
-cursor: pointer;
+
+.FaLongArrowAltRight {
+    color: green;
 }
 
-.button-transaction-edit2:hover, 
-.button-transaction-delete2:hover{
-    color: #000;
+.button-transaction-edit2,
+.button-transaction-delete2 {
+    cursor: pointer;
 }
-.buttons{
-    background-color: #3444CE;
-  color: #fff;
-  align-self: flex-end;
-  border: none;
-  outline: none;
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 8px 0 0 8px;
-  align-self: flex-end;
+
+.button-transaction-edit2:hover {
+    color: black
 }
-.success-Delete{
-    text-align: center;
-    font-size: 30px;
+
+.button-transaction-delete2:hover {
+    color: black
 }

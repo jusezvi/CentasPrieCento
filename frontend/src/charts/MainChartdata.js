@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Chart from './Chart';
 import MonthlyChart from './MonthlyChart';
 import './MainChartdata.css';
+import { useForm } from 'react-hook-form';
 
 
 function MainChartdata() {
@@ -16,6 +17,7 @@ function MainChartdata() {
   const [monthlyIncomeForChart, setMonthlyIncomeForChart] = useState([]);
   const [monthlyOutcomeForChart, setMonthlyOutcomeForChart] = useState([]);
 
+
   //   useEffect(() => {
   // //     setEarnings(transactions.filter((transaction) => transaction.type === 'earning'));
   // //     setExpenses(transactions.filter((transaction) => transaction.type === 'expense'));
@@ -23,15 +25,7 @@ function MainChartdata() {
   // //     earningsSum()
   // // }, [])
 
-  useEffect(() => {
-    fetch('http://localhost:8000/budget')
-      .then(res => res.json())
-      .then(items => {
-        setTransactions(items);
-        calculateSum(items);
-        sumsBymonth(items);
-      })
-  }, []);
+
 
   function financial(x) {
     return Number.parseFloat(x).toFixed(2);
@@ -41,6 +35,7 @@ function MainChartdata() {
   function calculateSum(items) {
     let mEarnings = [];
     let mExpenses = [];
+
     months.forEach((month) => {
       let earningSum = 0;
       let expenseSum = 0;
@@ -60,6 +55,7 @@ function MainChartdata() {
       setExpenseForChart(mExpenses);
       setMonthlyEarningSum(earningSum);
       setMonthlyExpenseSum(expenseSum);
+      console.log("this working");
     })
   }
 
@@ -88,8 +84,21 @@ function MainChartdata() {
       setMonthlyOutcomeForChart(monthlyOutcome);
       console.log('men' + month, earningByMonthSum);
     });
-    console.log(monthlyIncome)
+    console.log('this -> in' + monthlyIncome);
+    console.log('this -> out' + monthlyOutcome);
+    console.log('kitas in ' + monthlyIncomeForChart)
   }
+
+  useEffect(() => {
+
+    fetch('http://localhost:8000/budget')
+      .then(res => res.json())
+      .then(items => {
+        setTransactions(items);
+        calculateSum(items);
+        sumsBymonth(items);
+      })
+  }, []);
 
   return (
     <div className='chart__container'>
