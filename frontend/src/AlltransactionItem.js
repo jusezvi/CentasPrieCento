@@ -109,8 +109,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                             <p className='success-Delete' >Ar tikrai norite ištrinti ?</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button"  onClick={DeleteClick}  className="btn btn-primary buttons">Ištrinti</button>
-                            <button type="button" className="btn btn-secondary buttons" data-bs-dismiss="modal">Uždaryti</button>
+                            <button type="button"  onClick={DeleteClick}  className="btn btn-primary buttons2">Ištrinti</button>
+                            <button type="button" className="btn btn-secondary buttons2" data-bs-dismiss="modal">Uždaryti</button>
 
                         </div>
                     </div>

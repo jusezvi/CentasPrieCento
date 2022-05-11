@@ -42,6 +42,15 @@
       "date": "2022-03-15",
       "user": "Vardenis",
       "id": 9
+    },
+    {
+      "sum": "1000.00",
+      "name": "alga",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-05-11",
+      "user": "Vardenis",
+      "id": 10
     }
   ]
 }
