@@ -9,14 +9,15 @@
 }
 
 
- .tablte-container{
-overflow-x: scroll;
- }
+.tablte-container {
+  overflow-x: scroll;
+}
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-tr:hover {
+tr:not(:first-child):hover {
   background-color: #eddcfa;
   /* color: #fff; */
 
@@ -31,18 +32,19 @@ tr:hover {
 }
 
 .button-transaction-edit2 {
-  
+
   color: green;
- 
+
 
 }
+
 .button-transaction-delete2 {
-  
+
   color: red;
 }
 
 
-.button-transaction-delete2 .button-transaction-edit2{
+.button-transaction-delete2 .button-transaction-edit2 {
   display: inline;
 }
 

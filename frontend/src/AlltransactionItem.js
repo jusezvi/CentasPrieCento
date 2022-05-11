@@ -33,15 +33,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             .then(() => {
                 setIsUpdated(!isUpdated)
             });
-<<<<<<< Updated upstream
-            window.location.reload()
-=======
-<<<<<<< HEAD
-        window.location.reload();
-=======
-            window.location.reload()
->>>>>>> 70b9ddfcd17b1ab1fb323689e3c6bcd5583bc404
->>>>>>> Stashed changes
+        window.location.reload()
     }
 
     function handleEdit() {
