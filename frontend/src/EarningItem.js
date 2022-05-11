@@ -71,16 +71,24 @@ function EarningItem({ earning }) {
           <label>Pasirinkite datą:</label>
           <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
           {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Išsaugoti" />
         </form>
       </div>
       <div className='wallet__list-item'>
         <p>{financial(earning.sum)} &euro; - <span>{earning.name}</span></p>
         <div className='buttons'>
           <p className='edit' onClick={handleEdit}><AiOutlineEdit /></p>
-          <p className='delete' onClick={handleDelete}><AiOutlineDelete /></p>
+          <p className='delete' onClick={handleDelete}>
+            
+              <AiOutlineDelete />
+          
+          </p>
+
         </div>
       </div>
+
+    
+
     </>
   );
 }

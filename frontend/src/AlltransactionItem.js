@@ -33,6 +33,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             .then(() => {
                 setIsUpdated(!isUpdated)
             });
+            window.location.reload()
     }
 
     function handleEdit() {
@@ -81,7 +82,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                     <label>Pasirinkite datą:</label>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Išsaugoti" />
                 </form>
             </div>
             <tr>

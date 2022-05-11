@@ -48,10 +48,7 @@ function AllTransaction() {
 
   return (
     <>
-<<<<<<< Updated upstream
-=======
       <Header />
->>>>>>> Stashed changes
       <form>
         <label>Tipas:</label>
         <select value={type} onChange={e => setType(e.target.value)}>
