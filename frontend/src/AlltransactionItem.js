@@ -78,7 +78,12 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                     <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
                     <label>Įveskite naują pavadinimą:</label> <br></br>
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null} <br></br>
+                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
+                        <option value="Namai">Namai</option>
+                        <option value="Automobilis">Automobilis</option>
+                        <option value="Kita">Kita</option>
+                    </select></>
+                        : null} <br></br>
                     <label>Pasirinkite datą:</label> <br></br>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
@@ -92,6 +97,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <td>{transactionBudget.type == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
+                <td>{transactionBudget.category}</td>
                 <td>{transactionBudget.date}</td>
                 {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
