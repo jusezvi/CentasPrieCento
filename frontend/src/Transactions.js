@@ -108,16 +108,16 @@ function Transactions({ user }) {
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
                                     {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
-                                    <input type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} />
-                                    <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} />
-                                    <label>Pasirinkite kategoriją:</label>
+                                    <input type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
+                                    <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
+                                    <label>Pasirinkite kategoriją:</label> <br></br>
                                     <select required value={category} onChange={e => setCategory(e.target.value)}>
                                         <option value="Home">Namai</option>
                                         <option value="Car">Automobilis</option>
                                         <option value="Other">Kita</option>
-                                    </select>
-                                    <label>Pasirinkite datą:</label>
-                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
+                                    </select><br></br>
+                                    <label>Pasirinkite datą:</label> <br></br>
+                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} /> 
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" value="Išsaugoti" />
@@ -140,9 +140,9 @@ function Transactions({ user }) {
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
                                     {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
-                                    <input type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} />
-                                    <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} />
-                                    <label>Pasirinkite datą:</label>
+                                    <input type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
+                                    <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
+                                    <label>Pasirinkite datą:</label> <br></br>
                                     <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">

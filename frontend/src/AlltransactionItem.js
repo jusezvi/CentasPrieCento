@@ -74,14 +74,14 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
-                    <label>Įveskite naują sumą:</label>
-                    <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} />
-                    <label>Įveskite naują pavadinimą:</label>
+                    <label>Įveskite naują sumą:</label><br></br>
+                    <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
+                    <label>Įveskite naują pavadinimą:</label> <br></br>
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null}
-                    <label>Pasirinkite datą:</label>
+                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null} <br></br>
+                    <label>Pasirinkite datą:</label> <br></br>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
-                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
+                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
                     <input type="submit" value="Išsaugoti" />
                 </form>
             </div>
