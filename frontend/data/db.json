@@ -1,41 +1,9 @@
 {
   "budget": [
     {
-<<<<<<< Updated upstream
       "sum": "25",
       "name": "maistas",
       "category": "Home",
-=======
-      "sum": "1000.66",
-      "name": "alga",
-      "category": "-",
-      "date": "2022-05-11",
-      "type": "earning",
-      "id": 1
-    },
-    {
-      "sum": "1000.00",
-      "name": "alga",
-      "category": "-",
-      "type": "earning",
-      "date": "2022-04-11",
-      "user": "Vardenis",
-      "id": 2
-    },
-    {
-      "sum": "50.00",
-      "name": "maistas",
-      "category": "Home",
-      "date": "2022-05-01",
-      "type": "expense",
-      "id": 3
-    },
-    {
-      "sum": "70.00",
-      "name": "kuras",
-      "category": "Car",
-      "date": "2022-04-06",
->>>>>>> Stashed changes
       "type": "expense",
       "id": 4
     },
@@ -55,7 +23,6 @@
       "category": "-",
       "date": "2022-05-01",
       "user": "Vardenis",
-<<<<<<< Updated upstream
       "id": 9
     },
     {
@@ -66,9 +33,6 @@
       "date": "2022-05-11",
       "user": "Vardenis",
       "id": 10
-=======
-      "id": 6
->>>>>>> Stashed changes
     }
   ]
 }
