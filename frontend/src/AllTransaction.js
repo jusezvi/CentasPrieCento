@@ -23,7 +23,6 @@ function AllTransaction() {
       })
       .then(data => {
         setTransactionDate(data);
-        console.log(transactionDate)
         setAllData(data)
       });
 
@@ -84,7 +83,6 @@ function AllTransaction() {
           <thead>
             <tr>
               <th className='number'></th>
-              {/* <th>&#8470;</th> */}
               <th className='transaction__icon'> </th>
               <th>Išlaidos/pajamos</th>
               <th>Suma</th>

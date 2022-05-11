@@ -25,7 +25,7 @@ function Wallet({ user }) {
     function calculateSum(costs) {
         let inn = 0;
         let out = 0;
-        
+
         costs.forEach((cost) => {
             if (cost.type == 'expense') {
                 out += Number(cost.sum)
@@ -48,7 +48,7 @@ function Wallet({ user }) {
                     </div>
                     <p>{financial(balance)} &euro;</p>
                 </div>
-                <p>Vardas Pavarde</p>
+                <p>Vardas Pavardė</p>
             </div>
 
             <div className="modal fade" id="wallet" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

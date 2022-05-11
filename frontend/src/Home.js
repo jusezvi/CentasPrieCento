@@ -32,13 +32,12 @@ function Home() {
       .then(data => {
         setTransactions(data);
         setEarnings(data);
-        console.log(earnings)
       });
   }
 
   return (
     <div className="home">
-       <Header /> 
+      <Header />
       <div className='main'>
         <Wallet user={user} />
         <section>
