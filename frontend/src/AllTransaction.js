@@ -36,9 +36,18 @@ function AllTransaction() {
     // const date = `${current.getFullYear()}-0${current.getMonth() + 1}-${current.getDate()}`;
     if (!minDate) { setMinDate('1990-01-01') }
     if (!maxDate) { setMaxDate('2023-01-01') }
+
+    function filterByCategory(item) {
+      if (category !== "all") {
+        return item.category === category
+      } else {
+        return true;
+      }
+    }
+
     const filteredData = transactionDate.filter((item) => {
       if (
-        (item.type === type && item.date <= maxDate && item.date >= minDate)
+        (item.type === type && item.date <= maxDate && item.date >= minDate && filterByCategory(item))
         ||
         (type === 'all' && item.date <= maxDate && item.date >= minDate)
       ) return true
@@ -80,6 +89,7 @@ function AllTransaction() {
               <th>Išlaidos/pajamos</th>
               <th>Suma</th>
               <th>Pavadinimas</th>
+              <th>Kategorija</th>
               <th>Data</th>
               <th></th>
             </tr>

@@ -112,12 +112,12 @@ function Transactions({ user }) {
                                     <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
                                     <select required value={category} onChange={e => setCategory(e.target.value)}>
-                                        <option value="Home">Namai</option>
-                                        <option value="Car">Automobilis</option>
-                                        <option value="Other">Kita</option>
+                                        <option value="Namai">Namai</option>
+                                        <option value="Automobilis">Automobilis</option>
+                                        <option value="Kita">Kita</option>
                                     </select><br></br>
                                     <label>Pasirinkite datą:</label> <br></br>
-                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} /> 
+                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" value="Išsaugoti" />
