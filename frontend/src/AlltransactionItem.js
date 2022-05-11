@@ -33,7 +33,15 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             .then(() => {
                 setIsUpdated(!isUpdated)
             });
+<<<<<<< Updated upstream
             window.location.reload()
+=======
+<<<<<<< HEAD
+        window.location.reload();
+=======
+            window.location.reload()
+>>>>>>> 70b9ddfcd17b1ab1fb323689e3c6bcd5583bc404
+>>>>>>> Stashed changes
     }
 
     function handleEdit() {
@@ -107,14 +115,14 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                           
+
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <p className='success-Delete' >Ar tikrai norite ištrinti ?</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button"  onClick={DeleteClick}  className="btn btn-primary buttons2">Ištrinti</button>
+                            <button type="button" onClick={DeleteClick} className="btn btn-primary buttons2">Ištrinti</button>
                             <button type="button" className="btn btn-secondary buttons2" data-bs-dismiss="modal">Uždaryti</button>
 
                         </div>

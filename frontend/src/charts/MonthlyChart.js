@@ -35,7 +35,7 @@ export const options = {
 
 const months = ['Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Gegužė', 'Birželis', 'Liepa', 'Rugpjūtis', 'Rugsėjis', 'Spalis', 'Lapkritis', 'Gruodis'];
 // const labels=months.filter((month, index)=>index<=(new Date()).getMonth());
-const labels = months.filter((index) => index <= (new Date()).getMonth());
+const labels = months.filter((month, index) => index <= (new Date()).getMonth());
 
 function MonthlyChart({ monthlyIncomeForChart, monthlyOutcomeForChart }) {
   const data = {
