@@ -13,6 +13,7 @@ function AllTransaction() {
   const [type, setType] = useState('all');
   const [minDate, setMinDate] = useState('1990-01-01');
   const [maxDate, setMaxDate] = useState('2023-01-01');
+  const [category, setCategory] = useState('all');
   const [allData, setAllData] = useState([])
 
   useEffect(() => {
@@ -29,16 +30,6 @@ function AllTransaction() {
 
   }, [isUpdated]);
 
-  // function filterData(e) {
-  //   e.preventDefault();
-  //   let fromStamp = Date.parse(minDate);
-  //   let toStamp = Date.parse(maxDate);
-  //   let filteredCosts = transactionDate.filter((cost) => {
-  //     return (Date.parse(cost.date) >= fromStamp) && (Date.parse(cost.date) <= toStamp);
-  //   })
-  //   setTransactionDate(filteredCosts);
-  //   console.log(fromStamp, toStamp, filteredCosts)
-  // }
   function handleTypeChange(e) {
     e.preventDefault();
     // const current = new Date();
@@ -55,17 +46,12 @@ function AllTransaction() {
     setAllData(filteredData)
   }
 
-  // function dateFrom(date) {
-  //   let fromStamp = Date.parse(date);
-  //   let filteredData = allData.filter((item) => {
-  //     return Date.parse(item.date) >= fromStamp
-  //   });
-  //   setAllData(filteredData)
-  // }
-
-
   return (
     <>
+<<<<<<< Updated upstream
+=======
+      <Header />
+>>>>>>> Stashed changes
       <form>
         <label>Tipas:</label>
         <select value={type} onChange={e => setType(e.target.value)}>
@@ -77,6 +63,14 @@ function AllTransaction() {
         <input type="date" onChange={e => setMinDate(e.target.value)} />
         <label>Iki:</label>
         <input type="date" onChange={e => setMaxDate(e.target.value)} />
+        {type === 'expense' ?
+          <select value={category} onChange={e => setCategory(e.target.value)}>
+            <option value="all">Visos</option>
+            <option value="Home">Namai</option>
+            <option value="Car">Automobilis</option>
+            <option value="Other">Kita</option>
+          </select>
+          : null}
         <button onClick={handleTypeChange}>Filtruoti</button>
       </form>
       <div className='tablte-container'>

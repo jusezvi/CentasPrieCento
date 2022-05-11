@@ -1,7 +1,7 @@
 .FaLongArrowAltLeft {
-    
     color: red;
 }
+<<<<<<< Updated upstream
 .FaLongArrowAltRight{
     color:green;
 }
@@ -28,4 +28,22 @@ cursor: pointer;
 .success-Delete{
     text-align: center;
     font-size: 30px;
+=======
+
+.FaLongArrowAltRight {
+    color: green;
+}
+
+.button-transaction-edit2,
+.button-transaction-delete2 {
+    cursor: pointer;
+}
+
+.button-transaction-edit2:hover {
+    color: black
+}
+
+.button-transaction-delete2:hover {
+    color: black
+>>>>>>> Stashed changes
 }

@@ -9,6 +9,7 @@ function Transactions({ user }) {
     const [date, setDate] = useState('');
     const [category, setCategory] = useState('Home');
     const [error, setError] = useState(false);
+    const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);
 
     const [sum, setSum] = useState('');
@@ -33,23 +34,25 @@ function Transactions({ user }) {
     const submitExpense = e => {
         e.preventDefault();
         if (!isNaN(Number(sum)) && name.length < 10 && sum > 0) {
-            let correctSum = financial(sum);
-            const newExpense = { sum: correctSum, name, category, type: "expense", date, user };
+            if (Date.parse(date) <= Date.parse(new Date())) {
+                let correctSum = financial(sum);
+                const newExpense = { sum: correctSum, name, category, type: "expense", date, user };
 
-            fetch('http://localhost:8000/budget', {
-                method: 'POST',
-                headers: { 'Content-Type': "application/json" },
-                body: JSON.stringify(newExpense)
-            }).then(() => {
-                console.log('expense added');
-                exVar.IS_NEW_EARNING = true;
-            });
-            setSum('');
-            setName('');
-            setCategory('Home');
-            setDate('');
-            setError(false);
-            window.location.reload();
+                fetch('http://localhost:8000/budget', {
+                    method: 'POST',
+                    headers: { 'Content-Type': "application/json" },
+                    body: JSON.stringify(newExpense)
+                }).then(() => {
+                    console.log('expense added');
+                    exVar.IS_NEW_EARNING = true;
+                });
+                setSum('');
+                setName('');
+                setCategory('Home');
+                setDate('');
+                setError(false);
+                window.location.reload();
+            } else { setDateError(true) }
         } else {
             setError(true)
         }
@@ -58,21 +61,23 @@ function Transactions({ user }) {
     const submitEarning = e => {
         e.preventDefault();
         if (!isNaN(Number(sum)) && name.length < 10 && sum > 0) {
-            let correctSum = financial(sum);
-            const newEarning = { sum: correctSum, name, category: "-", type: "earning", date, user };
+            if (Date.parse(date) <= Date.parse(new Date())) {
+                let correctSum = financial(sum);
+                const newEarning = { sum: correctSum, name, category: "-", type: "earning", date, user };
 
-            fetch('http://localhost:8000/budget', {
-                method: 'POST',
-                headers: { 'Content-Type': "application/json" },
-                body: JSON.stringify(newEarning)
-            }).then(() => {
-                console.log('earning added');
-                exVar.IS_NEW_EARNING = true;
-            });
-            setSum('');
-            setName('');
-            setError(false);
-            window.location.reload();
+                fetch('http://localhost:8000/budget', {
+                    method: 'POST',
+                    headers: { 'Content-Type': "application/json" },
+                    body: JSON.stringify(newEarning)
+                }).then(() => {
+                    console.log('earning added');
+                    exVar.IS_NEW_EARNING = true;
+                });
+                setSum('');
+                setName('');
+                setError(false);
+                window.location.reload();
+            } else { setDateError(true) }
         } else {
             setError(true)
         }
@@ -113,6 +118,7 @@ function Transactions({ user }) {
                                     </select>
                                     <label>Pasirinkite datą:</label>
                                     <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
+                                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" value="Submit" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
@@ -138,6 +144,7 @@ function Transactions({ user }) {
                                     <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} />
                                     <label>Pasirinkite datą:</label>
                                     <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
+                                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" className="btn btn-secondary" value="Submit" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>

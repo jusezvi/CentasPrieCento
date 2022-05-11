@@ -17,6 +17,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
     const [newDate, setNewDate] = useState('');
     const [display, setDisplay] = useState('none');
     const [error, setError] = useState(false);
+    const [dateError, setDateError] = useState(false);
 
     function financial(x) {
         return Number.parseFloat(x).toFixed(2);
@@ -45,21 +46,23 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
     function editItem(e) {
         e.preventDefault();
         if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
-            let correctSum = financial(newSum);
-            let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
+            if (Date.parse(newDate) <= Date.parse(new Date())) {
+                let correctSum = financial(newSum);
+                let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
-            fetch('http://localhost:8000/budget/' + transactionBudget.id, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(edit)
-            })
-                .then(res => res.json());
+                fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(edit)
+                })
+                    .then(res => res.json());
 
-            setDisplay('none');
-            setNewSum('');
-            setNewName('');
-            setNewCategory('');
-            window.location.reload();
+                setDisplay('none');
+                setNewSum('');
+                setNewName('');
+                setNewCategory('');
+                window.location.reload();
+            } else { setDateError(true) }
         } else {
             setError(true);
         }
@@ -72,11 +75,12 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                 <form onSubmit={editItem}>
                     <label>Įveskite naują sumą:</label>
                     <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} />
-                    <label>Įveskite naują sumą:</label>
+                    <label>Įveskite naują pavadinimą:</label>
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują katogoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null}
+                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <input type="text" required placeholder='Įveskite naują katogoriją:' value={newCategory} onChange={e => setNewCategory(e.target.value)} /></> : null}
                     <label>Pasirinkite datą:</label>
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
+                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                     <input type="submit" value="Submit" />
                 </form>
             </div>

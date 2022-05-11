@@ -7,10 +7,12 @@ import { exVar } from './ExtendVariables';
 function EarningItem({ earning }) {
   const [newSum, setNewSum] = useState('');
   const [newName, setNewName] = useState('');
+  const [newDate, setNewDate] = useState('');
   const [date, setDate] = useState(earning.date);
   const [user, setUser] = useState(earning.user);
   const [display, setDisplay] = useState('none');
   const [error, setError] = useState(false);
+  const [dateError, setDateError] = useState(false);
 
   function financial(x) {
     return Number.parseFloat(x).toFixed(2);
@@ -28,27 +30,30 @@ function EarningItem({ earning }) {
     setDisplay('block');
     setNewSum(earning.sum);
     setNewName(earning.name);
+    setNewDate(earning.date);
   }
 
   function editItem(e) {
     e.preventDefault();
 
     if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
-      let correctSum = financial(newSum);
-      const editEarning = { sum: correctSum, name: newName, type: "earning", category: "-", date, user };
+      if (Date.parse(newDate) <= Date.parse(new Date())) {
+        let correctSum = financial(newSum);
+        const editEarning = { sum: correctSum, name: newName, type: "earning", category: "-", date: newDate, user };
 
-      fetch('http://localhost:8000/budget/' + earning.id, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(editEarning)
-      })
-        .then(res => res.json());
+        fetch('http://localhost:8000/budget/' + earning.id, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(editEarning)
+        })
+          .then(res => res.json());
 
-      setDisplay('none');
-      setNewSum('');
-      setNewName('');
-      exVar.IS_NEW_EARNING = !exVar.IS_NEW_EARNING;
-      window.location.reload();
+        setDisplay('none');
+        setNewSum('');
+        setNewName('');
+        exVar.IS_NEW_EARNING = !exVar.IS_NEW_EARNING;
+        window.location.reload();
+      } else { setDateError(true) }
     } else {
       setError(true);
       exVar.IS_NEW_EARNING = !exVar.IS_NEW_EARNING;
@@ -63,6 +68,9 @@ function EarningItem({ earning }) {
         <form onSubmit={editItem}>
           <input type="text" required placeholder='Įveskite naują pajamų sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
           <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
+          <label>Pasirinkite datą:</label>
+          <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
+          {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
           <input type="submit" value="Submit" />
         </form>
       </div>
