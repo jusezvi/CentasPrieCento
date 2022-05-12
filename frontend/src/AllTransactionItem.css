@@ -1,9 +1,19 @@
+form button {
+    background-color: #3444CE;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px 0 0 8px;
+    margin-left: 10px;
+}
+
 .FaLongArrowAltLeft {
-    color: red;
+    color: rgba(255, 99, 132);
 }
 
 .FaLongArrowAltRight {
-    color: green;
+    color: rgba(52, 180, 235);
 }
 
 .button-transaction-edit2,

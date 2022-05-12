@@ -105,7 +105,7 @@ function Transactions({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+                                    {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                                     <input type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
                                     <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
@@ -137,7 +137,7 @@ function Transactions({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+                                    {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                                     <input type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
                                     <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite datą:</label> <br></br>
