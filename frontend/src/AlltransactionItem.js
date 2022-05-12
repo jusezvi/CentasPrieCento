@@ -81,17 +81,17 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
-                    <label>Įveskite naują sumą:</label><br></br>
+                    <label>Redagavimas:</label><br></br>
                     <input type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
-                    <label>Įveskite naują pavadinimą:</label> <br></br>
-                    <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-                    {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
+                    {/* <label>Įveskite naują pavadinimą:</label> <br></br> */}
+                    <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
+                    {transactionBudget.type == 'expense' ? <><select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         <option value="Namai">Namai</option>
                         <option value="Automobilis">Automobilis</option>
                         <option value="Kita">Kita</option>
                     </select></>
                         : null} 
-                    <label>Pasirinkite datą:</label> 
+                    {/* <label>Pasirinkite datą:</label>  */}
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
                     {/* <input type="submit" value="Išsaugoti" /> */}
@@ -128,7 +128,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                         <div className="modal-body">
                             <p className='success-Delete' >Ar tikrai norite ištrinti ?</p>
                         </div>
-                        <div className="modal-footer2">
+                        <div className="modal-footer-transaction">
                             <button type="button" onClick={DeleteClick} className="btn btn-primary buttons2">Ištrinti</button>
                             <button type="button" className="btn btn-secondary buttons2" data-bs-dismiss="modal">Uždaryti</button>
 

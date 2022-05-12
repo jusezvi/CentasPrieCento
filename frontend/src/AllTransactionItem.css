@@ -41,7 +41,7 @@ form button {
     border-radius: 8px 0 0 8px;
 }
 
-.modal-footer2{
+.modal-footer-transaction{
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;
