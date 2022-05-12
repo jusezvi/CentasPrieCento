@@ -25,10 +25,11 @@ function Login() {
     }
     function responecheck(err) {
         if (err !="undefined") {
-            navigate("/")}
-        else {
             alert(err)
-        }
+            }
+        else {
+            navigate("/")}
+        
     }
 
     function call(data){

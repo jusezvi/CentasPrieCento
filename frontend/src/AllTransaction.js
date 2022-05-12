@@ -71,9 +71,9 @@ function AllTransaction() {
         {type === 'expense' ?
           <select value={category} onChange={e => setCategory(e.target.value)}>
             <option value="all">Visos</option>
-            <option value="Home">Namai</option>
-            <option value="Car">Automobilis</option>
-            <option value="Other">Kita</option>
+            <option value="Namai">Namai</option>
+            <option value="Automobilis">Automobilis</option>
+            <option value="Kita">Kita</option>
           </select>
           : null}
         <button onClick={handleTypeChange}>Filtruoti</button>
