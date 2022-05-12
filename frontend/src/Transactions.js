@@ -43,7 +43,6 @@ function Transactions({ user }) {
                     headers: { 'Content-Type': "application/json" },
                     body: JSON.stringify(newExpense)
                 }).then(() => {
-                    console.log('expense added');
                     exVar.IS_NEW_EARNING = true;
                 });
                 setSum('');
@@ -70,7 +69,6 @@ function Transactions({ user }) {
                     headers: { 'Content-Type': "application/json" },
                     body: JSON.stringify(newEarning)
                 }).then(() => {
-                    console.log('earning added');
                     exVar.IS_NEW_EARNING = true;
                 });
                 setSum('');

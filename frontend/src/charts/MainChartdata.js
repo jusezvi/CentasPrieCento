@@ -18,15 +18,6 @@ function MainChartdata() {
   const [monthlyOutcomeForChart, setMonthlyOutcomeForChart] = useState([]);
 
 
-  //   useEffect(() => {
-  // //     setEarnings(transactions.filter((transaction) => transaction.type === 'earning'));
-  // //     setExpenses(transactions.filter((transaction) => transaction.type === 'expense'));
-  // //     // setMonthlyEarning(earnings.filter((earning) => new Date(earning.date).getMonth === currentMonth));
-  // //     earningsSum()
-  // // }, [])
-
-
-
   function financial(x) {
     return Number.parseFloat(x).toFixed(2);
   }
@@ -39,7 +30,6 @@ function MainChartdata() {
     months.forEach((month) => {
       let earningSum = 0;
       let expenseSum = 0;
-      // let sum = 0;
       items.forEach((d) => {
         if ((new Date(d.date)).getMonth() === currentMonth && d.type === 'earning') {
           earningSum += Number(d.sum);
@@ -55,7 +45,6 @@ function MainChartdata() {
       setExpenseForChart(mExpenses);
       setMonthlyEarningSum(earningSum);
       setMonthlyExpenseSum(expenseSum);
-      console.log("this working");
     })
   }
 
@@ -82,11 +71,7 @@ function MainChartdata() {
       monthlyOutcome = [...monthlyOutcome, expenseByMonthSum];
       setMonthlyIncomeForChart(monthlyIncome);
       setMonthlyOutcomeForChart(monthlyOutcome);
-      console.log('men' + month, earningByMonthSum);
     });
-    console.log('this -> in' + monthlyIncome);
-    console.log('this -> out' + monthlyOutcome);
-    console.log('kitas in ' + monthlyIncomeForChart)
   }
 
   useEffect(() => {
@@ -108,8 +93,8 @@ function MainChartdata() {
           <Chart earningForChart={earningForChart} expenseForChart={expenseForChart} />
         </div>
         <div className='main-chart-info'>
-          <p>pajamos: {financial(monthlyEarningSum)}</p>
-          <p>islaidos: {financial(monthlyExpenseSum)}</p>
+          <p>Pajamos: {financial(monthlyEarningSum)}</p>
+          <p>Išlaidos: {financial(monthlyExpenseSum)}</p>
         </div>
       </div>
       <div className='monthly-chart'>
