@@ -61,17 +61,23 @@ function EarningItem({ earning }) {
     exVar.IS_NEW_EARNING = !exVar.IS_NEW_EARNING;
   }
 
+  function reset(e) {
+    e.preventDefault();
+    setDisplay('none');
+    setDateError(false);
+    setError(false)
+  }
   return (
     <>
       <div style={{ 'display': display }}>
-        {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+        {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
         <form onSubmit={editItem}>
           <input type="text" required placeholder='Įveskite naują pajamų sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
           <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-          <label>Pasirinkite datą:</label>
           <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
           {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
-          <input type="submit" value="Išsaugoti" />
+          <button type="submit">Išsaugoti</button>
+          <button onClick={reset}>Atšaukti</button>
         </form>
       </div>
       <div className='wallet__list-item'>
@@ -79,15 +85,15 @@ function EarningItem({ earning }) {
         <div className='buttons'>
           <p className='edit' onClick={handleEdit}><AiOutlineEdit /></p>
           <p className='delete' onClick={handleDelete}>
-            
-              <AiOutlineDelete />
-          
+
+            <AiOutlineDelete />
+
           </p>
 
         </div>
       </div>
 
-    
+
 
     </>
   );

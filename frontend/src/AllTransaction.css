@@ -4,10 +4,13 @@
   gap: 10px;
   padding: 1rem;
   background-color: #fff;
-  margin-right: 90px;
+  margin-right: 5.62rem;
   border-radius: 15px;
 }
-
+.success-Delete{
+  text-align: center;
+  font-size: 30px;
+}
 
 .tablte-container {
   overflow-x: scroll;
@@ -21,6 +24,9 @@ tr:not(:first-child):hover {
   background-color: #eddcfa;
   /* color: #fff; */
 
+}
+.AllTransaction-label{
+ margin-left: 10px;
 }
 
 
@@ -51,7 +57,7 @@ tr:not(:first-child):hover {
 @media only screen and (max-width: 867px) {
   .tablte-container {
     display: flex;
-    width: 80%;
+    width: 100%;
 
 
   }
@@ -60,6 +66,10 @@ tr:not(:first-child):hover {
     position: absolute;
     top: -9999px;
     left: -9999px;
+  }
+  .tablte-container{
+    padding-right: 1.62rem;
+
   }
 
 
@@ -80,10 +90,11 @@ tr:not(:first-child):hover {
 @media only screen and (max-width: 400px) {
   .tablte-container {
     display: block;
-    width: 80%;
+    /* width: 80%; */
 
 
   }
+  
 
   .transaction__icon {
     display: none;

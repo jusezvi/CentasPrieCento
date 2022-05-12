@@ -55,7 +55,7 @@ exports.signup = (req, res) => {
 };
 exports.signin = (req, res) => {
   User.findOne({
-    email: req.body.username,
+    email: req.body.email,
   })
     .populate("roles", "-__v")
     .exec((err, user) => {

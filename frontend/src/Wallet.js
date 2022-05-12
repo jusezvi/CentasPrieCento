@@ -44,14 +44,14 @@ function Wallet({ user }) {
             <div className="wallet" data-bs-toggle="modal" data-bs-target="#wallet">
                 <div className='wallet__top'>
                     <div className='wallet__top-icon'>
-                        <BiWallet />
+                        <BiWallet /> 
                     </div>
                     <p>{financial(balance)} &euro;</p>
                 </div>
-                <p>Vardas Pavardė</p>
+                <p>Vardas Pavarde</p>
             </div>
 
-            <div className="modal fade" id="wallet" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade wallet-modal" id="wallet" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -69,7 +69,7 @@ function Wallet({ user }) {
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                         </div>
                     </div>
-                </div>
+                </div>f
             </div>
         </>
     );
