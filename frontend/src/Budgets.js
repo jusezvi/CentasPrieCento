@@ -13,33 +13,33 @@ function Budgets() {
                 <div className='budget'>
                     <div className='budget__top'>
                         <div className='budget__icon'><BiHomeAlt /></div>
-                        <div className='budget__name'>Home</div>
+                        <div className='budget__name'>Namai</div>
                     </div>
                     <div className='budget__limit'>425 Eur</div>
                 </div>
                 <div className='budget'>
                     <div className='budget__top'>
                         <div className='budget__icon'><BiCar /></div>
-                        <div className='budget__name'>Car</div>
+                        <div className='budget__name'>Automobilis</div>
                     </div>
                     <div className='budget__limit'>600 Eur</div>
                 </div>
                 <div className='budget'>
                     <div className='budget__top'>
                         <div className='budget__icon'><BiFoodMenu /></div>
-                        <div className='budget__name'>Food</div>
+                        <div className='budget__name'>Maistas</div>
                     </div>
                     <div className='budget__limit'>230 Eur</div>
                 </div>
                 <div className='budget'>
                     <div className='budget__top'>
                         <div className='budget__icon'><BiCar /></div>
-                        <div className='budget__name'>Car</div>
+                        <div className='budget__name'>Automobilis</div>
                     </div>
                     <div className='budget__limit'>50 Eur</div>
                 </div>
             </div>
-            <button>Add new budget</button>
+            <button>Pridėti naują išlaidų kategoriją</button>
         </div>
     )
 }

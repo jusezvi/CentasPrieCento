@@ -99,13 +99,13 @@ function Transactions({ user }) {
             <div className='expense__modal'>
                 <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
-                        <div className="modal-content">
+                        <div className="modal-content transaction-modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Išlaidų įvedimas</h5>
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+                                    {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                                     <input type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
                                     <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
@@ -118,7 +118,7 @@ function Transactions({ user }) {
                                     <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
-                                        <input type="submit" value="Išsaugoti" />
+                                        <input type="submit" className="btn " value="Išsaugoti" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                                     </div>
                                 </form>
@@ -131,13 +131,13 @@ function Transactions({ user }) {
             <div className='earning__modal'>
                 <div className="modal fade" id="earning" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
-                        <div className="modal-content">
+                        <div className="modal-content transaction-modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Pajamų įvedimas</h5>
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
-                                    {error && <p className='error'>Įvestas turi būti skaičius, didesnis už 0 ir pavadinimas mažiau nei 10 simbolių!</p>}
+                                    {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                                     <input type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
                                     <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite datą:</label> <br></br>

@@ -44,7 +44,7 @@ function Header() {
             </nav>
             <div className="user">
                 <div className="user__name">
-                    <h3>Vardas Pavarde</h3>
+                    <h3>Vardas Pavardė</h3>
                     <p>Vartotojas</p>
                 </div>
                 <button onClick={logOut} className="user__icon">

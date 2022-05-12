@@ -6,7 +6,15 @@
 .error {
   color: red;
 }
-
+.transaction-modal-content{
+  width: 300px;
+  padding: 30px;
+}
+input::placeholder {
+  
+  font-size: 15px;
+  
+}
 
 @media screen and (max-width: 1156px) and (min-width: 868px) {
   .buttons {
@@ -15,6 +23,11 @@
 
   .buttons button {
     width: 100%;
+  }
+  input::placeholder {
+  
+    font-size: 15px;
+    
   }
 }
 
@@ -35,6 +48,11 @@ input {
 label {
   margin-right: 10px;
   margin-bottom: 10px;
+}
+input::placeholder {
+  
+  font-size: 15px;
+  
 }
 
 input[type=submit] {

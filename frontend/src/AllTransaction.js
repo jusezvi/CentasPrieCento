@@ -11,8 +11,8 @@ function AllTransaction() {
   const [transactionDate, setTransactionDate] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
   const [type, setType] = useState('all');
-  const [minDate, setMinDate] = useState('1990-01-01');
-  const [maxDate, setMaxDate] = useState('2023-01-01');
+  const [minDate, setMinDate] = useState('');
+  const [maxDate, setMaxDate] = useState('');
   const [category, setCategory] = useState('all');
   const [allData, setAllData] = useState([])
 
@@ -32,9 +32,9 @@ function AllTransaction() {
   function handleTypeChange(e) {
     e.preventDefault();
     // const current = new Date();
-    // const date = `${current.getFullYear()}-0${current.getMonth() + 1}-${current.getDate()}`;
-    if (!minDate) { setMinDate('1990-01-01') }
-    if (!maxDate) { setMaxDate('2023-01-01') }
+    // const date = `${current.getFullYear()}-0${current.getMonth() + 1}-01`;
+    // if (!minDate) { setMinDate('1990-01-01') }
+    // if (!maxDate) { setMaxDate('2023-01-01') }
 
     function filterByCategory(item) {
       if (category !== "all") {
@@ -46,12 +46,21 @@ function AllTransaction() {
 
     const filteredData = transactionDate.filter((item) => {
       if (
-        (item.type === type && item.date <= maxDate && item.date >= minDate && filterByCategory(item))
+        (item.type === type && item.date <= (maxDate ? maxDate : '2023-01-01') && item.date >= (minDate ? minDate : '1990-01-01') && filterByCategory(item))
         ||
-        (type === 'all' && item.date <= maxDate && item.date >= minDate)
+        (type === 'all' && item.date <= (maxDate ? maxDate : '2023-01-01') && item.date >= (minDate ? minDate : '1990-01-01'))
       ) return true
     });
     setAllData(filteredData)
+  }
+
+  function deleteChanges(e) {
+    e.preventDefault();
+    setMinDate('');
+    setMaxDate('');
+    setType('all');
+    setCategory('all');
+    setAllData(transactionDate)
   }
 
   return (
@@ -65,18 +74,19 @@ function AllTransaction() {
           <option value="expense">Išlaidos</option>
         </select>
         <label>Nuo:</label>
-        <input type="date" onChange={e => setMinDate(e.target.value)} />
+        <input type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
         <label>Iki:</label>
-        <input type="date" onChange={e => setMaxDate(e.target.value)} />
+        <input type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
         {type === 'expense' ?
           <select value={category} onChange={e => setCategory(e.target.value)}>
             <option value="all">Visos</option>
-            <option value="Home">Namai</option>
-            <option value="Car">Automobilis</option>
-            <option value="Other">Kita</option>
+            <option value="Namai">Namai</option>
+            <option value="Automobilis">Automobilis</option>
+            <option value="Kita">Kita</option>
           </select>
           : null}
         <button onClick={handleTypeChange}>Filtruoti</button>
+        <button onClick={deleteChanges}>Atstatyti filtrus</button>
       </form>
       <div className='tablte-container'>
         <table className='tr '>
@@ -84,7 +94,7 @@ function AllTransaction() {
             <tr>
               <th className='number'></th>
               <th className='transaction__icon'> </th>
-              <th>Išlaidos/pajamos</th>
+              <th>Išlaidos/Pajamos</th>
               <th>Suma</th>
               <th>Pavadinimas</th>
               <th>Kategorija</th>
