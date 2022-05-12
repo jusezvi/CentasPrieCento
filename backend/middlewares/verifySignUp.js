@@ -11,7 +11,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
       return;
     }
     if (user) {
-      res.status(400).send({ message: "Vartotojo vardas užimtas" });
+      res.status(400).send({ errorCode: 0 });
       return;
     }
     // Email
@@ -23,7 +23,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         return;
       }
       if (user) {
-        res.status(400).send({ message: "El. Paštas užimtas" });
+        res.status(400).send({ errorCode: 1 });
         return;
       }
       next();

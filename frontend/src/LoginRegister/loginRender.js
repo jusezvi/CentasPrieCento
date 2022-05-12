@@ -18,18 +18,42 @@ function Login() {
     const { errors } = formState;
     const  navigate = useNavigate();
 
+    // Login Check FIX - START
+    // Galimu klaidu tekstai pagal errorCode is backend 
+    const errorText = [
+        "Neteisingas El. paštas",
+        "Neteisingas slaptažodis",
+    ]
+
+    /* PVZ:
+    Jeigu errorCode = 0 rodys teksta -> Neteisingas El. paštas
+    Jeigu errorCode = 1 rodys teksta -> Neteisingas slaptažodis
+    >> ErrorCodes galima nusistatyti auth.controller.js faile.
+    Tiesiog CTRL+F ir paieskoti errorCode
+    Jeigu kokia nors serverio klaida, tuomet parodys serverio klaida
+    O jei errorCode neranda, mus prijungs prie isstemos
+    */
+
+    function responeCheck(res) {
+
+        if(res.errorCode !== undefined && res.errorCode !== null) {
+            alert(errorText[res.errorCode]);
+            return;
+        }
+        navigate("/", res);
+        // Papildomai persiunciam vartotojo info i main langa,
+        // Tam jog galetume patikrinti/gauti su vartotoju susijusia informacija
+        // Kokia info siuncia galima pasiziureti faile auth.controller.js
+        // Nuo 84 iki 89 eilutes, palikau uzkomentuota kas neaktuolu pagal mane dabar.
+    }
+    // Login Check FIX - END
+
     function onSubmit(data) {
         call(data);
         // console.log(call(data.message));
         return false;
     }
-    function responecheck(err) {
-        if (err !="undefined") {
-            navigate("/")}
-        else {
-            alert(err)
-        }
-    }
+    
 
     function call(data){
         const serverdata = {
@@ -44,7 +68,7 @@ function Login() {
             body: JSON.stringify(serverdata)
         })
         .then(res => res.json())
-            .then(data => responecheck(data.message))
+            .then(data => responeCheck(data))
             .catch((err) => {
             console.log(err)
         })
