@@ -118,7 +118,7 @@ function Transactions({ user }) {
                                     <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
-                                        <input type="submit" value="Išsaugoti" />
+                                        <input type="submit" className="btn " value="Išsaugoti" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                                     </div>
                                 </form>

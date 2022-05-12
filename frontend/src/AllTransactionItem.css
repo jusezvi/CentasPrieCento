@@ -28,3 +28,27 @@ form button {
 .button-transaction-delete2:hover {
     color: black
 }
+
+.buttons2{
+    background-color: #3444CE;
+    color: #fff;
+    /* align-self: flex-end; */
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    padding: 10px;
+    margin: 4px;
+    border-radius: 8px 0 0 8px;
+}
+
+.modal-footer2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom-right-radius: calc(0.3rem - 1px);
+    border-bottom-left-radius: calc(0.3rem - 1px);
+}
