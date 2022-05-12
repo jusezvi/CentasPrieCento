@@ -31,7 +31,7 @@ exports.signup = (req, res) => {
               res.status(500).send({ message: err });
               return;
             }
-            res.send({ message: "User was registered successfully!" });
+            res.send({ result: 1, message: "Sveikinu prisiregistravus prie Centas Prie Cento!" });
           });
         }
       );
@@ -47,7 +47,7 @@ exports.signup = (req, res) => {
             res.status(500).send({ message: err });
             return;
           }
-          res.send({ message: "User was registered successfully!" });
+          res.send({ result: 1, message: "Sveikinu prisiregistravus prie Centas Prie Cento!" });
         });
       });
     }

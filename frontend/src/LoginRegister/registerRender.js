@@ -28,15 +28,25 @@ function Registration() {
   
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
-  
+  const  navigate = useNavigate();
+
   function onSubmit(data) {
-    alert('Sveikinu prisiregistravus prie Centas Prie Cento');
     
-    console.log(call(data));
+    call(data);
+    // alert(call(data));
     return false;
   }
 
+  function responecheck(err) {
+    alert(err.message);
+    if (err.result == 1) {
+      navigate("/login")
+    }
+
+  }
+
   function call(data){
+    let response = '';
     const serverdata = {
       username: data.username,
       email: data.email,
@@ -50,7 +60,12 @@ function Registration() {
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(serverdata)
     })
-  return result;
+    .then(res => res.json())
+        .then(data => responecheck(data))
+        .catch((err) => {
+            console.log(err)
+        })
+        // return response;
   }
   
   //const onSubmit = data => console.log(data);
@@ -108,6 +123,6 @@ function Registration() {
         <AlreadyHaveAcc></AlreadyHaveAcc>
         </>
     );
-}
+};
 
 export default Registration;

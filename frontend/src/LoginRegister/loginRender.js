@@ -16,25 +16,39 @@ function Login() {
 
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
+    const  navigate = useNavigate();
 
-     function onSubmit(data) {
-        console.log(call(data));
+    function onSubmit(data) {
+        call(data);
+        // console.log(call(data.message));
         return false;
+    }
+    function responecheck(err) {
+        if (err !="undefined") {
+            navigate("/")}
+        else {
+            alert(err)
+        }
     }
 
     function call(data){
         const serverdata = {
-          username: data.username,
+          email: data.email,
           password: data.password
         }
 
         let result =  fetch ('http://localhost:8080/api/auth/signin', {
-            method: 'GET',
+            method: 'POST',
             mode: 'cors',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(serverdata)
         })
-        return result;
+        .then(res => res.json())
+            .then(data => responecheck(data.message))
+            .catch((err) => {
+            console.log(err)
+        })
+        /* return result; */
     }
     
 

@@ -1,8 +1,21 @@
 import './Header.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Header() {
+    const  navigate = useNavigate();
+    function logOut() {
+        
+
+        let result =  fetch ('http://localhost:8080/api/auth/signout', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({})
+        })
+        navigate("/welcome")
+    }
+
     return (
         <div className="header">
 
@@ -34,9 +47,9 @@ function Header() {
                     <h3>Vardas Pavarde</h3>
                     <p>Vartotojas</p>
                 </div>
-                <div className="user__icon">
+                <button onClick={logOut} className="user__icon">
                     V
-                </div>
+                </button>
             </div>
         </div>
     )
