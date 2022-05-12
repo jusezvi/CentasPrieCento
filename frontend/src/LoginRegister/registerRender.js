@@ -30,19 +30,44 @@ function Registration() {
   const { errors } = formState;
   const  navigate = useNavigate();
 
+    // Register Check IMPROVEMENT - START
+    // Galimu klaidu tekstai pagal errorCode is backend 
+    const errorText = [
+      "Vartotojo vardas užimtas",
+      "El. Paštas užimtas",
+      "Sveikinu prisiregistravus prie Centas Prie Cento!"
+  ]
+
+  /* PVZ:
+  Jeigu errorCode = 0 rodys teksta -> Vartotojo vardas užimtas
+  Jeigu errorCode = 1 rodys teksta -> El. Paštas užimtas
+  ir t.t.
+
+  >> ErrorCodes galima nusistatyti auth.controller.js ir verifySignUp.js failuose.
+    Tiesiog CTRL+F ir paieskoti errorCode
+  Jeigu kokia nors serverio klaida, tuomet parodys serverio klaida
+  O jei errorCode neranda, mus prijungs prie isstemos
+  */
+
+  function responeCheck(err) {
+    if(err.errorCode == 2) {
+      alert(errorText[err.errorCode]);
+      navigate("/login");
+      return;
+    }
+    if(err.errorCode !== undefined && err.errorCode !== null) {
+      alert(errorText[err.errorCode]);
+      return;
+  }
+  
+  }
+// Register Check IMPROVEMENT - END
+
   function onSubmit(data) {
     
     call(data);
     // alert(call(data));
     return false;
-  }
-
-  function responecheck(err) {
-    alert(err.message);
-    if (err.result == 1) {
-      navigate("/login")
-    }
-
   }
 
   function call(data){
@@ -61,7 +86,7 @@ function Registration() {
       body: JSON.stringify(serverdata)
     })
     .then(res => res.json())
-        .then(data => responecheck(data))
+        .then(data => responeCheck(data))
         .catch((err) => {
             console.log(err)
         })

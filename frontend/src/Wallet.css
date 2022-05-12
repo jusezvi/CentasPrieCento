@@ -27,6 +27,9 @@
 .wallet__list {
     padding: 10px 30px
 }
+.modal-footer{
+    padding: 0;
+}
 
 .modal-footer button {
     background-color: #3444CE;

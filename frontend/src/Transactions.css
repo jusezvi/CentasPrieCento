@@ -66,3 +66,9 @@ input[type=submit] {
   border-radius: 8px 0 0 8px;
   align-self: flex-end;
 }
+
+@media (min-width: 576px){
+.modal-add-costs {
+    max-width: 300px;
+}
+}
