@@ -81,16 +81,9 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
-<<<<<<< Updated upstream
                     <label>Įveskite naują sumą:</label><br></br>
                     <input type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
                     <label>Įveskite naują pavadinimą:</label> <br></br>
-=======
-                    
-                    <label>Įveskite naują sumą:</label>
-                    <input type="text" required placeholder='Įveskite naują sumą-' value={newSum} onChange={e => setNewSum(e.target.value)} /> 
-                    <label>Įveskite naują pavadinimą:</label> 
->>>>>>> Stashed changes
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
                     {transactionBudget.type == 'expense' ? <><label>Įveskite naują kategoriją:</label> <select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         <option value="Namai">Namai</option>

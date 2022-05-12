@@ -73,13 +73,8 @@ function AllTransaction() {
           <option value="earning">Pajamos</option>
           <option value="expense">Išlaidos</option>
         </select>
-<<<<<<< Updated upstream
         <label>Nuo:</label>
         <input type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
-=======
-        <label className='AllTransaction-label'>Nuo:</label>
-        <input type="date" onChange={e => setMinDate(e.target.value)} />
->>>>>>> Stashed changes
         <label>Iki:</label>
         <input type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
         {type === 'expense' ?

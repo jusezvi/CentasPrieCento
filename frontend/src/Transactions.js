@@ -99,7 +99,7 @@ function Transactions({ user }) {
             <div className='expense__modal'>
                 <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
-                        <div className="modal-content">
+                        <div className="modal-content transaction-modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Išlaidų įvedimas</h5>
                             </div>
@@ -131,7 +131,7 @@ function Transactions({ user }) {
             <div className='earning__modal'>
                 <div className="modal fade" id="earning" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
-                        <div className="modal-content">
+                        <div className="modal-content transaction-modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Pajamų įvedimas</h5>
                             </div>
