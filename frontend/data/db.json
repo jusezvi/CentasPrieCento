@@ -4,10 +4,18 @@
       "sum": "786453.00",
       "name": "ahgsah",
       "category": "-",
-      "type": "earning",
       "date": "2022-05-11",
-      "user": "Vardenis",
+      "type": "earning",
       "id": 11
+    },
+    {
+      "sum": "100.00",
+      "name": "a",
+      "category": "Automobilis",
+      "type": "expense",
+      "date": "2022-05-12",
+      "user": "Vardenis",
+      "id": 12
     }
   ]
 }

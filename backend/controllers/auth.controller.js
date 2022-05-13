@@ -31,7 +31,7 @@ exports.signup = (req, res) => {
               res.status(500).send({ message: err });
               return;
             }
-            res.send({ result: 1, message: "Sveikinu prisiregistravus prie Centas Prie Cento!" });
+            res.send({ errorCode: 2 });
           });
         }
       );
@@ -47,7 +47,7 @@ exports.signup = (req, res) => {
             res.status(500).send({ message: err });
             return;
           }
-          res.send({ result: 1, message: "Sveikinu prisiregistravus prie Centas Prie Cento!" });
+          res.send({ errorCode: 2 });
         });
       });
     }
@@ -64,14 +64,14 @@ exports.signin = (req, res) => {
         return;
       }
       if (!user) {
-        return res.status(404).send({ message: "Neteisingas El. paštas" });
+        return res.status(404).send({ errorCode: 0 });
       }
       var passwordIsValid = bcrypt.compareSync(
         req.body.password,
         user.password
       );
       if (!passwordIsValid) {
-        return res.status(401).send({ message: "Neteisingas slaptažodis" });
+        return res.status(401).send({ errorCode: 1 });
       }
       var token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400, // 24 hours
@@ -84,8 +84,8 @@ exports.signin = (req, res) => {
       res.status(200).send({
         id: user._id,
         username: user.username,
-        email: user.email,
-        roles: authorities,
+        // email: user.email,
+        // roles: authorities,
       });
     });
 };

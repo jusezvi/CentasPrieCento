@@ -8,7 +8,7 @@ function Budgets() {
 
     return (
         <div className="budgets">
-            <h2>Budgets</h2>
+            <h2>Piniginė</h2>
             <div className='budgets__main'>
                 <div className='budget'>
                     <div className='budget__top'>

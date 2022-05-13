@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function TitleRender () {
-    return(<h1> Welcome to Centas Prie Cento !</h1>);
+    return(<h1> Centas Prie Cento</h1>);
 }
 
 function Login() {
