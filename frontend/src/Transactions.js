@@ -7,7 +7,7 @@ import { exVar } from './ExtendVariables';
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('Home');
+    const [category, setCategory] = useState('Namai');
     const [error, setError] = useState(false);
     const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);
@@ -85,7 +85,7 @@ function Transactions({ user }) {
         <>
             <h4>Visos piniginės operacijos:</h4>
             <div>
-                {transactions.map(transaction => (
+                {transactions.slice(Math.max(transactions.length - 5, 0)).map(transaction => (
                     <Transaction key={transaction.id} name={transaction.name}
                         category={transaction.category} price={transaction.sum}
                         type={transaction.type} date={transaction.date} user={transaction.user}

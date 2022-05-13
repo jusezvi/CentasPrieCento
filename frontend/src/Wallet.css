@@ -40,9 +40,6 @@
     border-radius: 8px 0 0 8px;
     margin-left: 10px;
 }
-.wallet-modal{
-    /* width: 300px; */
-}
 
 @media only screen and (max-width: 768px) {
     .wallet {
