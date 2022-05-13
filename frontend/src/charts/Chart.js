@@ -44,12 +44,12 @@ function Chart({ earningForChart, expenseForChart }) {
       {
         label: 'Pajamos',
         data: earningForChart,
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgba(52, 180, 235, 0.5)',
       },
       {
         label: 'Išlaidos',
         data: expenseForChart,
-        backgroundColor: 'rgba(52, 180, 235, 0.5)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
 
     ],

@@ -1,21 +1,85 @@
 {
   "budget": [
     {
-      "sum": "786453.00",
-      "name": "ahgsah",
+      "sum": "1000.00",
+      "name": "alga",
       "category": "-",
-      "date": "2022-05-11",
       "type": "earning",
-      "id": 11
+      "date": "2022-03-10",
+      "user": "Vardenis",
+      "id": 2
+    },
+    {
+      "sum": "1500.00",
+      "name": "alga",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-05",
+      "user": "Vardenis",
+      "id": 3
+    },
+    {
+      "sum": "200.00",
+      "name": "bonus",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-06",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
+      "sum": "50.00",
+      "name": "kuras",
+      "category": "Automobilis",
+      "type": "expense",
+      "date": "2022-02-02",
+      "user": "Vardenis",
+      "id": 5
     },
     {
       "sum": "100.00",
-      "name": "a",
-      "category": "Automobilis",
+      "name": "maistas",
+      "category": "Namai",
       "type": "expense",
-      "date": "2022-05-12",
+      "date": "2022-03-16",
       "user": "Vardenis",
-      "id": 12
+      "id": 6
+    },
+    {
+      "sum": "350.00",
+      "name": "spinta",
+      "category": "Namai",
+      "type": "expense",
+      "date": "2022-04-05",
+      "user": "Vardenis",
+      "id": 7
+    },
+    {
+      "sum": "68.99",
+      "name": "kazkas",
+      "category": "Kita",
+      "type": "expense",
+      "date": "2022-05-03",
+      "user": "Vardenis",
+      "id": 8
+    },
+    {
+      "sum": "37.84",
+      "name": "maistas",
+      "category": "Namai",
+      "type": "expense",
+      "date": "2022-05-13",
+      "user": "Vardenis",
+      "id": 9
+    },
+    {
+      "sum": "15.00",
+      "name": "krautuve",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-05-04",
+      "user": "Vardenis",
+      "id": 10
     }
   ]
 }

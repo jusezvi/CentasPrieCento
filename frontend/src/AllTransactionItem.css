@@ -9,11 +9,10 @@ form button {
 }
 
 .FaLongArrowAltLeft {
-    color: rgba(52, 180, 235);
-}
-
-.FaLongArrowAltRight {
     color: rgba(255, 99, 132);
+}
+.FaLongArrowAltRight {
+    color: rgba(52, 180, 235);
 }
 
 .button-transaction-edit2,
@@ -41,7 +40,7 @@ form button {
     border-radius: 8px 0 0 8px;
 }
 
-.modal-footer2 {
+.modal-footer-transaction {
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;
@@ -52,3 +51,8 @@ form button {
     border-bottom-right-radius: calc(0.3rem - 1px);
     border-bottom-left-radius: calc(0.3rem - 1px);
 }
+
+/* .modal-footer-transaction {
+    display: flex;
+    justify-content: center;
+} */
