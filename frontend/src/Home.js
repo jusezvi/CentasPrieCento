@@ -7,7 +7,7 @@ import { exVar } from './ExtendVariables';
 import MainChartdata from './charts/MainChartdata';
 import Header from './Header';
 
-function Home({route}) {
+function Home() {
  
   // Cia reiktu pasidaryti parametru gavima is Login page
   // jeigu negaunu jokiu paramateru o konkreciai ID
