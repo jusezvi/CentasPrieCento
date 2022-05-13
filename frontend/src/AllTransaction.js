@@ -14,7 +14,9 @@ function AllTransaction() {
   const [minDate, setMinDate] = useState('');
   const [maxDate, setMaxDate] = useState('');
   const [category, setCategory] = useState('all');
-  const [allData, setAllData] = useState([])
+  const [allData, setAllData] = useState([]);
+  const [expenseSum, setExpenseSum] = useState('');
+  const [earningSum, setEarningSum] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:8000/budget/')
@@ -23,7 +25,8 @@ function AllTransaction() {
       })
       .then(data => {
         setTransactionDate(data);
-        setAllData(data)
+        setAllData(data);
+        sum(data)
       });
 
 
@@ -51,7 +54,8 @@ function AllTransaction() {
         (type === 'all' && item.date <= (maxDate ? maxDate : '2023-01-01') && item.date >= (minDate ? minDate : '1990-01-01'))
       ) return true
     });
-    setAllData(filteredData)
+    setAllData(filteredData);
+    sum(filteredData)
   }
 
   function deleteChanges(e) {
@@ -60,7 +64,26 @@ function AllTransaction() {
     setMaxDate('');
     setType('all');
     setCategory('all');
-    setAllData(transactionDate)
+    setAllData(transactionDate);
+    sum(transactionDate)
+  }
+
+  function financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+
+  function sum(data) {
+    let inSum = 0;
+    let outSum = 0;
+    data.forEach(item => {
+      if (item.type === 'earning') {
+        inSum += Number(item.sum)
+      } else if (item.type === 'expense') {
+        outSum += Number(item.sum)
+      }
+    });
+    setEarningSum(inSum);
+    setExpenseSum(outSum);
   }
 
   return (
@@ -108,8 +131,9 @@ function AllTransaction() {
                 isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
             ))}
           </tbody>
-
         </table>
+        <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>
+        <p>išlaidos: {financial(expenseSum)} &euro;, pajamos: {financial(earningSum)} &euro;</p>
       </div>
     </>
   );
