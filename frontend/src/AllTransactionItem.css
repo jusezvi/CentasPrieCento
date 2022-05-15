@@ -9,11 +9,11 @@ form button {
 }
 
 .FaLongArrowAltLeft {
-    color: rgba(255, 99, 132);
+    color: rgba(52, 180, 235);
 }
 
 .FaLongArrowAltRight {
-    color: rgba(52, 180, 235);
+    color: rgba(255, 99, 132);
 }
 
 .button-transaction-edit2,
@@ -29,7 +29,7 @@ form button {
     color: black
 }
 
-.buttons2{
+.buttons2 {
     background-color: #3444CE;
     color: #fff;
     /* align-self: flex-end; */
@@ -41,7 +41,7 @@ form button {
     border-radius: 8px 0 0 8px;
 }
 
-.modal-footer-transaction{
+.modal-footer2 {
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;

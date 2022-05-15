@@ -51,7 +51,7 @@ function Header() {
                     <p>Vartotojas</p>
                 </div>
                 <button onClick={logOut} className="user__icon">
-                    V
+                    &#10006;
                 </button>
             </div>
         </div>

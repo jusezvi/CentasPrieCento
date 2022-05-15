@@ -8,6 +8,13 @@ import MainChartdata from './charts/MainChartdata';
 import Header from './Header';
 
 function Home() {
+ 
+  // Cia reiktu pasidaryti parametru gavima is Login page
+  // jeigu negaunu jokiu paramateru o konkreciai ID
+  // Tuomet mane nunaviguoja i /login
+  // Jeigu gaunu, parametra issaugo pvz i const userID kintamaji
+  // Ir leidzia naudoti puslapiu
+
   const [earnings, setEarnings] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [user, setUser] = useState('Vardenis');

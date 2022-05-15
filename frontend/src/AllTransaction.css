@@ -7,7 +7,8 @@
   margin-right: 5.62rem;
   border-radius: 15px;
 }
-.success-Delete{
+
+.success-Delete {
   text-align: center;
   font-size: 30px;
 }
@@ -25,8 +26,9 @@ tr:not(:first-child):hover {
   /* color: #fff; */
 
 }
-.AllTransaction-label{
- margin-left: 10px;
+
+.AllTransaction-label {
+  margin-left: 10px;
 }
 
 
@@ -54,6 +56,11 @@ tr:not(:first-child):hover {
   display: inline;
 }
 
+.filtered-sum {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
 @media only screen and (max-width: 867px) {
   .tablte-container {
     display: flex;
@@ -67,7 +74,8 @@ tr:not(:first-child):hover {
     top: -9999px;
     left: -9999px;
   }
-  .tablte-container{
+
+  .tablte-container {
     padding-right: 1.62rem;
 
   }
@@ -94,7 +102,7 @@ tr:not(:first-child):hover {
 
 
   }
-  
+
 
   .transaction__icon {
     display: none;
