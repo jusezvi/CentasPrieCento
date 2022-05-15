@@ -7,6 +7,7 @@ import AllTransaction from './AllTransaction';
 import WelcomeHtmlRender from './LoginRegister/welcome';
 import Registration from './LoginRegister/registerRender';
 import Login from './LoginRegister/loginRender'
+import Administration from './Administration';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/welcome" element={<WelcomeHtmlRender />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/administration" element={<Administration />}/>
             {/* <Route path="/login" element={<Login />} />
             
             <Route path="/profile" element={<Profile />} /> */}
