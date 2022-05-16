@@ -1,5 +1,5 @@
 # CentasPrieCento
-Įdiegimas:\
+Įdiegimas:
 1. Patekimas į backend aplankalą:\
     1.1. "cd backend"\
         1.1.1. Įdiegiamos technologijos "npm install express mongoose cors cookie-session jsonwebtoken bcryptjs --save"\
