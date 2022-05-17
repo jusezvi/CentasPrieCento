@@ -3,6 +3,7 @@ import { BiWallet } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import EarningItem from './EarningItem';
+import { read_cookie } from 'sfcookies';
 
 
 function Wallet({ user }) {
@@ -44,11 +45,11 @@ function Wallet({ user }) {
             <div className="wallet" data-bs-toggle="modal" data-bs-target="#wallet">
                 <div className='wallet__top'>
                     <div className='wallet__top-icon'>
-                        <BiWallet /> 
+                        <BiWallet />
                     </div>
                     <p>{financial(balance)} &euro;</p>
                 </div>
-                <p>Vardas Pavarde</p>
+                <p>{read_cookie('username')}</p>
             </div>
 
             <div className="modal fade wallet-modal" id="wallet" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -24,7 +24,7 @@ function Administration() {
                     </section>
 
                     <section>
-                        
+
                         <div className='adm-tablte-container'>
                             <h3>Pavyzdys</h3>
                             <table className='tr '>

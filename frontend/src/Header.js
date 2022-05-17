@@ -1,19 +1,20 @@
 import './Header.css';
 import { Link, useNavigate } from "react-router-dom";
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 
 function Header() {
-    const  navigate = useNavigate();
+    const navigate = useNavigate();
     function logOut() {
-        
 
-        let result =  fetch ('http://localhost:8080/api/auth/signout', {
+        delete_cookie('auth_access_token')
+        let result = fetch('http://localhost:8080/api/auth/signout', {
             method: 'POST',
             mode: 'cors',
-            headers: {'Content-Type':'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({})
         })
-        navigate("/welcome")
+        navigate("/login")
     }
 
     return (

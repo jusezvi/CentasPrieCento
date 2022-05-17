@@ -6,9 +6,16 @@ import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import MainChartdata from './charts/MainChartdata';
 import Header from './Header';
+import { navigation, Route, useLocation, Link, useNavigate } from "react-router-dom";
+// import CheckAuth from './external/CheckAuth';
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
-function Home() {
- 
+function Home({ route, navigation, setTest }) {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+
   // Cia reiktu pasidaryti parametru gavima is Login page
   // jeigu negaunu jokiu paramateru o konkreciai ID
   // Tuomet mane nunaviguoja i /login
@@ -17,14 +24,26 @@ function Home() {
 
   const [earnings, setEarnings] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const [user, setUser] = useState('Vardenis');
+  const [userID, setUseIDr] = useState(read_cookie('auth_access_token'));
   const [count, setCount] = useState(0);
 
 
+
+
   useEffect(() => {
+    if (read_cookie('auth_access_token').length === 0) {
+      navigate('/login')
+    }
+    console.log(read_cookie('auth_access_token'))
+    // CheckAuth(location.state);
     callAPI(exVar.IS_NEW_EARNING)
     // setCount(count + 1);
+    console.log(location.state);
+    // if (location.state === null) {
+    //   navigate("/login");
+    // }
 
+    // setUser(location.state)
   }, []);
 
   function callAPI(check = false) {
@@ -46,13 +65,13 @@ function Home() {
     <div className="home">
       <Header />
       <div className='main'>
-        <Wallet user={user} />
+        <Wallet user={userID} />
         <section>
           <MainChartdata />
-          <Budgets />
+          <Budgets user={userID} />
         </section>
         <aside>
-          <Transactions user={user} />
+          <Transactions user={userID} />
         </aside>
       </div>
     </div>

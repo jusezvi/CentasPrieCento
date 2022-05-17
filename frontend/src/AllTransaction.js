@@ -3,8 +3,9 @@ import Header from './Header';
 import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import './AllTransaction.css';
-import { useTable } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AllTransactionItem from './AlltransactionItem';
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 
 function AllTransaction() {
@@ -17,8 +18,15 @@ function AllTransaction() {
   const [allData, setAllData] = useState([]);
   const [expenseSum, setExpenseSum] = useState('');
   const [earningSum, setEarningSum] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
+    if (read_cookie('auth_access_token').length === 0) {
+      navigate('/login')
+    }
     fetch('http://localhost:8000/budget/')
       .then(res => {
         return res.json();
@@ -27,6 +35,13 @@ function AllTransaction() {
         setTransactionDate(data);
         setAllData(data);
         sum(data)
+      });
+    fetch('http://localhost:8000/category')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setCategories(data);
       });
 
 
@@ -103,9 +118,9 @@ function AllTransaction() {
         {type === 'expense' ?
           <select value={category} onChange={e => setCategory(e.target.value)}>
             <option value="all">Visos</option>
-            <option value="Namai">Namai</option>
-            <option value="Automobilis">Automobilis</option>
-            <option value="Kita">Kita</option>
+            {categories.map((option) => (
+              <option value={option}>{option}</option>
+            ))}
           </select>
           : null}
         <button onClick={handleTypeChange}>Filtruoti</button>
@@ -128,7 +143,7 @@ function AllTransaction() {
           <tbody>
             {allData.map((transactionBudget, index) => (
               <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index}
-                isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+                isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
             ))}
           </tbody>
         </table>

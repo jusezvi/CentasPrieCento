@@ -9,7 +9,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 
 
 
-function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated }) {
+function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated, categories }) {
 
     const [newSum, setNewSum] = useState('');
     const [newName, setNewName] = useState('');
@@ -86,11 +86,11 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated 
                     {/* <label>Įveskite naują pavadinimą:</label> <br></br> */}
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
                     {transactionBudget.type == 'expense' ? <><select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
-                        <option value="Namai">Namai</option>
-                        <option value="Automobilis">Automobilis</option>
-                        <option value="Kita">Kita</option>
+                        {categories.map((option) => (
+                            <option value={option}>{option}</option>
+                        ))}
                     </select></>
-                        : null} 
+                        : null}
                     {/* <label>Pasirinkite datą:</label>  */}
                     <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
