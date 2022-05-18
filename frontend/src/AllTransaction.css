@@ -27,8 +27,14 @@ tr:not(:first-child):hover {
 
 }
 
-.AllTransaction-label {
-  margin-left: 10px;
+.alltransaction-label {
+  margin: 10px;
+}
+
+.alltransactions-select-input {
+  /* margin-left: 10px; */
+  width: 150px;
+  margin-top: 10px;
 }
 
 
@@ -61,12 +67,37 @@ tr:not(:first-child):hover {
   margin-bottom: 0;
 }
 
+
+
+.block {
+  display: inline-block;
+  margin: 10px;
+
+}
+.block .item-inline{
+  display: inline-flex;
+}
+
 @media only screen and (max-width: 867px) {
   .tablte-container {
     display: flex;
     width: 100%;
 
 
+  }
+
+  .block {
+    max-width: 250px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .div-label {
+    padding: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: min(30%, 400px);
+  
+  
   }
 
   thead tr {
