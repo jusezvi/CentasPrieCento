@@ -7,7 +7,7 @@ import { exVar } from "./ExtendVariables";
 import UserCategory from "./UserCategory";
 
 function Budgets({ user }) {
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("Maistas");
     const [categories, setCategories] = useState([]);
     const [limit, setLimit] = useState("");
     const [error, setError] = useState(false);
@@ -62,6 +62,7 @@ function Budgets({ user }) {
                 limit: correctLimit,
                 category: category,
             };
+            console.log(newCategoryLimit)
             fetch("http://localhost:8000/usercategory", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -72,7 +73,7 @@ function Budgets({ user }) {
             setLimit("");
             setCategory("");
             setError(false);
-            window.location.reload();
+            // window.location.reload();
         } else {
             setError(true);
         }
