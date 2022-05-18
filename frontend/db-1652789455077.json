@@ -1,0 +1,40 @@
+{
+  "budget": [
+    {
+      "sum": "1500.00",
+      "name": "alga",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-05",
+      "user": "Vardenis",
+      "id": 3
+    },
+    {
+      "sum": "200.00",
+      "name": "bonus",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-06",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
+      "sum": "50.00",
+      "name": "kuras",
+      "category": "Automobilis",
+      "type": "expense",
+      "date": "2022-02-02",
+      "user": "Vardenis",
+      "id": 5
+    },
+    {
+      "sum": "100.00",
+      "name": "a",
+      "category": "Automobilis",
+      "type": "expense",
+      "date": "2022-05-12",
+      "user": "Vardenis",
+      "id": 12
+    }
+  ]
+}
