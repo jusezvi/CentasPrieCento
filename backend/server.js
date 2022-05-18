@@ -28,6 +28,8 @@ app.use(
 
 const db = require("./models");
 const Role = db.role;
+const Category = db.category;
+const Type = db.type;
 
 db.mongoose
   .connect(`${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -82,5 +84,95 @@ function initial() {
       });
     }
   });
+
+  Category.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Category({
+        name: "Namai"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'namai' to Category collection");
+      });
+
+      new Category({
+        name: "Maistas"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'Maistas' to Category collection");
+      });
+
+      new Category({
+        name: "Automobilis"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'Automobilis' to Category collection");
+      });
+
+      new Category({
+        name: "Pramogos"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'Pramogos' to Category collection");
+      });
+
+      new Category({
+        name: "Nenumatytos išlaidos"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'Nenumatytos išlaidos' to Category collection");
+      });
+
+      new Category({
+        name: "Kita"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'Kita' to Category collection");
+      });
+    }
+  });
+  
+  Type.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Type({
+        name: "Pajamos"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'pajamos' to Type collection");
+      });
+
+      new Type({
+        name: "Išlaidos"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'išlaidos' to Type collection");
+      });
+    }
+  });
+
+
 }
 
