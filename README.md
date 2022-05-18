@@ -11,5 +11,6 @@
                                         "npm install react-hook-form"\
                                         "npm install -S yup"\
                                         "npm install @hookform/resolvers"\
+            **************              "npm install --save sfcookies"\
         1.1.3. Paleiždiamas development serveris "npm start"\
         1.1.4. Paleidžaimas json serviers "npx json-server --watch data/db.json --port 8000"

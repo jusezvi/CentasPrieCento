@@ -24,7 +24,7 @@ function Home({ route, navigation, setTest }) {
 
   const [earnings, setEarnings] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const [userID, setUseID] = useState(read_cookie('auth_access_token'));
+  const [userID, setUserID] = useState(read_cookie('auth_access_token'));
   const [count, setCount] = useState(0);
 
 
