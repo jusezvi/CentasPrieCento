@@ -7,10 +7,11 @@ import { exVar } from './ExtendVariables';
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('Namai');
+    const [category, setCategory] = useState('');
     const [error, setError] = useState(false);
     const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);
+    const [categories, setCategories] = useState([])
 
     const [sum, setSum] = useState('');
     const [type, setType] = useState('');
@@ -24,6 +25,14 @@ function Transactions({ user }) {
             })
             .then(data => {
                 setTransactions(data);
+            });
+
+        fetch('http://localhost:8000/category')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setCategories(data);
             });
     }, []);
 
@@ -106,13 +115,16 @@ function Transactions({ user }) {
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
                                     {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
+
                                     <input className='transactions-select-input' type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
                                     <input className='transactions-select-input' type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label className='transactions-label'>Pasirinkite kategoriją:</label> <br></br>
                                     <select className='transactions-select-input' required value={category} onChange={e => setCategory(e.target.value)}>
-                                        <option value="Namai">Namai</option>
-                                        <option value="Automobilis">Automobilis</option>
-                                        <option value="Kita">Kita</option>
+
+                                        {categories.map((option) => (
+                                            <option value={option}>{option}</option>
+                                        ))}
+
                                     </select><br></br>
                                     <label className='transactions-label'>Pasirinkite datą:</label> <br></br>
                                     <input className='transactions-select-input' type="date" required value={date} onChange={e => setDate(e.target.value)} />

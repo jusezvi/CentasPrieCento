@@ -1,0 +1,34 @@
+.budget {
+  background-color: #E9DEF6;
+  border-radius: 10px;
+  min-width: 120px;
+  height: 200px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.budget__icon {
+  background-color: #fff;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.budget__name {
+  color: #3444CE;
+  font-weight: 500;
+}
+
+.budgets button {
+  background-color: #3444CE;
+  color: #fff;
+  align-self: flex-end;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+  align-self: flex-end;
+}
