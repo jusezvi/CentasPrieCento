@@ -24,7 +24,7 @@ function Home({ route, navigation, setTest }) {
 
   const [earnings, setEarnings] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const [userID, setUseIDr] = useState(read_cookie('auth_access_token'));
+  const [userID, setUseID] = useState(read_cookie('auth_access_token'));
   const [count, setCount] = useState(0);
 
 
@@ -51,14 +51,14 @@ function Home({ route, navigation, setTest }) {
       return;
     }
     exVar.IS_NEW_EARNING = false;
-    fetch('http://localhost:8000/budget')
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setTransactions(data);
-        setEarnings(data);
-      });
+    // fetch('http://localhost:8000/budget')
+    //   .then(res => {
+    //     return res.json();
+    //   })
+    //   .then(data => {
+    //     setTransactions(data);
+    //     setEarnings(data);
+    //   });
   }
 
   return (
@@ -68,7 +68,7 @@ function Home({ route, navigation, setTest }) {
         <Wallet user={userID} />
         <section>
           <MainChartdata />
-          <Budgets user={userID} />
+          <Budgets user={userID} transactions={transactions} />
         </section>
         <aside>
           <Transactions user={userID} />

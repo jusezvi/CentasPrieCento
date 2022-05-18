@@ -119,8 +119,8 @@ function Transactions({ user }) {
                                     <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
                                     <select required value={category} onChange={e => setCategory(e.target.value)}>
-                                        {categories.map((option) => (
-                                            <option value={option}>{option}</option>
+                                        {categories.map((option, index) => (
+                                            <option value={option} key={index}>{option}</option>
                                         ))}
                                     </select><br></br>
                                     <label>Pasirinkite datą:</label> <br></br>
