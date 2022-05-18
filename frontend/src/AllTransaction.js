@@ -90,24 +90,49 @@ function AllTransaction() {
     <>
       <Header />
       <form>
-        <label>Tipas:</label>
-        <select value={type} onChange={e => setType(e.target.value)}>
-          <option value="all">Viso</option>
-          <option value="earning">Pajamos</option>
-          <option value="expense">Išlaidos</option>
-        </select>
-        <label>Nuo:</label>
-        <input type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
-        <label>Iki:</label>
-        <input type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
-        {type === 'expense' ?
-          <select value={category} onChange={e => setCategory(e.target.value)}>
-            <option value="all">Visos</option>
-            <option value="Namai">Namai</option>
-            <option value="Automobilis">Automobilis</option>
-            <option value="Kita">Kita</option>
-          </select>
-          : null}
+
+        <div className='block'>
+          <div className='div-label item-inline' >
+            <label className='alltransaction-label'>Tipas:</label>
+          </div>
+          <div className='item-inline' >
+            <select className="alltransactions-select-input" value={type} onChange={e => setType(e.target.value)}>
+              <option value="all">Viso</option>
+              <option value="earning">Pajamos</option>
+              <option value="expense">Išlaidos</option>
+            </select>
+          </div>
+        </div>
+
+        <div className='block'>
+          <div className='div-label item-inline'>
+            <label className='alltransaction-label'>Nuo:</label>
+          </div>
+          <div className='item-inline'>
+            <input className="alltransactions-select-input" type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
+          </div>
+        </div>
+
+        <div className='block'>
+          <div className='div-label item-inline'>
+            <label className='alltransaction-label'>Iki:</label>
+          </div>
+          <div className='item-inline' >
+            <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
+            {type === 'expense' ?
+              <select value={category} onChange={e => setCategory(e.target.value)}>
+                <option value="all">Visos</option>
+                <option value="Namai">Namai</option>
+                <option value="Automobilis">Automobilis</option>
+                <option value="Kita">Kita</option>
+              </select>
+              : null}
+          </div>
+
+
+
+        </div>
+
         <button onClick={handleTypeChange}>Filtruoti</button>
         <button onClick={deleteChanges}>Atstatyti filtrus</button>
       </form>
