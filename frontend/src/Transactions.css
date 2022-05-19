@@ -47,6 +47,7 @@ input::placeholder {
 .transactions-select-input {
   margin-right: 10px;
   margin-bottom: 10px;
+  width: 200px;
 }
 
 .transactions-label {
