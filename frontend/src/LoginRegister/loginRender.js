@@ -73,7 +73,7 @@ function Login() {
         }
 
         let result = fetch('http://localhost:8080/api/auth/signin', {
-            method: 'POST',
+            method: 'GET',
             mode: 'cors',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(serverdata)

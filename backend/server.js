@@ -27,9 +27,11 @@ app.use(
 );
 
 const db = require("./models");
+//const Budget = require("./models/budget.model");
 const Role = db.role;
 const Category = db.category;
 const Type = db.type;
+const Budget = db.budget;
 
 db.mongoose
   .connect(`${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -49,6 +51,17 @@ db.mongoose
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to CPC application." });
 });
+
+// ------------------------------------------------------
+// INSERT NEW BUDGET
+// ------------------------------------------------------
+app.post("/insertBudget/:budgetInfo", (req, res) => {
+  console.log(JSON.parse(req.params.budgetInfo))
+  var data = JSON.parse(req.params.budgetInfo);
+  var budget = new Budget(data);
+  var result = budget.save();
+})
+
 
 // routes
 require("./routes/auth.routes")(app);

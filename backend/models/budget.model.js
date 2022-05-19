@@ -4,25 +4,10 @@ const Budget = mongoose.model(
   new mongoose.Schema({
     sum: Number,
     name: String,
-    category: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category"
-      }
-    ],
-    type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Type"
-        }
-      ],
+    category: String,
+    type: String,
     date: Date,
-    user: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"   
-        }
-    ],
+    user: String,
   })
 );
 module.exports = Budget;

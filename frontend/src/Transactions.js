@@ -46,11 +46,12 @@ function Transactions({ user }) {
             if (Date.parse(date) <= Date.parse(new Date())) {
                 let correctSum = financial(sum);
                 const newExpense = { sum: correctSum, name, category, type: "expense", date, user };
+                // const newExpense = {name: 'testas' };
 
-                fetch('http://localhost:8000/budget', {
+                fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newExpense), {
                     method: 'POST',
+                    mode: 'cors',
                     headers: { 'Content-Type': "application/json" },
-                    body: JSON.stringify(newExpense)
                 }).then(() => {
                     exVar.IS_NEW_EARNING = true;
                 });
