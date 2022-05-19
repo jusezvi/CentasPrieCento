@@ -7,10 +7,11 @@ import { exVar } from './ExtendVariables';
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('Namai');
+    const [category, setCategory] = useState('');
     const [error, setError] = useState(false);
     const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);
+    const [categories, setCategories] = useState([])
 
     const [sum, setSum] = useState('');
     const [type, setType] = useState('');
@@ -25,6 +26,14 @@ function Transactions({ user }) {
             .then(data => {
                 setTransactions(data);
             });
+
+        fetch('http://localhost:8000/category')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setCategories(data);
+            });
     }, []);
 
     function financial(x) {
@@ -37,11 +46,12 @@ function Transactions({ user }) {
             if (Date.parse(date) <= Date.parse(new Date())) {
                 let correctSum = financial(sum);
                 const newExpense = { sum: correctSum, name, category, type: "expense", date, user };
+                // const newExpense = {name: 'testas' };
 
-                fetch('http://localhost:8000/budget', {
+                fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newExpense), {
                     method: 'POST',
+                    mode: 'cors',
                     headers: { 'Content-Type': "application/json" },
-                    body: JSON.stringify(newExpense)
                 }).then(() => {
                     exVar.IS_NEW_EARNING = true;
                 });
@@ -106,16 +116,17 @@ function Transactions({ user }) {
                             <div className="modal-body">
                                 <form onSubmit={submitExpense}>
                                     {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
-                                    <input type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
-                                    <input type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
+                                    <input className='transactions-select-input' type="text" required placeholder='Įveskite išlaidų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
+                                    <input className='transactions-select-input' type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
-                                    <select required value={category} onChange={e => setCategory(e.target.value)}>
-                                        <option value="Namai">Namai</option>
-                                        <option value="Automobilis">Automobilis</option>
-                                        <option value="Kita">Kita</option>
+                                    <select className='transactions-select-input' required value={category} onChange={e => setCategory(e.target.value)}>
+                                        {categories.map((option, index) => (
+                                            <option value={option} key={index}>{option}</option>
+                                        ))}
+
                                     </select><br></br>
                                     <label>Pasirinkite datą:</label> <br></br>
-                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
+                                    <input className='transactions-select-input' type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" className="btn " value="Išsaugoti" />
@@ -138,10 +149,10 @@ function Transactions({ user }) {
                             <div className="modal-body">
                                 <form onSubmit={submitEarning}>
                                     {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
-                                    <input type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
-                                    <input type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
+                                    <input className='transactions-select-input' type="text" required placeholder='Įveskite pajamų sumą' value={sum} onChange={e => setSum(e.target.value)} /> <br></br>
+                                    <input className='transactions-select-input' type="text" required placeholder='Įveskite pajamų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite datą:</label> <br></br>
-                                    <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
+                                    <input className='transactions-select-input' type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" className="btn btn-secondary" value="Išsaugoti" />

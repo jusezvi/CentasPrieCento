@@ -1,24 +1,6 @@
 {
   "budget": [
     {
-      "sum": "1000.00",
-      "name": "alga",
-      "category": "-",
-      "type": "earning",
-      "date": "2022-03-10",
-      "user": "Vardenis",
-      "id": 2
-    },
-    {
-      "sum": "1500.00",
-      "name": "alga",
-      "category": "-",
-      "type": "earning",
-      "date": "2022-04-05",
-      "user": "Vardenis",
-      "id": 3
-    },
-    {
       "sum": "200.00",
       "name": "bonus",
       "category": "-",
@@ -38,48 +20,68 @@
     },
     {
       "sum": "100.00",
-      "name": "maistas",
-      "category": "Namai",
+      "name": "kazakssss",
+      "category": "Automobilis",
       "type": "expense",
-      "date": "2022-03-16",
-      "user": "Vardenis",
-      "id": 6
+      "date": "2022-05-01",
+      "user": "6283c226da8f7bf0adab8148",
+      "id": 4
     },
     {
-      "sum": "350.00",
-      "name": "spinta",
+      "sum": "2000.00",
+      "name": "sffd",
+      "category": "Atostogos",
+      "type": "expense",
+      "date": "2022-05-02",
+      "user": "6283c226da8f7bf0adab8148",
+      "id": 5
+    },
+    {
+      "sum": "10.00",
+      "name": "testas",
       "category": "Namai",
       "type": "expense",
-      "date": "2022-04-05",
-      "user": "Vardenis",
+      "date": "2022-05-02",
+      "user": "6283c226da8f7bf0adab8148",
       "id": 7
     },
     {
-      "sum": "68.99",
-      "name": "kazkas",
-      "category": "Kita",
+      "sum": "100.00",
+      "name": "tes",
+      "category": "Nenumatytos išlaidos",
       "type": "expense",
-      "date": "2022-05-03",
-      "user": "Vardenis",
+      "date": "2022-05-10",
+      "user": "6283c226da8f7bf0adab8148",
       "id": 8
     },
     {
-      "sum": "37.84",
-      "name": "maistas",
-      "category": "Namai",
+      "sum": "20.00",
+      "name": "aa",
+      "category": "",
       "type": "expense",
-      "date": "2022-05-13",
-      "user": "Vardenis",
+      "date": "2022-05-02",
+      "user": "6283c226da8f7bf0adab8148",
       "id": 9
+    }
+  ],
+  "category": [
+    "Maistas",
+    "Automobilis",
+    "Atostogos",
+    "Namai",
+    "Nenumatytos išlaidos",
+    "Kita"
+  ],
+  "usercategory": [
+    {
+      "user": "Vardenis",
+      "category": "Namai",
+      "limit": "1000"
     },
     {
-      "sum": "15.00",
-      "name": "krautuve",
-      "category": "-",
-      "type": "earning",
-      "date": "2022-05-04",
       "user": "Vardenis",
-      "id": 10
+      "category": "Automobilis",
+      "limit": "200"
     }
   ]
 }

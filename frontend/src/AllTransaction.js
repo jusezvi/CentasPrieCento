@@ -3,8 +3,9 @@ import Header from './Header';
 import { useEffect, useState } from 'react';
 import { exVar } from './ExtendVariables';
 import './AllTransaction.css';
-import { useTable } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AllTransactionItem from './AlltransactionItem';
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 
 function AllTransaction() {
@@ -17,8 +18,15 @@ function AllTransaction() {
   const [allData, setAllData] = useState([]);
   const [expenseSum, setExpenseSum] = useState('');
   const [earningSum, setEarningSum] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
+    if (read_cookie('auth_access_token').length === 0) {
+      navigate('/login')
+    }
     fetch('http://localhost:8000/budget/')
       .then(res => {
         return res.json();
@@ -27,6 +35,13 @@ function AllTransaction() {
         setTransactionDate(data);
         setAllData(data);
         sum(data)
+      });
+    fetch('http://localhost:8000/category')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setCategories(data);
       });
 
 
@@ -90,24 +105,49 @@ function AllTransaction() {
     <>
       <Header />
       <form>
-        <label>Tipas:</label>
-        <select value={type} onChange={e => setType(e.target.value)}>
-          <option value="all">Viso</option>
-          <option value="earning">Pajamos</option>
-          <option value="expense">Išlaidos</option>
-        </select>
-        <label>Nuo:</label>
-        <input type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
-        <label>Iki:</label>
-        <input type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
-        {type === 'expense' ?
-          <select value={category} onChange={e => setCategory(e.target.value)}>
-            <option value="all">Visos</option>
-            <option value="Namai">Namai</option>
-            <option value="Automobilis">Automobilis</option>
-            <option value="Kita">Kita</option>
-          </select>
-          : null}
+
+        <div className='block'>
+          <div className='div-label item-inline' >
+            <label className='alltransaction-label'>Tipas:</label>
+          </div>
+          <div className='item-inline' >
+            <select className="alltransactions-select-input" value={type} onChange={e => setType(e.target.value)}>
+              <option value="all">Viso</option>
+              <option value="earning">Pajamos</option>
+              <option value="expense">Išlaidos</option>
+            </select>
+          </div>
+        </div>
+
+        <div className='block'>
+          <div className='div-label item-inline'>
+            <label className='alltransaction-label'>Nuo:</label>
+          </div>
+          <div className='item-inline'>
+            <input className="alltransactions-select-input" type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
+          </div>
+        </div>
+
+        <div className='block'>
+          <div className='div-label item-inline'>
+            <label className='alltransaction-label'>Iki:</label>
+          </div>
+          <div className='item-inline' >
+            <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
+            {type === 'expense' ?
+              <select value={category} onChange={e => setCategory(e.target.value)}>
+                <option value="all">Visos</option>
+                <option value="Namai">Namai</option>
+                <option value="Automobilis">Automobilis</option>
+                <option value="Kita">Kita</option>
+              </select>
+              : null}
+          </div>
+
+
+
+        </div>
+
         <button onClick={handleTypeChange}>Filtruoti</button>
         <button onClick={deleteChanges}>Atstatyti filtrus</button>
       </form>
@@ -128,7 +168,7 @@ function AllTransaction() {
           <tbody>
             {allData.map((transactionBudget, index) => (
               <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index}
-                isUpdated={isUpdated} setIsUpdated={setIsUpdated} />
+                isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
             ))}
           </tbody>
         </table>

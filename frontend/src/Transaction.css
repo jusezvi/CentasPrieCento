@@ -12,6 +12,10 @@
     align-items: center;
 }
 
+.transaction__info {
+    text-align: center;
+}
+
 .transaction__info p {
     margin: 0;
 }

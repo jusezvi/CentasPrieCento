@@ -1,0 +1,15 @@
+.third-card{
+    min-width: 200px;
+    max-width: 200px;
+    height: 100px;
+    background-color: #5C6FE4;
+    margin-left: 40px;
+    margin-top: 50px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+}
