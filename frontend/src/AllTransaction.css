@@ -34,7 +34,8 @@ tr:not(:first-child):hover {
 .alltransactions-select-input {
   /* margin-left: 10px; */
   width: 150px;
-  margin-top: 10px;
+  height: 30px;
+  margin: 10px 0;
 }
 
 
