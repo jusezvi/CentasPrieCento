@@ -27,7 +27,7 @@ function AllTransaction() {
     if (read_cookie('auth_access_token').length === 0) {
       navigate('/login')
     }
-    fetch('http://localhost:8080/getBudget/')
+    fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
       .then(res => {
         return res.json();
       })
@@ -166,11 +166,12 @@ function AllTransaction() {
           </thead>
           <tbody>
           
+          {/* {console.log(categories)} */}
             {allData.map((transactionBudget, index) => (
-              allData === null ? console.log('') : 
+             
               <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}
                 isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
-            ))};
+            ))}
           </tbody>
         </table>
         <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>

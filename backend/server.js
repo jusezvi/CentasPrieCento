@@ -66,12 +66,12 @@ app.post("/insertBudget/:budgetInfo", (req, res) => {
 // ------------------------------------------------------
 // GET ALL CATEGORY
 // ------------------------------------------------------
-app.get("/getBudget/", async (req, res) => {
-
+app.get("/getBudget/:userID", async (req, res) => {
+  var userID = req.params.userID;
   // ------------------------------------------------------
   // GET ALL
   // ------------------------------------------------------
-  Budget.find((err, dataRes) => {
+  Budget.find({user:userID}, (err, dataRes) => {
     if(!err) {
       res.send({ data: dataRes});
     } else {

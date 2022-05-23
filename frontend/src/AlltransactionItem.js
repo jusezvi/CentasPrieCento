@@ -87,7 +87,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                     <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
                     {transactionBudget.type == 'expense' ? <><select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         {categories.map((option) => (
-                            <option key={option._id} value={option}>{option}</option>
+                            // console.log(option)
+                            <option key={option._id} value={option.name}>{option.name}</option>
                         ))}
                     </select></>
                         : null}
