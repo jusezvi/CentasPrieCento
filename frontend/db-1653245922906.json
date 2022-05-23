@@ -1,6 +1,15 @@
 {
   "budget": [
     {
+      "sum": "200.00",
+      "name": "bonus",
+      "category": "-",
+      "type": "earning",
+      "date": "2022-04-06",
+      "user": "Vardenis",
+      "id": 4
+    },
+    {
       "sum": "50.00",
       "name": "kuras",
       "category": "Automobilis",
