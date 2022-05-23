@@ -27,21 +27,21 @@ function AllTransaction() {
     if (read_cookie('auth_access_token').length === 0) {
       navigate('/login')
     }
-    fetch('http://localhost:8000/budget/')
+    fetch('http://localhost:8080/getBudget/')
       .then(res => {
         return res.json();
       })
       .then(data => {
-        setTransactionDate(data);
-        setAllData(data);
-        sum(data)
+        setTransactionDate(data.data);
+        setAllData(data.data);
+        sum(data.data)
       });
-    fetch('http://localhost:8000/category')
+    fetch('http://localhost:8080/getCategory/')
       .then(res => {
         return res.json();
       })
       .then(data => {
-        setCategories(data);
+        setCategories(data.data);
       });
 
 
@@ -134,12 +134,11 @@ function AllTransaction() {
           </div>
           <div className='item-inline' >
             <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
-            {type === 'expense' ?
-              <select value={category} onChange={e => setCategory(e.target.value)}>
+            {type === 'expense' ? <select value={category} onChange={e => setCategory(e.target.value)}>
                 <option value="all">Visos</option>
-                <option value="Namai">Namai</option>
-                <option value="Automobilis">Automobilis</option>
-                <option value="Kita">Kita</option>
+                {categories.map((option) => (
+                  <option value={option.name} key={option._id}>{option.name}</option>
+                ))}
               </select>
               : null}
           </div>
@@ -166,10 +165,12 @@ function AllTransaction() {
             </tr>
           </thead>
           <tbody>
+          
             {allData.map((transactionBudget, index) => (
-              <AllTransactionItem key={transactionBudget.id} transactionBudget={transactionBudget} index={index}
+              allData === null ? console.log('') : 
+              <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}
                 isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
-            ))}
+            ))};
           </tbody>
         </table>
         <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>
