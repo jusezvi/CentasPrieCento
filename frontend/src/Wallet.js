@@ -11,11 +11,11 @@ function Wallet({ user }) {
     const [earnings, setEarnings] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8000/budget')
+        fetch('http://localhost:8080/getBudget/')
             .then(res => res.json())
             .then(costs => {
-                setEarnings(costs);
-                calculateSum(costs);
+                setEarnings(costs.data);
+                calculateSum(costs.data);
             })
     }, []);
 
@@ -62,7 +62,7 @@ function Wallet({ user }) {
                         <div className="modal-body">
                             <div className='wallet__list'>
                                 {earnings && earnings.filter(earning => earning.type === "earning").map(filteredEarning => (
-                                    <EarningItem key={filteredEarning.id} earning={filteredEarning} />
+                                    <EarningItem key={filteredEarning._id} earning={filteredEarning} />
                                 ))}
                             </div>
                         </div>

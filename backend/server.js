@@ -27,6 +27,7 @@ app.use(
 );
 
 const db = require("./models");
+const { user } = require("./models");
 //const Budget = require("./models/budget.model");
 const Role = db.role;
 const Category = db.category;
@@ -62,6 +63,44 @@ app.post("/insertBudget/:budgetInfo", (req, res) => {
   var result = budget.save();
 })
 
+// ------------------------------------------------------
+// GET ALL CATEGORY
+// ------------------------------------------------------
+app.get("/getBudget/", async (req, res) => {
+
+  // ------------------------------------------------------
+  // GET ALL
+  // ------------------------------------------------------
+  Budget.find((err, dataRes) => {
+    if(!err) {
+      res.send({ data: dataRes});
+    } else {
+      return console.log('Failed');
+    }
+  })
+
+  // ------------------------------------------------------
+  //GET BY NAME
+  // ------------------------------------------------------
+  // Category.find({name:"testas"}, (err, dataRes) => {
+  //   if(!err) {
+  //     res.send({ data: dataRes});
+  //   } else {
+  //     return console.log('Failed');
+  //   }
+  // })
+})
+
+app.get("/getCategory/", async (req, res) => {
+
+  Category.find((err, dataRes) => {
+    if(!err) {
+      res.send({ data: dataRes});
+    } else {
+      return console.log('Failed');
+    }
+  })
+});
 
 // routes
 require("./routes/auth.routes")(app);

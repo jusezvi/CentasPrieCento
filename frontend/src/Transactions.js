@@ -19,21 +19,37 @@ function Transactions({ user }) {
 
     useEffect(() => {
 
-        fetch('http://localhost:8000/budget')
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setTransactions(data);
-            });
+        fetch('http://localhost:8080/getBudget/', {
+            method: 'GET',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => response.json())
+        .then(data => setTransactions(data.data));
 
-        fetch('http://localhost:8000/category')
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setCategories(data);
-            });
+        // fetch('http://localhost:8000/budget')
+        //     .then(res => {
+        //         return res.json();
+        //     })
+        //     .then(data => {
+        //         setTransactions(data);
+        //     });
+
+        fetch('http://localhost:8080/getCategory/', {
+            method: 'GET',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => response.json())
+        .then(data => setCategories(data.data));
+
+        // fetch('http://localhost:8000/category')
+        //     .then(res => {
+        //         return res.json();
+        //     })
+        //     .then(data => {
+        //         setCategories(data);
+        //     });
     }, []);
 
     function financial(x) {
@@ -73,11 +89,12 @@ function Transactions({ user }) {
             if (Date.parse(date) <= Date.parse(new Date())) {
                 let correctSum = financial(sum);
                 const newEarning = { sum: correctSum, name, category: "-", type: "earning", date, user };
+                // const newEarning = {name: 'testas' };
 
-                fetch('http://localhost:8000/budget', {
+                fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newEarning), {
                     method: 'POST',
+                    mode: 'cors',
                     headers: { 'Content-Type': "application/json" },
-                    body: JSON.stringify(newEarning)
                 }).then(() => {
                     exVar.IS_NEW_EARNING = true;
                 });
@@ -96,7 +113,7 @@ function Transactions({ user }) {
             <h4>Visos piniginės operacijos:</h4>
             <div>
                 {transactions.slice(Math.max(transactions.length - 5, 0)).map(transaction => (
-                    <Transaction key={transaction.id} name={transaction.name}
+                    <Transaction key={transaction._id} name={transaction.name}
                         category={transaction.category} price={transaction.sum}
                         type={transaction.type} date={transaction.date} user={transaction.user}
                     />
@@ -120,8 +137,8 @@ function Transactions({ user }) {
                                     <input className='transactions-select-input' type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
                                     <select className='transactions-select-input' required value={category} onChange={e => setCategory(e.target.value)}>
-                                        {categories.map((option, index) => (
-                                            <option value={option} key={index}>{option}</option>
+                                        {categories.map((option) => (
+                                            <option value={option.name} key={option._id}>{option.name}</option>
                                         ))}
 
                                     </select><br></br>
