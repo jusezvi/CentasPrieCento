@@ -25,8 +25,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     function DeleteClick() {
-        fetch('http://localhost:8000/budget/' + transactionBudget.id, {
-            method: 'POST',
+        fetch('http://localhost:8080/delBudget/' + transactionBudget._id, {
+            method: 'DELETE',
 
         })
             .then(res => res.json()
@@ -110,7 +110,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                     </select></>
                         : null}<br></br>
                     {/* <label>Pasirinkite datą:</label>  */}
-                    <input className='alltransactions-select-input' type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} /><br></br>
+                    <input className='alltransactions-select-input' type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} /><br></br>
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
                     {/* <input type="submit" value="Išsaugoti" /> */}
                     <button type="submit">Išsaugoti</button>

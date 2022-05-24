@@ -8,7 +8,7 @@ import { read_cookie } from 'sfcookies';
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('Automobilis');
     const [error, setError] = useState(false);
     const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);

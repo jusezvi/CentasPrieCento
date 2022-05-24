@@ -64,17 +64,8 @@ app.post("/insertBudget/:budgetInfo", (req, res) => {
   var result = budget.save();
 })
 
-// ------------------------------------------------------
-// GET ALL CATEGORY
-// ------------------------------------------------------
 app.get("/getBudget/:userID", async (req, res) => {
   var userID = req.params.userID;
-  // if (userID == null) {
-  //   return console.log('Opss userID not found');
-  // }
-  // ------------------------------------------------------
-  // GET ALL
-  // ------------------------------------------------------
   Budget.find({ user: userID }, (err, dataRes) => {
     if (!err) {
       res.send({ data: dataRes });
@@ -97,16 +88,18 @@ app.delete("/delBudget/:itemID", async (req, res) => {
 
 })
 
-app.get("/getBudget/:userID", async (req, res) => {
-  var userID = req.params.userID;
-  Budget.find({ user: userID }, (err, dataRes) => {
-    if (!err) {
-      res.send({ data: dataRes });
-    } else {
-      return console.log('Failed');
-    }
+app.put("/updateBudget/:itemID", async (req, res) => {
+  var itemID = req.params.itemID;
+
+  Budget.patch({ _id: itemID }, {
+    justOne: true
+  }).then(x => {
+    console.log('edit')
   })
+
 })
+
+
 
 app.get("/getCategory/", async (req, res) => {
   Category.find((err, dataRes) => {
