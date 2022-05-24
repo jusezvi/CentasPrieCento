@@ -125,8 +125,9 @@ app.post("/insertUserCategory/:info", (req, res) => {
   var result = userCategory.save();
 })
 
-app.get("/getUserCategory/", async (req, res) => {
-  UserCategory.find((err, dataRes) => {
+app.get("/getUserCategory/:userID", async (req, res) => {
+  var userID = req.params.userID;
+  UserCategory.find({ user: userID }, (err, dataRes) => {
     if (!err) {
       res.send({ data: dataRes });
     } else {

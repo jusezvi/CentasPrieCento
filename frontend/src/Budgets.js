@@ -8,7 +8,7 @@ import UserCategory from "./UserCategory";
 import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 function Budgets({ user }) {
-    const [category, setCategory] = useState("Maistas");
+    const [category, setCategory] = useState("Automobilis");
     const [categories, setCategories] = useState([]);
     const [limit, setLimit] = useState("");
     const [error, setError] = useState(false);
@@ -27,12 +27,12 @@ function Budgets({ user }) {
                 setCategories(data.data);
             });
 
-        fetch("http://localhost:8000/usercategory")
+        fetch('http://localhost:8080/getUserCategory/' + read_cookie('auth_access_token'))
             .then((res) => {
                 return res.json();
             })
             .then((data) => {
-                setUserCategories(data);
+                setUserCategories(data.data);
             });
 
         fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
@@ -64,17 +64,17 @@ function Budgets({ user }) {
                 category: category,
             };
             console.log(newCategoryLimit)
-            fetch("http://localhost:8000/usercategory", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(newCategoryLimit),
+            fetch('http://localhost:8080/insertUserCategory/' + JSON.stringify(newCategoryLimit), {
+                method: 'POST',
+                mode: 'cors',
+                headers: { "Content-Type": "application/json" }
             }).then(() => {
                 exVar.IS_NEW_EARNING = true;
             });
             setLimit("");
             setCategory("");
             setError(false);
-            // window.location.reload();
+            window.location.reload();
         } else {
             setError(true);
         }
