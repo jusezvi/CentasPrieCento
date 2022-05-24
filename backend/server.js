@@ -109,7 +109,6 @@ app.get("/getBudget/:userID", async (req, res) => {
 })
 
 app.get("/getCategory/", async (req, res) => {
-
   Category.find((err, dataRes) => {
     if (!err) {
       res.send({ data: dataRes });
@@ -125,6 +124,16 @@ app.post("/insertUserCategory/:info", (req, res) => {
   var userCategory = new UserCategory(data);
   var result = userCategory.save();
 })
+
+app.get("/getUserCategory/", async (req, res) => {
+  UserCategory.find((err, dataRes) => {
+    if (!err) {
+      res.send({ data: dataRes });
+    } else {
+      return console.log('Failed');
+    }
+  })
+});
 
 // routes
 require("./routes/auth.routes")(app);
