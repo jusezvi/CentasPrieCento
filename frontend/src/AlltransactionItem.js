@@ -26,7 +26,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
 
     function DeleteClick() {
         fetch('http://localhost:8000/budget/' + transactionBudget.id, {
-            method: 'DELETE',
+            method: 'POST',
 
         })
             .then(res => res.json()
@@ -38,36 +38,36 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     function handleEdit() {
-        // setDisplay('block');
-        // setNewSum(transactionBudget.sum);
-        // setNewName(transactionBudget.name);
-        // setNewCategory(transactionBudget.category);
-        // setNewDate(transactionBudget.date);
+        setDisplay('block');
+        setNewSum(transactionBudget.sum);
+        setNewName(transactionBudget.name);
+        setNewCategory(transactionBudget.category);
+        setNewDate(transactionBudget.date);
     }
 
     function editItem(e) {
         e.preventDefault();
-        // if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
-        //     if (Date.parse(newDate) <= Date.parse(new Date())) {
-        //         let correctSum = financial(newSum);
-        //         let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
+        if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
+            if (Date.parse(newDate) <= Date.parse(new Date())) {
+                let correctSum = financial(newSum);
+                let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
-        //         fetch('http://localhost:8000/budget/' + transactionBudget.id, {
-        //             method: 'PUT',
-        //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify(edit)
-        //         })
-        //             .then(res => res.json());
+                fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(edit)
+                })
+                    .then(res => res.json());
 
-        //         setDisplay('none');
-        //         setNewSum('');
-        //         setNewName('');
-        //         setNewCategory('');
-        //         window.location.reload();
-        //     } else { setDateError(true) }
-        // } else {
-        //     setError(true);
-        // }
+                setDisplay('none');
+                setNewSum('');
+                setNewName('');
+                setNewCategory('');
+                window.location.reload();
+            } else { setDateError(true) }
+        } else {
+            setError(true);
+        }
     }
 
     function reset(e) {
@@ -78,19 +78,19 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     const submitDelete = () => {
-        // confirmAlert({
+        confirmAlert({
 
-        //   message: "Ar tikrai norite ištrinti ?",
-        //   buttons: [
-        //     {
-        //       label: "Taip",
-        //       onClick: DeleteClick,
-        //     },
-        //     {
-        //       label: "Ne",
-        //     },
-        //   ],
-        // });
+            message: "Ar tikrai norite ištrinti ?",
+            buttons: [
+                {
+                    label: "Taip",
+                    onClick: DeleteClick,
+                },
+                {
+                    label: "Ne",
+                },
+            ],
+        });
     };
 
     return (
@@ -110,7 +110,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                     </select></>
                         : null}<br></br>
                     {/* <label>Pasirinkite datą:</label>  */}
-                    <input className='alltransactions-select-input' type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
+                    <input className='alltransactions-select-input' type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} /><br></br>
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
                     {/* <input type="submit" value="Išsaugoti" /> */}
                     <button type="submit">Išsaugoti</button>
@@ -125,7 +125,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.category}</td>
-                <td>{transactionBudget.date}</td>
+                <td>{transactionBudget.date.slice(0, 10)}</td>
                 {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
                 {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}

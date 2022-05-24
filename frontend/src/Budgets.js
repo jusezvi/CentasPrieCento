@@ -19,12 +19,12 @@ function Budgets({ user }) {
 
     useEffect(() => {
         // console.log('aaa ' + transactions)
-        fetch("http://localhost:8000/category")
+        fetch("http://localhost:8080/getCategory/")
             .then((res) => {
                 return res.json();
             })
             .then((data) => {
-                setCategories(data);
+                setCategories(data.data);
             });
 
         fetch("http://localhost:8000/usercategory")
@@ -40,7 +40,7 @@ function Budgets({ user }) {
                 return res.json();
             })
             .then((data) => {
-                setAllData(data);
+                setAllData(data.data);
             });
 
 
@@ -87,7 +87,7 @@ function Budgets({ user }) {
             let categorySum = 0;
             data.forEach((d) => {
                 if (
-                    d.category === category &&
+                    d.category === category.name &&
                     new Date(d.date).getMonth() === currentMonth
                 ) {
                     categorySum += Number(d.sum);
@@ -147,9 +147,9 @@ function Budgets({ user }) {
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}
                                     >
-                                        {categories.map((option, index) => (
-                                            <option key={index} value={option}>
-                                                {option}
+                                        {categories.map((option) => (
+                                            <option key={option._id} value={option.name}>
+                                                {option.name}
                                             </option>
                                         ))}
                                     </select>

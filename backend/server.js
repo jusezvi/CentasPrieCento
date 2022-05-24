@@ -82,8 +82,22 @@ app.get("/getBudget/:userID", async (req, res) => {
     }
   })
 
-  // Budget.remove
 
+})
+
+app.delete("/delBudget/:itemID", async (req, res) => {
+
+  var itemID = req.params.itemID;
+
+  Budget.remove({ _id: itemID }, {
+
+    justOne: true
+
+  }).then(x => {
+
+    console.log('Istrinta')
+
+  })
 
 })
 
