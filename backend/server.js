@@ -27,7 +27,8 @@ app.use(
 );
 
 const db = require("./models");
-const { user } = require("./models");
+const { user, userCategory } = require("./models");
+const UserCategory = require("./models/userCategory.model");
 //const Budget = require("./models/budget.model");
 const Role = db.role;
 const Category = db.category;
@@ -86,29 +87,18 @@ app.get("/getBudget/:userID", async (req, res) => {
 })
 
 app.delete("/delBudget/:itemID", async (req, res) => {
-
   var itemID = req.params.itemID;
 
   Budget.remove({ _id: itemID }, {
-
     justOne: true
-
   }).then(x => {
-
     console.log('Istrinta')
-
   })
 
 })
 
 app.get("/getBudget/:userID", async (req, res) => {
   var userID = req.params.userID;
-  // if (userID == null) {
-  //   return console.log('Opss userID not found');
-  // }
-  // ------------------------------------------------------
-  // GET ALL
-  // ------------------------------------------------------
   Budget.find({ user: userID }, (err, dataRes) => {
     if (!err) {
       res.send({ data: dataRes });
@@ -116,10 +106,6 @@ app.get("/getBudget/:userID", async (req, res) => {
       return console.log('Failed');
     }
   })
-
-  // Budget.remove
-
-
 })
 
 app.get("/getCategory/", async (req, res) => {
@@ -132,6 +118,13 @@ app.get("/getCategory/", async (req, res) => {
     }
   })
 });
+
+app.post("/insertUserCategory/:info", (req, res) => {
+  console.log(JSON.parse(req.params.info))
+  var data = JSON.parse(req.params.info);
+  var userCategory = new UserCategory(data);
+  var result = userCategory.save();
+})
 
 // routes
 require("./routes/auth.routes")(app);
@@ -168,69 +161,7 @@ function initial() {
     }
   });
 
-  Category.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Category({
-        name: "Namai"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
 
-        console.log("added 'namai' to Category collection");
-      });
-
-      new Category({
-        name: "Maistas"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Maistas' to Category collection");
-      });
-
-      new Category({
-        name: "Automobilis"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Automobilis' to Category collection");
-      });
-
-      new Category({
-        name: "Pramogos"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Pramogos' to Category collection");
-      });
-
-      new Category({
-        name: "Nenumatytos išlaidos"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Nenumatytos išlaidos' to Category collection");
-      });
-
-      new Category({
-        name: "Kita"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Kita' to Category collection");
-      });
-    }
-  });
 
   Type.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
