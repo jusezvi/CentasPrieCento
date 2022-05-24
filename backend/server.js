@@ -68,34 +68,51 @@ app.post("/insertBudget/:budgetInfo", (req, res) => {
 // ------------------------------------------------------
 app.get("/getBudget/:userID", async (req, res) => {
   var userID = req.params.userID;
+  // if (userID == null) {
+  //   return console.log('Opss userID not found');
+  // }
   // ------------------------------------------------------
   // GET ALL
   // ------------------------------------------------------
-  Budget.find({user:userID}, (err, dataRes) => {
-    if(!err) {
-      res.send({ data: dataRes});
+  Budget.find({ user: userID }, (err, dataRes) => {
+    if (!err) {
+      res.send({ data: dataRes });
     } else {
       return console.log('Failed');
     }
   })
 
+  // Budget.remove
+
+
+})
+
+app.get("/getBudget/:userID", async (req, res) => {
+  var userID = req.params.userID;
+  // if (userID == null) {
+  //   return console.log('Opss userID not found');
+  // }
   // ------------------------------------------------------
-  //GET BY NAME
+  // GET ALL
   // ------------------------------------------------------
-  // Category.find({name:"testas"}, (err, dataRes) => {
-  //   if(!err) {
-  //     res.send({ data: dataRes});
-  //   } else {
-  //     return console.log('Failed');
-  //   }
-  // })
+  Budget.find({ user: userID }, (err, dataRes) => {
+    if (!err) {
+      res.send({ data: dataRes });
+    } else {
+      return console.log('Failed');
+    }
+  })
+
+  // Budget.remove
+
+
 })
 
 app.get("/getCategory/", async (req, res) => {
 
   Category.find((err, dataRes) => {
-    if(!err) {
-      res.send({ data: dataRes});
+    if (!err) {
+      res.send({ data: dataRes });
     } else {
       return console.log('Failed');
     }
@@ -200,7 +217,7 @@ function initial() {
       });
     }
   });
-  
+
   Type.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
       new Type({

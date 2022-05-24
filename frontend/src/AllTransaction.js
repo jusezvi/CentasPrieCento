@@ -135,11 +135,11 @@ function AllTransaction() {
           <div className='item-inline' >
             <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
             {type === 'expense' ? <select value={category} onChange={e => setCategory(e.target.value)}>
-                <option value="all">Visos</option>
-                {categories.map((option) => (
-                  <option value={option.name} key={option._id}>{option.name}</option>
-                ))}
-              </select>
+              <option value="all">Visos</option>
+              {categories.map((option) => (
+                <option value={option.name} key={option._id}>{option.name}</option>
+              ))}
+            </select>
               : null}
           </div>
 
@@ -165,10 +165,10 @@ function AllTransaction() {
             </tr>
           </thead>
           <tbody>
-          
-          {/* {console.log(categories)} */}
+
+            {/* {console.log(categories)} */}
             {allData.map((transactionBudget, index) => (
-             
+
               <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}
                 isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
             ))}

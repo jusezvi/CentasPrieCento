@@ -38,36 +38,36 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     function handleEdit() {
-        setDisplay('block');
-        setNewSum(transactionBudget.sum);
-        setNewName(transactionBudget.name);
-        setNewCategory(transactionBudget.category);
-        setNewDate(transactionBudget.date);
+        // setDisplay('block');
+        // setNewSum(transactionBudget.sum);
+        // setNewName(transactionBudget.name);
+        // setNewCategory(transactionBudget.category);
+        // setNewDate(transactionBudget.date);
     }
 
     function editItem(e) {
         e.preventDefault();
-        if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
-            if (Date.parse(newDate) <= Date.parse(new Date())) {
-                let correctSum = financial(newSum);
-                let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
+        // if (!isNaN(Number(newSum)) && newName.length < 10 && newSum > 0) {
+        //     if (Date.parse(newDate) <= Date.parse(new Date())) {
+        //         let correctSum = financial(newSum);
+        //         let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
-                fetch('http://localhost:8000/budget/' + transactionBudget.id, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(edit)
-                })
-                    .then(res => res.json());
+        //         fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+        //             method: 'PUT',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify(edit)
+        //         })
+        //             .then(res => res.json());
 
-                setDisplay('none');
-                setNewSum('');
-                setNewName('');
-                setNewCategory('');
-                window.location.reload();
-            } else { setDateError(true) }
-        } else {
-            setError(true);
-        }
+        //         setDisplay('none');
+        //         setNewSum('');
+        //         setNewName('');
+        //         setNewCategory('');
+        //         window.location.reload();
+        //     } else { setDateError(true) }
+        // } else {
+        //     setError(true);
+        // }
     }
 
     function reset(e) {
@@ -78,20 +78,20 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     const submitDelete = () => {
-        confirmAlert({
-          
-          message: "Ar tikrai norite ištrinti ?",
-          buttons: [
-            {
-              label: "Taip",
-              onClick: DeleteClick,
-            },
-            {
-              label: "Ne",
-            },
-          ],
-        });
-      };
+        // confirmAlert({
+
+        //   message: "Ar tikrai norite ištrinti ?",
+        //   buttons: [
+        //     {
+        //       label: "Taip",
+        //       onClick: DeleteClick,
+        //     },
+        //     {
+        //       label: "Ne",
+        //     },
+        //   ],
+        // });
+    };
 
     return (
         <>

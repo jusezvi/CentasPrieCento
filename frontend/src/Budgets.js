@@ -5,6 +5,7 @@ import { BiCar } from "react-icons/bi";
 import { BiFoodMenu } from "react-icons/bi";
 import { exVar } from "./ExtendVariables";
 import UserCategory from "./UserCategory";
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 function Budgets({ user }) {
     const [category, setCategory] = useState("Maistas");
@@ -34,7 +35,7 @@ function Budgets({ user }) {
                 setUserCategories(data);
             });
 
-        fetch("http://localhost:8000/budget")
+        fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
             .then((res) => {
                 return res.json();
             })
