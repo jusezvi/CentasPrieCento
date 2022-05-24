@@ -19,7 +19,7 @@ function EarningItem({ earning }) {
   }
 
   function handleDelete() {
-    fetch('http://localhost:8000/budget/' + earning.id, {
+    fetch('http://localhost:8000/delBudget/' + earning._id, {
       method: 'DELETE',
     })
       .then(res => res.json());
