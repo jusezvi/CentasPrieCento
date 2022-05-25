@@ -90,9 +90,10 @@ app.delete("/delBudget/:itemID", async (req, res) => {
 
 app.put("/updateBudget/:itemID", async (req, res) => {
   var itemID = req.params.itemID;
-
-  Budget.patch({ _id: itemID }, {
-    justOne: true
+  Budget.updateOne({ _id: itemID }, {
+    sum: req.body.sum,
+    name: req.body.name,
+    date: req.body.date
   }).then(x => {
     console.log('edit')
   })
