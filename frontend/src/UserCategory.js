@@ -29,7 +29,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
       let correctLimit = financial(newLimit);
       const editUserCategory = { limit: correctLimit };
 
-      fetch('http://localhost:8080/updateBudget/' + id, {
+      fetch('http://localhost:8080/updateUserCategory/' + id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editUserCategory)
@@ -46,7 +46,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
   }
 
   function handleDelete() {
-    fetch('http://localhost:8080/delBudget/' + id, {
+    fetch('http://localhost:8080/delUserCategory/' + id, {
       method: 'DELETE',
     })
       .then(res => res.json());

@@ -98,7 +98,24 @@ app.put("/updateBudget/:itemID", async (req, res) => {
   }).then(x => {
     console.log('edit')
   })
+})
 
+app.delete("/delUserCategory/:userCategoryID", async (req, res) => {
+  var userCategoryID = req.params.userCategoryID;
+  UserCategory.remove({ _id: userCategoryID }, {
+    justOne: true
+  }).then(x => {
+    console.log('Istrinta')
+  })
+})
+
+app.put("/updateUserCategory/:userCategoryID", async (req, res) => {
+  var userCategoryID = req.params.userCategoryID;
+  UserCategory.updateOne({ _id: userCategoryID }, {
+    limit: req.body.limit,
+  }).then(x => {
+    console.log('edit')
+  })
 })
 
 
