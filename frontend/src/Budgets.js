@@ -100,17 +100,30 @@ function Budgets({ user }) {
         setCurrentMonthCategorySum(allCategoriesSum);
     }
 
+    function findCatSum(c) {
+        let rez = 0;
+        categories.map((cat, i) => {
+            if (c === cat.name) {
+                rez = currentMonthCategorySum[i]
+            }
+        })
+        return rez
+    }
+
 
     return (
         <div className="budgets">
+
             <h2>Piniginė</h2>
             <div className="budgets__main">
                 {userCategories.map((cat, index) => (
+
                     <UserCategory
                         key={index}
                         limit={cat.limit}
                         category={cat.category}
                         user={cat.user}
+                        catSum={findCatSum(cat.category)}
                     />
                 ))}
             </div>

@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .budget__icon {
@@ -31,4 +32,26 @@
   padding: 10px;
   border-radius: 8px 0 0 8px;
   align-self: flex-end;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action__items {
+  display: flex;
+}
+
+.budget__icon-delete {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  padding-right: 5px;
+}
+
+.budget__icon-edit {
+  color: green;
+  font-size: 20px;
+  cursor: pointer;
 }
