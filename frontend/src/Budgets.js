@@ -54,29 +54,38 @@ function Budgets({ user }) {
         return Number.parseFloat(x).toFixed(2);
     }
 
+    function checkCat(c) {
+        if (c === category) {
+            alert('Tokia kategorija jau sukurta, pasirinkite kitą!!');
+            return false
+        }
+    }
+
     function submitCategory(e) {
         e.preventDefault();
-        if (!isNaN(Number(limit)) && limit > 0) {
-            let correctLimit = financial(limit);
-            const newCategoryLimit = {
-                user,
-                limit: correctLimit,
-                category: category,
-            };
-            console.log(newCategoryLimit)
-            fetch('http://localhost:8080/insertUserCategory/' + JSON.stringify(newCategoryLimit), {
-                method: 'POST',
-                mode: 'cors',
-                headers: { "Content-Type": "application/json" }
-            }).then(() => {
-                exVar.IS_NEW_EARNING = true;
-            });
-            setLimit("");
-            setCategory("");
-            setError(false);
-            window.location.reload();
-        } else {
-            setError(true);
+        if (checkCat(category)) {
+            if (!isNaN(Number(limit)) && limit > 0) {
+                let correctLimit = financial(limit);
+                const newCategoryLimit = {
+                    user,
+                    limit: correctLimit,
+                    category: category,
+                };
+                console.log(newCategoryLimit)
+                fetch('http://localhost:8080/insertUserCategory/' + JSON.stringify(newCategoryLimit), {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { "Content-Type": "application/json" }
+                }).then(() => {
+                    exVar.IS_NEW_EARNING = true;
+                });
+                setLimit("");
+                setCategory("");
+                setError(false);
+                window.location.reload();
+            } else {
+                setError(true);
+            }
         }
     }
 
@@ -157,7 +166,7 @@ function Budgets({ user }) {
                                     )}
                                     <label>Pridėti kategoriją:</label>
                                     <select
-                                    className="transactions-select-input"
+                                        className="transactions-select-input"
                                         required
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}

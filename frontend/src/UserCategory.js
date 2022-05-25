@@ -6,11 +6,25 @@ import { useState } from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { FcMoneyTransfer } from 'react-icons/fc';
+import { Link } from "react-router-dom";
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 function UserCategory({ limit, category, catSum, user, id }) {
 
-  const [newLimit, setNewLimit] = useState('');
+  const [newLimit, setNewLimit] = useState(limit);
   const [error, setError] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function financial(x) {
     return Number.parseFloat(x).toFixed(2);
@@ -22,9 +36,22 @@ function UserCategory({ limit, category, catSum, user, id }) {
     setError(false)
   }
 
+  function openModal() {
+    setIsOpen(true);
+  }
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = '#f00';
+  }
+  function closeModal(e) {
+    setIsOpen(false);
+    e.preventDefault();
+    setNewLimit('');
+    setError(false)
+  }
+
   function editCategory(e) {
     e.preventDefault();
-
     if (!isNaN(Number(newLimit)) && newLimit > 0) {
       let correctLimit = financial(newLimit);
       const editUserCategory = { limit: correctLimit };
@@ -46,6 +73,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
   }
 
   function handleDelete() {
+    console.log(id)
     fetch('http://localhost:8080/delUserCategory/' + id, {
       method: 'DELETE',
     })
@@ -61,7 +89,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
             <div className='budget__icon'><FcMoneyTransfer /></div>
             <div className='action__items'>
               <p className='budget__icon-delete' onClick={handleDelete}><AiOutlineDelete /></p>
-              <p className='budget__icon-edit' data-bs-toggle="modal" data-bs-target="#edit"><AiOutlineEdit /></p>
+              <p className='budget__icon-edit' onClick={openModal}><AiOutlineEdit /></p>
             </div>
           </div>
           <p className='budget__name'>{category}</p>
@@ -69,7 +97,41 @@ function UserCategory({ limit, category, catSum, user, id }) {
         <p className='budget__limit'>Limitas: {limit}</p>
         <p>Kategorijos suma: {catSum}</p>
       </div>
-      <div
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h5>Išlaidų kategorijos limito redagavimas</h5>
+        <form onSubmit={editCategory}>
+          {error && (
+            <p className="error">
+              Įvestas gali būti tik skaičius ir didesnis už 0 (pvz.
+              50.50)
+            </p>
+          )}
+          <label>Koreguoti išlaidų kategorijos limitą</label>
+          <input
+            type="text"
+            value={newLimit}
+            onChange={(e) => setNewLimit(e.target.value)}
+          />
+          <div className="modal-footer">
+            <input type="submit" className="btn " value="Išsaugoti" />
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onClick={closeModal}
+            >
+              Uždaryti
+            </button>
+          </div>
+        </form>
+      </Modal>
+      {/* <div
         className="modal fade"
         id="edit"
         tabIndex="-1"
@@ -112,7 +174,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 
