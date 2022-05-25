@@ -15,6 +15,7 @@ function Budgets({ user }) {
     const [userCategories, setUserCategories] = useState([]);
     const [currentMonthCategorySum, setCurrentMonthCategorySum] = useState([]);
     const [allData, setAllData] = useState(null);
+    const [catErr, setCatErr] = useState(false)
     let currentMonth = new Date().getMonth();
 
     useEffect(() => {
@@ -54,16 +55,27 @@ function Budgets({ user }) {
         return Number.parseFloat(x).toFixed(2);
     }
 
-    function checkCat(c) {
-        if (c === category) {
-            alert('Tokia kategorija jau sukurta, pasirinkite kitą!!');
-            return false
-        }
+    function checkCat(categories) {
+        let res = false;
+        categories.map((cat) => {
+            if (cat.category === category) {
+                
+                res=false
+                
+            } else {
+                console.log('jj')
+                res=true
+            }
+        })
+        return res;
+        console.log(categories);
+        console.log(category)
+        
     }
 
     function submitCategory(e) {
         e.preventDefault();
-        if (checkCat(category)) {
+        if (checkCat(userCategories)) {
             if (!isNaN(Number(limit)) && limit > 0) {
                 let correctLimit = financial(limit);
                 const newCategoryLimit = {
@@ -86,7 +98,10 @@ function Budgets({ user }) {
             } else {
                 setError(true);
             }
+        } else {
+            setCatErr(true);
         }
+        
     }
 
     function sumByCategory(data) {
@@ -158,6 +173,11 @@ function Budgets({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitCategory}>
+                                {catErr && (
+                                        <p className="error">
+                                            Įjau yra
+                                        </p>
+                                    )}
                                     {error && (
                                         <p className="error">
                                             Įvestas gali būti tik skaičius ir didesnis už 0 (pvz.
