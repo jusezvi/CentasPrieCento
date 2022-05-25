@@ -16,12 +16,18 @@ function UserCategory({ limit, category, catSum, user, id }) {
     return Number.parseFloat(x).toFixed(2);
   }
 
+  function reset(e) {
+    e.preventDefault();
+    setNewLimit('');
+    setError(false)
+  }
+
   function editCategory(e) {
     e.preventDefault();
 
     if (!isNaN(Number(newLimit)) && newLimit > 0) {
       let correctLimit = financial(newLimit);
-      const editUserCategory = { limit: correctLimit, category: category, user: user };
+      const editUserCategory = { limit: correctLimit };
 
       fetch('http://localhost:8080/updateBudget/' + id, {
         method: 'PUT',
@@ -39,6 +45,14 @@ function UserCategory({ limit, category, catSum, user, id }) {
 
   }
 
+  function handleDelete() {
+    fetch('http://localhost:8080/delBudget/' + id, {
+      method: 'DELETE',
+    })
+      .then(res => res.json());
+    window.location.reload();
+  }
+
   return (
     <>
       <div className='budget'>
@@ -46,7 +60,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
           <div className='icons'>
             <div className='budget__icon'><FcMoneyTransfer /></div>
             <div className='action__items'>
-              <p className='budget__icon-delete'><AiOutlineDelete /></p>
+              <p className='budget__icon-delete' onClick={handleDelete}><AiOutlineDelete /></p>
               <p className='budget__icon-edit' data-bs-toggle="modal" data-bs-target="#edit"><AiOutlineEdit /></p>
             </div>
           </div>
@@ -89,6 +103,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
                     type="button"
                     className="btn btn-secondary"
                     data-bs-dismiss="modal"
+                    onClick={reset}
                   >
                     Uždaryti
                   </button>
