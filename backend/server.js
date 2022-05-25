@@ -93,7 +93,8 @@ app.put("/updateBudget/:itemID", async (req, res) => {
   Budget.updateOne({ _id: itemID }, {
     sum: req.body.sum,
     name: req.body.name,
-    date: req.body.date
+    date: req.body.date,
+    category: req.body.category
   }).then(x => {
     console.log('edit')
   })

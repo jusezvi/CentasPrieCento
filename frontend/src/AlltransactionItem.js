@@ -52,7 +52,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 let correctSum = financial(newSum);
                 let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
-                fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+                fetch('http://localhost:8080/updateBudget/' + transactionBudget._id, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(edit)
