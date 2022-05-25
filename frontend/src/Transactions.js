@@ -121,8 +121,8 @@ function Transactions({ user }) {
                 ))}
             </div>
             <div className='buttons'>
-                <button data-bs-toggle="modal" data-bs-target="#expense">Įvesti išlaidas</button>
-                <button data-bs-toggle="modal" data-bs-target="#earning">Įvesti pajamas</button>
+                <button className='btn btn-secondary' data-bs-toggle="modal" data-bs-target="#expense">Įvesti išlaidas</button>
+                <button className='btn btn-secondary' data-bs-toggle="modal" data-bs-target="#earning">Įvesti pajamas</button>
             </div>
             <div className='expense__modal'>
                 <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -147,7 +147,7 @@ function Transactions({ user }) {
                                     <input className='transactions-select-input' type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
-                                        <input type="submit" className="btn " value="Išsaugoti" />
+                                        <input type="submit " className="btn btn-secondary " value="Išsaugoti" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                                     </div>
                                 </form>
