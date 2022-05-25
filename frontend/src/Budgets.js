@@ -124,6 +124,7 @@ function Budgets({ user }) {
                         category={cat.category}
                         user={cat.user}
                         catSum={findCatSum(cat.category)}
+                        id={cat._id}
                     />
                 ))}
             </div>
