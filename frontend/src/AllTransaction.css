@@ -70,14 +70,14 @@ tr:not(:first-child):hover {
 
 
 
-.block {
-  display: inline-block;
+/* .block2 {
+  display: flex;
+ 
   margin: 10px;
+  
 
-}
-.block .item-inline{
-  display: inline-flex;
-}
+} */
+
 
 @media only screen and (max-width: 867px) {
   .tablte-container {
@@ -85,6 +85,10 @@ tr:not(:first-child):hover {
     width: 100%;
 
 
+  }
+  .block .item-inline{
+    display: flex;
+    /* margin: 10px; */
   }
 
   .block {
@@ -158,4 +162,18 @@ tr:not(:first-child):hover {
   .button-transaction-delete {
     display: none;
   }
+}
+
+@media only screen and (min-width: 867px){
+.block {
+    max-width: 250px;
+    display: inline-flex;
+    justify-content: space-between;
+}
+ .select-category{
+  position: relative;
+  top:3px;
+  left: 15px
+
+ }
 }

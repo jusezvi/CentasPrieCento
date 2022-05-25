@@ -113,7 +113,7 @@ function Budgets({ user }) {
                     />
                 ))}
             </div>
-            <button data-bs-toggle="modal" data-bs-target="#categories">
+            <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#categories">
                 Pridėti naują išlaidų kategoriją
             </button>
 
@@ -142,6 +142,7 @@ function Budgets({ user }) {
                                     )}
                                     <label>Pridėti kategoriją:</label>
                                     <select
+                                    className="transactions-select-input"
                                         required
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}
@@ -153,13 +154,13 @@ function Budgets({ user }) {
                                         ))}
                                     </select>
                                     <label>Nustatyti išlaidų kategorijos limitą</label>
-                                    <input
+                                    <input className="transactions-select-input"
                                         type="text"
                                         value={limit}
                                         onChange={(e) => setLimit(e.target.value)}
                                     />
                                     <div className="modal-footer">
-                                        <input type="submit" className="btn " value="Išsaugoti" />
+                                        <input type="submit" className="btn btn-secondary   " value="Išsaugoti" />
                                         <button
                                             type="button"
                                             className="btn btn-secondary"

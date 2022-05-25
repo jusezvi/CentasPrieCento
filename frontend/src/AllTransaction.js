@@ -6,6 +6,7 @@ import './AllTransaction.css';
 import { useNavigate } from 'react-router-dom';
 import AllTransactionItem from './AlltransactionItem';
 import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
+import { CSVLink } from 'react-csv'
 
 
 function AllTransaction() {
@@ -100,55 +101,59 @@ function AllTransaction() {
     setEarningSum(inSum);
     setExpenseSum(outSum);
   }
+ 
 
   return (
     <>
       <Header />
       <form>
-
-        <div className='block'>
-          <div className='div-label item-inline' >
-            <label className='alltransaction-label'>Tipas:</label>
-          </div>
-          <div className='item-inline' >
-            <select className="alltransactions-select-input" value={type} onChange={e => setType(e.target.value)}>
-              <option value="all">Viso</option>
-              <option value="earning">Pajamos</option>
-              <option value="expense">Išlaidos</option>
-            </select>
-          </div>
-        </div>
-
-        <div className='block'>
-          <div className='div-label item-inline'>
-            <label className='alltransaction-label'>Nuo:</label>
-          </div>
-          <div className='item-inline'>
-            <input className="alltransactions-select-input" type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
-          </div>
-        </div>
-
-        <div className='block'>
-          <div className='div-label item-inline'>
-            <label className='alltransaction-label'>Iki:</label>
-          </div>
-          <div className='item-inline' >
-            <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
-            {type === 'expense' ? <select value={category} onChange={e => setCategory(e.target.value)}>
-                <option value="all">Visos</option>
-                {categories.map((option) => (
-                  <option value={option.name} key={option._id}>{option.name}</option>
-                ))}
+        <div className='block2'>
+          <div className='block'>
+            <div className='div-label item-inline' >
+              <label className='alltransaction-label'>Tipas:</label>
+            </div>
+            <div className='item-inline' >
+              <select className="alltransactions-select-input" value={type} onChange={e => setType(e.target.value)}>
+                <option value="all">Viso</option>
+                <option value="earning">Pajamos</option>
+                <option value="expense">Išlaidos</option>
               </select>
+            </div>
+          </div>
+
+          <div className='block'>
+            <div className='div-label item-inline'>
+              <label className='alltransaction-label'>Nuo:</label>
+            </div>
+            <div className='item-inline'>
+              <input className="alltransactions-select-input" type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
+            </div>
+          </div>
+
+          <div className='block'>
+
+            <div className='div-label item-inline'>
+              <label className='alltransaction-label'>Iki:</label>
+            </div>
+            <div className=' item-inline'>
+              <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
+            </div>
+          </div>
+          <div className='block' style={{ "justify-content": "right" }}>
+            {type === 'expense' ? <select className="alltransactions-select-input  select-category" value={category} onChange={e => setCategory(e.target.value)}>
+              <option value="all">Visos</option>
+              {categories.map((option) => (
+                <option value={option.name} key={option._id}>{option.name}</option>
+              ))}
+            </select>
               : null}
           </div>
 
-
-
         </div>
 
-        <button onClick={handleTypeChange}>Filtruoti</button>
-        <button onClick={deleteChanges}>Atstatyti filtrus</button>
+
+        <button className='buttons2 btn-secondary' onClick={handleTypeChange}>Filtruoti</button>
+        <button className='buttons2 btn-secondary' onClick={deleteChanges}>Atstatyti filtrus</button>
       </form>
       <div className='tablte-container'>
         <table className='tr '>
@@ -165,10 +170,10 @@ function AllTransaction() {
             </tr>
           </thead>
           <tbody>
-          
-          {/* {console.log(categories)} */}
+
+            {/* {console.log(categories)} */}
             {allData.map((transactionBudget, index) => (
-             
+
               <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}
                 isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
             ))}
@@ -176,6 +181,13 @@ function AllTransaction() {
         </table>
         <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>
         <p>išlaidos: {financial(expenseSum)} &euro;, pajamos: {financial(earningSum)} &euro;</p>
+        <br></br>
+
+
+        <CSVLink data={allData}>
+          <button className='buttons2 btn-secondary '>Detali išklotinė</button>
+        </CSVLink>
+
       </div>
     </>
   );

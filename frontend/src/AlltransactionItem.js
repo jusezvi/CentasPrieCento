@@ -6,9 +6,10 @@ import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
-
 import { confirmAlert } from "react-confirm-alert";
 import "../node_modules/react-confirm-alert/src/react-confirm-alert.css";
+
+
 
 function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated, categories }) {
 
@@ -32,7 +33,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
             .then(res => res.json()
             )
             .then(() => {
-                setIsUpdated(!isUpdated)
+                // setIsUpdated(!isUpdated)
+               
             });
         // window.location.reload()
     }
@@ -89,8 +91,12 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
             {
               label: "Ne",
             },
+            
           ],
+          
         });
+      
+        
       };
 
     return (
@@ -136,26 +142,10 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 </td>
             </tr>
 
-            {/* <div className="modal fade" id="MyModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <p className='success-Delete' >Ar tikrai norite ištrinti ?</p>
-                        </div>
-                        <div className="modal-footer-transaction">
-                            <button type="button" onClick={DeleteClick} className="btn btn-primary buttons2">Ištrinti</button>
-                            <button type="button" className="btn btn-secondary buttons2" data-bs-dismiss="modal">Uždaryti</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div> */}
+          
         </>
     );
+    window.location.reload();
 
 }
 

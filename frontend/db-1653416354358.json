@@ -1,0 +1,23 @@
+{
+  "budget": [],
+  "category": [
+    "Maistas",
+    "Automobilis",
+    "Atostogos",
+    "Namai",
+    "Nenumatytos išlaidos",
+    "Kita"
+  ],
+  "usercategory": [
+    {
+      "user": "Vardenis",
+      "category": "Namai",
+      "limit": "1000"
+    },
+    {
+      "user": "Vardenis",
+      "category": "Automobilis",
+      "limit": "200"
+    }
+  ]
+}
