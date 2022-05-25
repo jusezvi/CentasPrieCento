@@ -17,6 +17,7 @@ input::placeholder {
 }
 .transactions-select-input{
   width: 200px;
+  height: 30px;
 }
 
 

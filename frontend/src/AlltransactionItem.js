@@ -1,11 +1,13 @@
 import './AllTransaction.css';
 import './AllTransactionItem.css';
-import { GrTransaction } from 'react-icons/gr';
+// import { GrTransaction } from 'react-icons/gr';
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { confirmAlert } from "react-confirm-alert";
+import "../node_modules/react-confirm-alert/src/react-confirm-alert.css";
 
 
 
@@ -24,16 +26,14 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     function DeleteClick() {
-        fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+        fetch('http://localhost:8080/delBudget/' + transactionBudget._id, {
             method: 'DELETE',
 
         })
             .then(res => res.json()
-            )
-            .then(() => {
-                setIsUpdated(!isUpdated)
-            });
-        window.location.reload()
+            );
+            setIsUpdated(!isUpdated)
+        
     }
 
     function handleEdit() {
@@ -51,7 +51,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 let correctSum = financial(newSum);
                 let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
-                fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+                fetch('http://localhost:8080/updateBudget/' + transactionBudget._id, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(edit)
@@ -76,23 +76,44 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
         setError(false)
     }
 
+    const submitDelete = () => {
+        confirmAlert({
+          
+          message: "Ar tikrai norite ištrinti ?",
+          buttons: [
+            {
+              label: "Taip",
+              onClick: DeleteClick,
+            },
+            {
+              label: "Ne",
+            },
+            
+          ],
+          
+        });
+      
+        
+      };
+
     return (
         <>
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
                     <label>Redagavimas:</label><br></br>
-                    <input type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
+                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
                     {/* <label>Įveskite naują pavadinimą:</label> <br></br> */}
-                    <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
-                    {transactionBudget.type == 'expense' ? <><select required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
+                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
+                    {transactionBudget.type == 'expense' ? <><select className='alltransactions-select-input' required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         {categories.map((option) => (
-                            <option value={option}>{option}</option>
+                            // console.log(option)
+                            <option key={option._id} value={option.name}>{option.name}</option>
                         ))}
                     </select></>
-                        : null}
+                        : null}<br></br>
                     {/* <label>Pasirinkite datą:</label>  */}
-                    <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
+                    <input className='alltransactions-select-input' type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} /><br></br>
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
                     {/* <input type="submit" value="Išsaugoti" /> */}
                     <button type="submit">Išsaugoti</button>
@@ -107,37 +128,21 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.category}</td>
-                <td>{transactionBudget.date}</td>
+                <td>{transactionBudget.date.slice(0, 10)}</td>
                 {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
                 {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
                 <td className='button-transaction-delete2 none '>
-                    <span data-bs-toggle="modal" data-bs-target="#MyModal">
+                    <span onClick={submitDelete}>
                         <AiOutlineDelete />
                     </span>
                 </td>
             </tr>
 
-            <div className="modal fade" id="MyModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <p className='success-Delete' >Ar tikrai norite ištrinti ?</p>
-                        </div>
-                        <div className="modal-footer-transaction">
-                            <button type="button" onClick={DeleteClick} className="btn btn-primary buttons2">Ištrinti</button>
-                            <button type="button" className="btn btn-secondary buttons2" data-bs-dismiss="modal">Uždaryti</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+          
         </>
     );
+    window.location.reload();
 
 }
 

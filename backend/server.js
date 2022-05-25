@@ -27,6 +27,8 @@ app.use(
 );
 
 const db = require("./models");
+const { user, userCategory } = require("./models");
+const UserCategory = require("./models/userCategory.model");
 //const Budget = require("./models/budget.model");
 const Role = db.role;
 const Category = db.category;
@@ -62,6 +64,89 @@ app.post("/insertBudget/:budgetInfo", (req, res) => {
   var result = budget.save();
 })
 
+app.get("/getBudget/:userID", async (req, res) => {
+  var userID = req.params.userID;
+  Budget.find({ user: userID }, (err, dataRes) => {
+    if (!err) {
+      res.send({ data: dataRes });
+    } else {
+      return console.log('Failed');
+    }
+  })
+
+
+})
+
+app.delete("/delBudget/:itemID", async (req, res) => {
+  var itemID = req.params.itemID;
+
+  Budget.remove({ _id: itemID }, {
+    justOne: true
+  }).then(x => {
+    console.log('Istrinta')
+  })
+
+})
+
+app.put("/updateBudget/:itemID", async (req, res) => {
+  var itemID = req.params.itemID;
+  Budget.updateOne({ _id: itemID }, {
+    sum: req.body.sum,
+    name: req.body.name,
+    date: req.body.date,
+    category: req.body.category
+  }).then(x => {
+    console.log('edit')
+  })
+})
+
+app.delete("/delUserCategory/:userCategoryID", async (req, res) => {
+  var userCategoryID = req.params.userCategoryID;
+  UserCategory.remove({ _id: userCategoryID }, {
+    justOne: true
+  }).then(x => {
+    console.log('Istrinta')
+  })
+})
+
+app.put("/updateUserCategory/:userCategoryID", async (req, res) => {
+  var userCategoryID = req.params.userCategoryID;
+  UserCategory.updateOne({ _id: userCategoryID }, {
+    limit: req.body.limit,
+  }).then(x => {
+    console.log('edit')
+  })
+})
+
+
+
+app.get("/getCategory/", async (req, res) => {
+  Category.find((err, dataRes) => {
+    if (!err) {
+      res.send({ data: dataRes });
+    } else {
+      return console.log('Failed');
+    }
+  })
+});
+
+app.post("/insertUserCategory/:info", (req, res) => {
+  console.log(JSON.parse(req.params.info))
+  var data = JSON.parse(req.params.info);
+  var userCategory = new UserCategory(data);
+  var result = userCategory.save();
+})
+
+app.get("/getUserCategory/:userID", async (req, res) => {
+  var userID = req.params.userID;
+  UserCategory.find({ user: userID }, (err, dataRes) => {
+    if (!err) {
+      res.send({ data: dataRes });
+    } else {
+      return console.log('Failed');
+    }
+  })
+});
 
 // routes
 require("./routes/auth.routes")(app);
@@ -98,70 +183,8 @@ function initial() {
     }
   });
 
-  Category.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Category({
-        name: "Namai"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
 
-        console.log("added 'namai' to Category collection");
-      });
 
-      new Category({
-        name: "Maistas"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Maistas' to Category collection");
-      });
-
-      new Category({
-        name: "Automobilis"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Automobilis' to Category collection");
-      });
-
-      new Category({
-        name: "Pramogos"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Pramogos' to Category collection");
-      });
-
-      new Category({
-        name: "Nenumatytos išlaidos"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Nenumatytos išlaidos' to Category collection");
-      });
-
-      new Category({
-        name: "Kita"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'Kita' to Category collection");
-      });
-    }
-  });
-  
   Type.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
       new Type({

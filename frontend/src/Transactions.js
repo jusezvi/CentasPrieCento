@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Transactions.css';
 import Transaction from './Transaction';
 import { exVar } from './ExtendVariables';
+import { read_cookie } from 'sfcookies';
 
 
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('Automobilis');
     const [error, setError] = useState(false);
     const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);
@@ -19,21 +20,37 @@ function Transactions({ user }) {
 
     useEffect(() => {
 
-        fetch('http://localhost:8000/budget')
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setTransactions(data);
-            });
+        fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'), {
+            method: 'GET',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(response => response.json())
+            .then(data => setTransactions(data.data));
 
-        fetch('http://localhost:8000/category')
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setCategories(data);
-            });
+        // fetch('http://localhost:8000/budget')
+        //     .then(res => {
+        //         return res.json();
+        //     })
+        //     .then(data => {
+        //         setTransactions(data);
+        //     });
+
+        fetch('http://localhost:8080/getCategory/', {
+            method: 'GET',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(response => response.json())
+            .then(data => setCategories(data.data));
+
+        // fetch('http://localhost:8000/category')
+        //     .then(res => {
+        //         return res.json();
+        //     })
+        //     .then(data => {
+        //         setCategories(data);
+        //     });
     }, []);
 
     function financial(x) {
@@ -73,11 +90,12 @@ function Transactions({ user }) {
             if (Date.parse(date) <= Date.parse(new Date())) {
                 let correctSum = financial(sum);
                 const newEarning = { sum: correctSum, name, category: "-", type: "earning", date, user };
+                // const newEarning = {name: 'testas' };
 
-                fetch('http://localhost:8000/budget', {
+                fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newEarning), {
                     method: 'POST',
+                    mode: 'cors',
                     headers: { 'Content-Type': "application/json" },
-                    body: JSON.stringify(newEarning)
                 }).then(() => {
                     exVar.IS_NEW_EARNING = true;
                 });
@@ -96,15 +114,15 @@ function Transactions({ user }) {
             <h4>Visos piniginės operacijos:</h4>
             <div>
                 {transactions.slice(Math.max(transactions.length - 5, 0)).map(transaction => (
-                    <Transaction key={transaction.id} name={transaction.name}
+                    <Transaction key={transaction._id} name={transaction.name}
                         category={transaction.category} price={transaction.sum}
                         type={transaction.type} date={transaction.date} user={transaction.user}
                     />
                 ))}
             </div>
             <div className='buttons'>
-                <button data-bs-toggle="modal" data-bs-target="#expense">Įvesti išlaidas</button>
-                <button data-bs-toggle="modal" data-bs-target="#earning">Įvesti pajamas</button>
+                <button className='btn btn-secondary' data-bs-toggle="modal" data-bs-target="#expense">Įvesti išlaidas</button>
+                <button className='btn btn-secondary' data-bs-toggle="modal" data-bs-target="#earning">Įvesti pajamas</button>
             </div>
             <div className='expense__modal'>
                 <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -120,8 +138,8 @@ function Transactions({ user }) {
                                     <input className='transactions-select-input' type="text" required placeholder='Įveskite išlaidų pavadinimą' value={name} onChange={e => setName(e.target.value)} /> <br></br>
                                     <label>Pasirinkite kategoriją:</label> <br></br>
                                     <select className='transactions-select-input' required value={category} onChange={e => setCategory(e.target.value)}>
-                                        {categories.map((option, index) => (
-                                            <option value={option} key={index}>{option}</option>
+                                        {categories.map((option) => (
+                                            <option value={option.name} key={option._id}>{option.name}</option>
                                         ))}
 
                                     </select><br></br>
@@ -129,7 +147,7 @@ function Transactions({ user }) {
                                     <input className='transactions-select-input' type="date" required value={date} onChange={e => setDate(e.target.value)} />
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
-                                        <input type="submit" className="btn " value="Išsaugoti" />
+                                        <input type="submit" className="btn btn-secondary " value="Išsaugoti" />
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
                                     </div>
                                 </form>
