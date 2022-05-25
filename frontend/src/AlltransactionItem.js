@@ -31,12 +31,9 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
 
         })
             .then(res => res.json()
-            )
-            .then(() => {
-                // setIsUpdated(!isUpdated)
-               
-            });
-        // window.location.reload()
+            );
+            setIsUpdated(!isUpdated)
+        
     }
 
     function handleEdit() {
