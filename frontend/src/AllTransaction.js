@@ -179,6 +179,7 @@ function AllTransaction() {
             ))}
           </tbody>
         </table>
+        {maxDate}
         <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>
         <p>išlaidos: {financial(expenseSum)} &euro;, pajamos: {financial(earningSum)} &euro;</p>
         <br></br>

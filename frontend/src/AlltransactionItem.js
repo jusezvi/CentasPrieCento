@@ -26,7 +26,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
     }
 
     function DeleteClick() {
-        fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+        fetch('http://localhost:8080/delBudget/' + transactionBudget._id, {
             method: 'DELETE',
 
         })
@@ -54,7 +54,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 let correctSum = financial(newSum);
                 let edit = transactionBudget.type == 'expense' ? { sum: correctSum, name: newName, category: newCategory, date: newDate, type: 'expense' } : { sum: correctSum, name: newName, category: '-', date: newDate, type: 'earning' };
 
-                fetch('http://localhost:8000/budget/' + transactionBudget.id, {
+                fetch('http://localhost:8080/updateBudget/' + transactionBudget._id, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(edit)
@@ -116,7 +116,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                     </select></>
                         : null}<br></br>
                     {/* <label>Pasirinkite datą:</label>  */}
-                    <input className='alltransactions-select-input' type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
+                    <input className='alltransactions-select-input' type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} /><br></br>
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
                     {/* <input type="submit" value="Išsaugoti" /> */}
                     <button type="submit">Išsaugoti</button>
@@ -131,7 +131,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.category}</td>
-                <td>{transactionBudget.date}</td>
+                <td>{transactionBudget.date.slice(0, 10)}</td>
                 {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
                 {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}

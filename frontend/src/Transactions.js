@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Transactions.css';
 import Transaction from './Transaction';
 import { exVar } from './ExtendVariables';
+import { read_cookie } from 'sfcookies';
 
 
 function Transactions({ user }) {
 
     const [date, setDate] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('Automobilis');
     const [error, setError] = useState(false);
     const [dateError, setDateError] = useState(false);
     const [transactions, setTransactions] = useState([]);
@@ -19,13 +20,13 @@ function Transactions({ user }) {
 
     useEffect(() => {
 
-        fetch('http://localhost:8080/getBudget/', {
+        fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'), {
             method: 'GET',
             mode: 'cors',
             headers: { 'Content-Type': 'application/json' },
         })
-        .then(response => response.json())
-        .then(data => setTransactions(data.data));
+            .then(response => response.json())
+            .then(data => setTransactions(data.data));
 
         // fetch('http://localhost:8000/budget')
         //     .then(res => {
@@ -40,8 +41,8 @@ function Transactions({ user }) {
             mode: 'cors',
             headers: { 'Content-Type': 'application/json' },
         })
-        .then(response => response.json())
-        .then(data => setCategories(data.data));
+            .then(response => response.json())
+            .then(data => setCategories(data.data));
 
         // fetch('http://localhost:8000/category')
         //     .then(res => {

@@ -19,7 +19,7 @@ function EarningItem({ earning }) {
   }
 
   function handleDelete() {
-    fetch('http://localhost:8000/budget/' + earning.id, {
+    fetch('http://localhost:8080/delBudget/' + earning._id, {
       method: 'DELETE',
     })
       .then(res => res.json());
@@ -41,7 +41,7 @@ function EarningItem({ earning }) {
         let correctSum = financial(newSum);
         const editEarning = { sum: correctSum, name: newName, type: "earning", category: "-", date: newDate, user };
 
-        fetch('http://localhost:8000/budget/' + earning.id, {
+        fetch('http://localhost:8080/updateBudget/' + earning._id, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(editEarning)
@@ -74,7 +74,7 @@ function EarningItem({ earning }) {
         <form onSubmit={editItem}>
           <input type="text" required placeholder='Įveskite naują pajamų sumą' value={newSum} onChange={e => setNewSum(e.target.value)} />
           <input type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
-          <input type="date" required value={newDate} onChange={e => setNewDate(e.target.value)} />
+          <input type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} />
           {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
           <button type="submit">Išsaugoti</button>
           <button onClick={reset}>Atšaukti</button>

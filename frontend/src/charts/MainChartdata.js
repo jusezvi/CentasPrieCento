@@ -3,6 +3,7 @@ import Chart from './Chart';
 import MonthlyChart from './MonthlyChart';
 import './MainChartdata.css';
 import { useForm } from 'react-hook-form';
+import { read_cookie } from 'sfcookies'
 
 
 function MainChartdata() {
@@ -76,12 +77,12 @@ function MainChartdata() {
 
   useEffect(() => {
 
-    fetch('http://localhost:8000/budget')
+    fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
       .then(res => res.json())
       .then(items => {
-        setTransactions(items);
-        calculateSum(items);
-        sumsBymonth(items);
+        setTransactions(items.data);
+        calculateSum(items.data);
+        sumsBymonth(items.data);
       })
   }, []);
 

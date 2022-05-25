@@ -11,7 +11,7 @@ function Wallet({ user }) {
     const [earnings, setEarnings] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8080/getBudget/')
+        fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
             .then(res => res.json())
             .then(costs => {
                 setEarnings(costs.data);
