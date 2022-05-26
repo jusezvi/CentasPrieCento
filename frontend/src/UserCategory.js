@@ -114,7 +114,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
           <div className='icons'>
             <div className='budget__icon'><FcMoneyTransfer /></div>
             <div className='action__items'>
-              <p className='budget__icon-delete' onClick={submitDelete2}><AiOutlineDelete /></p>
+              <p className='budget__icon-delete ' onClick={submitDelete2}><AiOutlineDelete /></p>
               <p className='budget__icon-edit' onClick={openModal}><AiOutlineEdit /></p>
             </div>
           </div>
@@ -130,7 +130,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h5>Išlaidų kategorijos limito redagavimas</h5>
+        <h5>Limito redagavimas</h5>
         <form onSubmit={editCategory}>
           {error && (
             <p className="error">
@@ -138,17 +138,18 @@ function UserCategory({ limit, category, catSum, user, id }) {
               50.50)
             </p>
           )}
-          <label>Koreguoti išlaidų kategorijos limitą</label>
+          <label>Naujas limitas:</label> <br></br>
           <input
+           className='select-input5'
             type="text"
             value={newLimit}
             onChange={(e) => setNewLimit(e.target.value)}
           />
           <div className="modal-footer">
-            <input type="submit" className="btn" value="Išsaugoti" />
+            <input type="submit" className="btn8 " value="Išsaugoti" />
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn8 "
               data-bs-dismiss="modal"
               onClick={closeModal}
             >
