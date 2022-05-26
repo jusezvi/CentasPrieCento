@@ -32,8 +32,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
         })
             .then(res => res.json()
             );
-            setIsUpdated(!isUpdated)
-        
+        setIsUpdated(!isUpdated)
+
     }
 
     function handleEdit() {
@@ -78,46 +78,68 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
 
     const submitDelete = () => {
         confirmAlert({
-          
-          message: "Ar tikrai norite ištrinti ?",
-          buttons: [
-            {
-              label: "Taip",
-              onClick: DeleteClick,
-            },
-            {
-              label: "Ne",
-            },
-            
-          ],
-          
+
+            message: "Ar tikrai norite ištrinti ?",
+            buttons: [
+                {
+                    label: "Taip",
+                    onClick: DeleteClick,
+                },
+                {
+                    label: "Ne",
+                },
+
+            ],
+
         });
-      
-        
-      };
+
+
+    };
 
     return (
         <>
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
-                    <label>Redagavimas:</label><br></br>
-                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
+                    <div className='block2'>
+                        <label>Redagavimas:</label>
+                    </div>
+
+                    <div className='block2'>
+                    <input className='alltransactions-select-input' type="text" required            placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.        target.value)} /> 
+
+                    </div>
+                   
                     {/* <label>Įveskite naują pavadinimą:</label> <br></br> */}
-                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
-                    {transactionBudget.type == 'expense' ? <><select className='alltransactions-select-input' required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
+                    <div className='block2'>
+                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
+
+                    </div>
+                     <div className='block2'>
+                     {transactionBudget.type == 'expense' ? <><select className='alltransactions-select-input' required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         {categories.map((option) => (
                             // console.log(option)
                             <option key={option._id} value={option.name}>{option.name}</option>
                         ))}
                     </select></>
-                        : null}<br></br>
+                        : null}
+
+                     </div>
+                    
                     {/* <label>Pasirinkite datą:</label>  */}
+                    <div className=' block2'>
                     <input className='alltransactions-select-input' type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} /><br></br>
-                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
+                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
+
+                    </div>
+                     
                     {/* <input type="submit" value="Išsaugoti" /> */}
+                    <div className='block2'>
                     <button type="submit">Išsaugoti</button>
                     <button onClick={reset}>Atšaukti</button>
+
+                    </div>
+                    
                 </form>
             </div>
             <tr>
@@ -139,7 +161,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 </td>
             </tr>
 
-          
+
         </>
     );
     window.location.reload();

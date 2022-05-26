@@ -58,7 +58,7 @@ function Budgets({ user }) {
         let res = null;
         userCategories.forEach((cat) => {
             if (c === cat.category) {
-                alert('tokias jau yra');
+                alert('Tokia kategorija jau pasirinkta, prašome pasirinkti kitą');
                 res = true;
             }
         });
