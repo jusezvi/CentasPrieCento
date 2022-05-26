@@ -124,6 +124,12 @@ function Budgets({ user }) {
         return rez
     }
 
+    function reset(e) {
+        e.preventDefault();
+        setLimit('');
+        setError(false)
+    }
+
 
     return (
         <div className="budgets">
@@ -189,11 +195,12 @@ function Budgets({ user }) {
                                         onChange={(e) => setLimit(e.target.value)}
                                     />
                                     <div className="modal-footer">
-                                        <input type="submit" className="btn btn-secondary   " value="Išsaugoti" />
+                                        <input type="submit" className="btn btn-secondary" value="Išsaugoti" />
                                         <button
                                             type="button"
                                             className="btn btn-secondary"
                                             data-bs-dismiss="modal"
+                                            onClick={reset}
                                         >
                                             Uždaryti
                                         </button>

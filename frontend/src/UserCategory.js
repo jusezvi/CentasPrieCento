@@ -47,7 +47,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
     setIsOpen(false);
     e.preventDefault();
     setNewLimit('');
-    setError(false)
+    setError(false);
   }
 
   function editCategory(e) {
