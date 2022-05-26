@@ -43,7 +43,7 @@ form button {
 
 .react-confirm-alert-button-group > button{
     background-color: #3444CE  !important;
-    /* color: #fff; */
+   
     align-self: flex-end !important;
     outline: none !important;
     margin-top: 20px !important;
@@ -87,13 +87,3 @@ form button {
 
 
   
-/* @media only screen and (min-width:1024px){
-    .block2 {
-        display: inline-block;
- 
-        margin: 5px;
-        justify-content: space-between;
-    }
-    
-
-} */

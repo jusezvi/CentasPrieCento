@@ -1,6 +1,6 @@
 import './AllTransaction.css';
 import './AllTransactionItem.css';
-// import { GrTransaction } from 'react-icons/gr';
+
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
@@ -110,7 +110,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
 
                     </div>
                    
-                    {/* <label>Įveskite naują pavadinimą:</label> <br></br> */}
+                   
                     <div className='block2'>
                     <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
 
@@ -118,7 +118,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                      <div className='block2'>
                      {transactionBudget.type == 'expense' ? <><select className='alltransactions-select-input' required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         {categories.map((option) => (
-                            // console.log(option)
+                            
                             <option key={option._id} value={option.name}>{option.name}</option>
                         ))}
                     </select></>
@@ -126,14 +126,14 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
 
                      </div>
                     
-                    {/* <label>Pasirinkite datą:</label>  */}
+                   
                     <div className=' block2'>
                     <input className='alltransactions-select-input' type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} /><br></br>
                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
 
                     </div>
                      
-                    {/* <input type="submit" value="Išsaugoti" /> */}
+                  
                     <div className='block2'>
                     <button className='btn3' type="submit">Išsaugoti</button>
                     <button  onClick={reset}>Atšaukti</button>
@@ -145,15 +145,15 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
             <tr>
                 <td>{index + 1}</td>
                 <td>{transactionBudget.type == 'expense' ? <div className="FaLongArrowAltLeft "><FaLongArrowAltLeft /> </div> : <div className="FaLongArrowAltRight"><FaLongArrowAltRight /></div>}</td>
-                {/* <td className='transaction__icon'><FaLongArrowAltRight /></td> */}
+               
                 <td>{transactionBudget.type == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.category}</td>
                 <td>{transactionBudget.date.slice(0, 10)}</td>
-                {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
+               
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
-                {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
+               
                 <td className='button-transaction-delete2 none '>
                     <span onClick={submitDelete}>
                         <AiOutlineDelete />
