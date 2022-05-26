@@ -1,5 +1,5 @@
 // import './MainChartdata.css';
-import { Line, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
@@ -28,15 +28,11 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Pajamos ir išlaidos per einamąjį mėnesį',
+      text: 'Išlaidų kategorijos',
     },
   },
 };
 
-
-
-// const labels=months.filter((month, index)=>index<=(new Date()).getMonth());
-// const labels = months.filter((month, index) => index == (new Date()).getMonth());
 
 
 
@@ -59,29 +55,25 @@ function UserCategoryChart({ userCategories, currentMonthCategorySum, categories
     let res = categories.map((cat, index) => {
       let catName = cat.name;
       let sum = currentMonthCategorySum[index];
-      // console.log(catName, sum)
+
       return { catName, sum }
     })
-    // console.log(res);
+
     let catArray = []
     res.map((el) => {
       uCategories.forEach(c => {
         if (el.catName === c) {
-          console.log(typeof el.sum)
           catArray = [...catArray, el.sum]
         }
       });
 
     })
-    // SetCatSumsArray(catArray)
-    // console.log(catArray)
-    // console.log(categories, currentMonthCategorySum)
+
 
     return catArray;
 
   }
   let sumsData = sums()
-  console.log(sumsData)
   const data = {
     labels,
     datasets: [

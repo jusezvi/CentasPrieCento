@@ -16,7 +16,7 @@ function Home({ route, navigation, setTest }) {
   const navigate = useNavigate();
 
 
- 
+
 
   const [earnings, setEarnings] = useState([]);
   const [transactions, setTransactions] = useState([]);
@@ -30,10 +30,8 @@ function Home({ route, navigation, setTest }) {
     if (read_cookie('auth_access_token').length === 0) {
       navigate('/login')
     }
-    console.log(read_cookie('auth_access_token'))
-     callAPI(exVar.IS_NEW_EARNING)
-    console.log(location.state);
-  
+    callAPI(exVar.IS_NEW_EARNING)
+
   }, []);
 
   function callAPI(check = false) {
@@ -41,7 +39,7 @@ function Home({ route, navigation, setTest }) {
       return;
     }
     exVar.IS_NEW_EARNING = false;
-    
+
   }
 
   return (

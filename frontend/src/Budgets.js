@@ -19,7 +19,7 @@ function Budgets({ user }) {
     let currentMonth = new Date().getMonth();
 
     useEffect(() => {
-       
+
         fetch("http://localhost:8080/getCategory/")
             .then((res) => {
                 return res.json();
@@ -96,7 +96,7 @@ function Budgets({ user }) {
     }
 
     function sumByCategory(data) {
-      
+
         let allCategoriesSum = [];
         categories.forEach((category) => {
             let categorySum = 0;
@@ -213,7 +213,6 @@ function Budgets({ user }) {
                 </div>
             </div>
 
-            {currentMonthCategorySum && currentMonthCategorySum.map((x) => x + ",")}
             <UserCategoryChart userCategories={userCategories} currentMonthCategorySum={currentMonthCategorySum} categories={categories} />
         </div>
     );

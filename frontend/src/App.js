@@ -14,8 +14,7 @@ function App() {
 
   const [test, setTest] = useState(null)
 
- 
-  console.log('app ' + test)
+
   return (
     <div className="app">
 
@@ -24,15 +23,15 @@ function App() {
           <Route>
             <Route exact path="/" element={<Home setTest={setTest} />} />
 
-           
+
 
             <Route path="/alltransaction" element={<AllTransaction />} />
             <Route path="/home" element={<Home />} />
             <Route path="/welcome" element={<WelcomeHtmlRender />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
-          
-           
+
+
 
           </Route>
         </Routes>

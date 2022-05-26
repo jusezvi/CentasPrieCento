@@ -45,10 +45,6 @@ function UserCategory({ limit, category, catSum, user, id }) {
   function openModal() {
     setIsOpen(true);
   }
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
   function closeModal(e) {
     setIsOpen(false);
     e.preventDefault();
@@ -79,7 +75,6 @@ function UserCategory({ limit, category, catSum, user, id }) {
   }
 
   function handleDelete() {
-    console.log(id)
     fetch('http://localhost:8080/delUserCategory/' + id, {
       method: 'DELETE',
     })
@@ -90,22 +85,22 @@ function UserCategory({ limit, category, catSum, user, id }) {
   const submitDelete2 = () => {
     confirmAlert({
 
-        message: "Ar tikrai norite ištrinti ?",
-        buttons: [
-            {
-                label: "Taip",
-                onClick: handleDelete,
-            },
-            {
-                label: "Ne",
-            },
+      message: "Ar tikrai norite ištrinti ?",
+      buttons: [
+        {
+          label: "Taip",
+          onClick: handleDelete,
+        },
+        {
+          label: "Ne",
+        },
 
-        ],
+      ],
 
     });
 
 
-};
+  };
 
   return (
     <>
@@ -125,7 +120,6 @@ function UserCategory({ limit, category, catSum, user, id }) {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
@@ -140,7 +134,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
           )}
           <label>Naujas limitas:</label> <br></br>
           <input
-           className='select-input5'
+            className='select-input5'
             type="text"
             value={newLimit}
             onChange={(e) => setNewLimit(e.target.value)}
