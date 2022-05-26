@@ -134,7 +134,7 @@ function Transactions({ user }) {
             </div>
             <div className='expense__modal'>
                 <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
+                    <div className="modal-dialog modal-add-costs">
                         <div className="modal-content transaction-modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Išlaidų įvedimas</h5>
