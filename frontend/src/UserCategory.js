@@ -119,7 +119,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
             onChange={(e) => setNewLimit(e.target.value)}
           />
           <div className="modal-footer">
-            <input type="submit" className="btn " value="Išsaugoti" />
+            <input type="submit" className="btn" value="Išsaugoti" />
             <button
               type="button"
               className="btn btn-secondary"

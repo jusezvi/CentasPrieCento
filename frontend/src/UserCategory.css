@@ -55,3 +55,8 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+.budget__icon-delete:hover,
+.budget__icon-edit:hover {
+  color: black
+}

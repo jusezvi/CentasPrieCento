@@ -55,15 +55,19 @@ function Budgets({ user }) {
     }
 
     function checkCat(c) {
-        if (c === category) {
-            alert('Tokia kategorija jau sukurta, pasirinkite kitą!!');
-            return false
-        }
+        let res = null;
+        userCategories.forEach((cat) => {
+            if (c === cat.category) {
+                alert('tokias jau yra');
+                res = true;
+            }
+        });
+        return res
     }
 
     function submitCategory(e) {
         e.preventDefault();
-        if (checkCat(category)) {
+        if (!checkCat(category)) {
             if (!isNaN(Number(limit)) && limit > 0) {
                 let correctLimit = financial(limit);
                 const newCategoryLimit = {
