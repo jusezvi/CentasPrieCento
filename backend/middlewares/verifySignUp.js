@@ -2,7 +2,7 @@ const db = require("../models");
 const ROLES = db.ROLES;
 const User = db.user;
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-  // Username
+  
   User.findOne({
     username: req.body.username
   }).exec((err, user) => {
@@ -14,7 +14,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
       res.status(400).send({ errorCode: 0 });
       return;
     }
-    // Email
+   
     User.findOne({
       email: req.body.email
     }).exec((err, user) => {

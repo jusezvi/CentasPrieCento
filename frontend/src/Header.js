@@ -38,9 +38,7 @@ function Header() {
                                 <li className="nav-item">
                                     <Link to="/alltransaction" className='text-link'>Piniginės operacijos</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link to="/administration" className='text-link'>ADMINISTRACIJA</Link>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>

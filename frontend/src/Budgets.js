@@ -19,7 +19,7 @@ function Budgets({ user }) {
     let currentMonth = new Date().getMonth();
 
     useEffect(() => {
-        // console.log('aaa ' + transactions)
+       
         fetch("http://localhost:8080/getCategory/")
             .then((res) => {
                 return res.json();
@@ -96,7 +96,7 @@ function Budgets({ user }) {
     }
 
     function sumByCategory(data) {
-        // console.log("is funkcijos");
+      
         let allCategoriesSum = [];
         categories.forEach((category) => {
             let categorySum = 0;
