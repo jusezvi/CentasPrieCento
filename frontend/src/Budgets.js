@@ -15,7 +15,6 @@ function Budgets({ user }) {
     const [userCategories, setUserCategories] = useState([]);
     const [currentMonthCategorySum, setCurrentMonthCategorySum] = useState([]);
     const [allData, setAllData] = useState(null);
-    const [catErr, setCatErr] = useState(false)
     let currentMonth = new Date().getMonth();
 
     useEffect(() => {
@@ -91,8 +90,6 @@ function Budgets({ user }) {
             } else {
                 setError(true);
             }
-        } else {
-            setCatErr(true);
         }
 
     }
@@ -166,11 +163,6 @@ function Budgets({ user }) {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={submitCategory}>
-                                    {catErr && (
-                                        <p className="error">
-                                            Įjau yra
-                                        </p>
-                                    )}
                                     {error && (
                                         <p className="error">
                                             Įvestas gali būti tik skaičius ir didesnis už 0 (pvz.
