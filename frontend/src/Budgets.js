@@ -5,7 +5,8 @@ import { BiCar } from "react-icons/bi";
 import { BiFoodMenu } from "react-icons/bi";
 import { exVar } from "./ExtendVariables";
 import UserCategory from "./UserCategory";
-import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
+import UserCategoryChart from './charts/UserCategoryChart'
 
 function Budgets({ user }) {
     const [category, setCategory] = useState("Automobilis");
@@ -18,7 +19,7 @@ function Budgets({ user }) {
     let currentMonth = new Date().getMonth();
 
     useEffect(() => {
-        // console.log('aaa ' + transactions)
+
         fetch("http://localhost:8080/getCategory/")
             .then((res) => {
                 return res.json();
@@ -55,15 +56,19 @@ function Budgets({ user }) {
     }
 
     function checkCat(c) {
-        if (c === category) {
-            alert('Tokia kategorija jau sukurta, pasirinkite kitą!!');
-            return false
-        }
+        let res = null;
+        userCategories.forEach((cat) => {
+            if (c === cat.category) {
+                alert('Tokia kategorija jau pasirinkta, prašome pasirinkti kitą');
+                res = true;
+            }
+        });
+        return res
     }
 
     function submitCategory(e) {
         e.preventDefault();
-        if (checkCat(category)) {
+        if (!checkCat(category)) {
             if (!isNaN(Number(limit)) && limit > 0) {
                 let correctLimit = financial(limit);
                 const newCategoryLimit = {
@@ -87,10 +92,11 @@ function Budgets({ user }) {
                 setError(true);
             }
         }
+
     }
 
     function sumByCategory(data) {
-        // console.log("is funkcijos");
+
         let allCategoriesSum = [];
         categories.forEach((category) => {
             let categorySum = 0;
@@ -117,6 +123,12 @@ function Budgets({ user }) {
             }
         })
         return rez
+    }
+
+    function reset(e) {
+        e.preventDefault();
+        setLimit('');
+        setError(false)
     }
 
 
@@ -184,11 +196,12 @@ function Budgets({ user }) {
                                         onChange={(e) => setLimit(e.target.value)}
                                     />
                                     <div className="modal-footer">
-                                        <input type="submit" className="btn btn-secondary   " value="Išsaugoti" />
+                                        <input type="submit" className="btn btn-secondary" value="Išsaugoti" />
                                         <button
                                             type="button"
                                             className="btn btn-secondary"
                                             data-bs-dismiss="modal"
+                                            onClick={reset}
                                         >
                                             Uždaryti
                                         </button>
@@ -200,7 +213,7 @@ function Budgets({ user }) {
                 </div>
             </div>
 
-            {currentMonthCategorySum && currentMonthCategorySum.map((x) => x + ",")}
+            <UserCategoryChart userCategories={userCategories} currentMonthCategorySum={currentMonthCategorySum} categories={categories} />
         </div>
     );
 }

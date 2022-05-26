@@ -8,6 +8,12 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { FcMoneyTransfer } from 'react-icons/fc';
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
+import { confirmAlert } from "react-confirm-alert";
+import "../node_modules/react-confirm-alert/src/react-confirm-alert.css";
+
+
+
+
 
 const customStyles = {
   content: {
@@ -39,15 +45,11 @@ function UserCategory({ limit, category, catSum, user, id }) {
   function openModal() {
     setIsOpen(true);
   }
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
   function closeModal(e) {
     setIsOpen(false);
     e.preventDefault();
     setNewLimit('');
-    setError(false)
+    setError(false);
   }
 
   function editCategory(e) {
@@ -73,13 +75,32 @@ function UserCategory({ limit, category, catSum, user, id }) {
   }
 
   function handleDelete() {
-    console.log(id)
     fetch('http://localhost:8080/delUserCategory/' + id, {
       method: 'DELETE',
     })
       .then(res => res.json());
     window.location.reload();
   }
+
+  const submitDelete2 = () => {
+    confirmAlert({
+
+      message: "Ar tikrai norite ištrinti ?",
+      buttons: [
+        {
+          label: "Taip",
+          onClick: handleDelete,
+        },
+        {
+          label: "Ne",
+        },
+
+      ],
+
+    });
+
+
+  };
 
   return (
     <>
@@ -88,7 +109,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
           <div className='icons'>
             <div className='budget__icon'><FcMoneyTransfer /></div>
             <div className='action__items'>
-              <p className='budget__icon-delete' onClick={handleDelete}><AiOutlineDelete /></p>
+              <p className='budget__icon-delete ' onClick={submitDelete2}><AiOutlineDelete /></p>
               <p className='budget__icon-edit' onClick={openModal}><AiOutlineEdit /></p>
             </div>
           </div>
@@ -99,12 +120,11 @@ function UserCategory({ limit, category, catSum, user, id }) {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h5>Išlaidų kategorijos limito redagavimas</h5>
+        <h5>Limito redagavimas</h5>
         <form onSubmit={editCategory}>
           {error && (
             <p className="error">
@@ -112,17 +132,18 @@ function UserCategory({ limit, category, catSum, user, id }) {
               50.50)
             </p>
           )}
-          <label>Koreguoti išlaidų kategorijos limitą</label>
+          <label>Naujas limitas:</label> <br></br>
           <input
+            className='select-input5'
             type="text"
             value={newLimit}
             onChange={(e) => setNewLimit(e.target.value)}
           />
           <div className="modal-footer">
-            <input type="submit" className="btn " value="Išsaugoti" />
+            <input type="submit" className="btn8 " value="Išsaugoti" />
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn8 "
               data-bs-dismiss="modal"
               onClick={closeModal}
             >

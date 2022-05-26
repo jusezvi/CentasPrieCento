@@ -38,9 +38,7 @@ function Header() {
                                 <li className="nav-item">
                                     <Link to="/alltransaction" className='text-link'>Piniginės operacijos</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link to="/administration" className='text-link'>ADMINISTRACIJA</Link>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -48,7 +46,7 @@ function Header() {
             </nav>
             <div className="user">
                 <div className="user__name">
-                    <h3>Vardas Pavardė</h3>
+                    <h3>{read_cookie('username')}</h3>
                     <p>Vartotojas</p>
                 </div>
                 <button onClick={logOut} className="user__icon">

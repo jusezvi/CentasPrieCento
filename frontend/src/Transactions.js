@@ -28,13 +28,7 @@ function Transactions({ user }) {
             .then(response => response.json())
             .then(data => setTransactions(data.data));
 
-        // fetch('http://localhost:8000/budget')
-        //     .then(res => {
-        //         return res.json();
-        //     })
-        //     .then(data => {
-        //         setTransactions(data);
-        //     });
+
 
         fetch('http://localhost:8080/getCategory/', {
             method: 'GET',
@@ -44,13 +38,7 @@ function Transactions({ user }) {
             .then(response => response.json())
             .then(data => setCategories(data.data));
 
-        // fetch('http://localhost:8000/category')
-        //     .then(res => {
-        //         return res.json();
-        //     })
-        //     .then(data => {
-        //         setCategories(data);
-        //     });
+
     }, []);
 
     function financial(x) {
@@ -63,8 +51,7 @@ function Transactions({ user }) {
             if (Date.parse(date) <= Date.parse(new Date())) {
                 let correctSum = financial(sum);
                 const newExpense = { sum: correctSum, name, category, type: "expense", date, user };
-                // const newExpense = {name: 'testas' };
-
+               
                 fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newExpense), {
                     method: 'POST',
                     mode: 'cors',
@@ -90,7 +77,7 @@ function Transactions({ user }) {
             if (Date.parse(date) <= Date.parse(new Date())) {
                 let correctSum = financial(sum);
                 const newEarning = { sum: correctSum, name, category: "-", type: "earning", date, user };
-                // const newEarning = {name: 'testas' };
+               
 
                 fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newEarning), {
                     method: 'POST',
@@ -109,9 +96,17 @@ function Transactions({ user }) {
         }
     }
 
+    function reset(e) {
+        e.preventDefault();
+        setSum('');
+        setDate('');
+        setName('');
+        setCategory('Automobilis')
+    }
+
     return (
         <>
-            <h4>Visos piniginės operacijos:</h4>
+            <h4>Paskutinės piniginės operacijos:</h4>
             <div>
                 {transactions.slice(Math.max(transactions.length - 5, 0)).map(transaction => (
                     <Transaction key={transaction._id} name={transaction.name}
@@ -126,7 +121,7 @@ function Transactions({ user }) {
             </div>
             <div className='expense__modal'>
                 <div className="modal fade" id="expense" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
+                    <div className="modal-dialog modal-add-costs">
                         <div className="modal-content transaction-modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Išlaidų įvedimas</h5>
@@ -148,7 +143,7 @@ function Transactions({ user }) {
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" className="btn btn-secondary " value="Išsaugoti" />
-                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={reset}>Uždaryti</button>
                                     </div>
                                 </form>
                             </div>
@@ -174,7 +169,7 @@ function Transactions({ user }) {
                                     {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
                                     <div className="modal-footer">
                                         <input type="submit" className="btn btn-secondary" value="Išsaugoti" />
-                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={reset}>Uždaryti</button>
                                     </div>
                                 </form>
                             </div>

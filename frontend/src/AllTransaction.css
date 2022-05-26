@@ -23,7 +23,7 @@ tr:nth-child(even) {
 
 tr:not(:first-child):hover {
   background-color: #eddcfa;
-  /* color: #fff; */
+ 
 
 }
 
@@ -32,7 +32,7 @@ tr:not(:first-child):hover {
 }
 
 .alltransactions-select-input {
-  /* margin-left: 10px; */
+
   width: 150px;
   height: 30px;
   margin: 10px 0;

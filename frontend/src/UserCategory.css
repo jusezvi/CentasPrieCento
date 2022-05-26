@@ -55,3 +55,31 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+.budget__icon-delete:hover,
+.budget__icon-edit:hover {
+  color: black
+}
+
+.btn8 {
+  background-color: #3444CE;
+  align-self: flex-end;
+  outline: none;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+  align-self: flex-end;
+  padding: 10px 40px;
+}
+
+.btn8:hover {
+  color: #fff;
+  background-color: #5c636a;
+  border-color: #565e64;
+}
+
+.select-input5 {
+  width: 183px;
+  height: 30px;
+  margin: 10px 0;
+}

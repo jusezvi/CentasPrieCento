@@ -1,6 +1,6 @@
 import './AllTransaction.css';
 import './AllTransactionItem.css';
-// import { GrTransaction } from 'react-icons/gr';
+
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useState } from "react";
@@ -32,8 +32,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
         })
             .then(res => res.json()
             );
-            setIsUpdated(!isUpdated)
-        
+        setIsUpdated(!isUpdated)
+
     }
 
     function handleEdit() {
@@ -78,60 +78,82 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
 
     const submitDelete = () => {
         confirmAlert({
-          
-          message: "Ar tikrai norite ištrinti ?",
-          buttons: [
-            {
-              label: "Taip",
-              onClick: DeleteClick,
-            },
-            {
-              label: "Ne",
-            },
-            
-          ],
-          
+
+            message: "Ar tikrai norite ištrinti ?",
+            buttons: [
+                {
+                    label: "Taip",
+                    onClick: DeleteClick,
+                },
+                {
+                    label: "Ne",
+                },
+
+            ],
+
         });
-      
-        
-      };
+
+
+    };
 
     return (
         <>
             <div style={{ 'display': display }}>
                 {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
                 <form onSubmit={editItem}>
-                    <label>Redagavimas:</label><br></br>
-                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.target.value)} /> <br></br>
-                    {/* <label>Įveskite naują pavadinimą:</label> <br></br> */}
-                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} /><br></br>
-                    {transactionBudget.type == 'expense' ? <><select className='alltransactions-select-input' required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
+                    <div className='block2'>
+                        <label>Redagavimas:</label>
+                    </div>
+
+                    <div className='block2'>
+                    <input className='alltransactions-select-input' type="text" required            placeholder='Įveskite naują sumą' value={newSum} onChange={e => setNewSum(e.        target.value)} /> 
+
+                    </div>
+                   
+                   
+                    <div className='block2'>
+                    <input className='alltransactions-select-input' type="text" required placeholder='Įveskite naują pajamų pavadinimą' value={newName} onChange={e => setNewName(e.target.value)} />
+
+                    </div>
+                     <div className='block2'>
+                     {transactionBudget.type == 'expense' ? <><select className='alltransactions-select-input' required value={newCategory} onChange={e => setNewCategory(e.target.value)}>
                         {categories.map((option) => (
-                            // console.log(option)
+                            
                             <option key={option._id} value={option.name}>{option.name}</option>
                         ))}
                     </select></>
-                        : null}<br></br>
-                    {/* <label>Pasirinkite datą:</label>  */}
+                        : null}
+
+                     </div>
+                    
+                   
+                    <div className=' block2'>
                     <input className='alltransactions-select-input' type="date" required value={newDate.slice(0, 10)} onChange={e => setNewDate(e.target.value)} /><br></br>
-                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>} <br></br>
-                    {/* <input type="submit" value="Išsaugoti" /> */}
-                    <button type="submit">Išsaugoti</button>
-                    <button onClick={reset}>Atšaukti</button>
+                    {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
+
+                    </div>
+                     
+                  
+                    <div className='block2'>
+                    <button className='btn3' type="submit">Išsaugoti</button>
+                    <button  onClick={reset}>Atšaukti</button>
+
+                    </div>
+                    
                 </form>
             </div>
             <tr>
                 <td>{index + 1}</td>
                 <td>{transactionBudget.type == 'expense' ? <div className="FaLongArrowAltLeft "><FaLongArrowAltLeft /> </div> : <div className="FaLongArrowAltRight"><FaLongArrowAltRight /></div>}</td>
-                {/* <td className='transaction__icon'><FaLongArrowAltRight /></td> */}
+               
                 <td>{transactionBudget.type == 'expense' ? 'Išlaidos' : 'Pajamos'}</td>
                 <td>{financial(transactionBudget.sum)} &euro;  </td>
                 <td>{transactionBudget.name}</td>
                 <td>{transactionBudget.category}</td>
                 <td>{transactionBudget.date.slice(0, 10)}</td>
-                {/* <td><button onClick={handleEdit} className='button-transaction-edit'>Edit</button></td> */}
+               
                 <td className='button-transaction-edit2 none' onClick={handleEdit} ><AiOutlineEdit /></td>
-                {/* <td><button onClick={DeleteClick} className='button-transaction-delete'>Delete</button></td> */}
+               
                 <td className='button-transaction-delete2 none '>
                     <span onClick={submitDelete}>
                         <AiOutlineDelete />
@@ -139,7 +161,7 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                 </td>
             </tr>
 
-          
+
         </>
     );
     window.location.reload();

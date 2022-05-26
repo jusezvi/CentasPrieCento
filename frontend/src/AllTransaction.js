@@ -50,10 +50,7 @@ function AllTransaction() {
 
   function handleTypeChange(e) {
     e.preventDefault();
-    // const current = new Date();
-    // const date = `${current.getFullYear()}-0${current.getMonth() + 1}-01`;
-    // if (!minDate) { setMinDate('1990-01-01') }
-    // if (!maxDate) { setMaxDate('2023-01-01') }
+ 
 
     function filterByCategory(item) {
       if (category !== "all") {
@@ -107,7 +104,7 @@ function AllTransaction() {
     <>
       <Header />
       <form>
-        <div className='block2'>
+       
           <div className='block'>
             <div className='div-label item-inline' >
               <label className='alltransaction-label'>Tipas:</label>
@@ -149,7 +146,7 @@ function AllTransaction() {
               : null}
           </div>
 
-        </div>
+       
 
 
         <button className='buttons2 btn-secondary' onClick={handleTypeChange}>Filtruoti</button>
@@ -171,7 +168,7 @@ function AllTransaction() {
           </thead>
           <tbody>
 
-            {/* {console.log(categories)} */}
+          
             {allData.map((transactionBudget, index) => (
 
               <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}

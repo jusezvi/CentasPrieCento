@@ -12,16 +12,16 @@ var corsOptions = {
 
 app.use(cors());
 
-// parse requests of content-type - application/json
+
 app.use(express.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
     name: "bezkoder-session",
-    secret: "COOKIE_SECRET", // should use as secret environment variable
+    secret: "COOKIE_SECRET", 
     httpOnly: true
   })
 );
@@ -29,7 +29,7 @@ app.use(
 const db = require("./models");
 const { user, userCategory } = require("./models");
 const UserCategory = require("./models/userCategory.model");
-//const Budget = require("./models/budget.model");
+
 const Role = db.role;
 const Category = db.category;
 const Type = db.type;
@@ -49,14 +49,12 @@ db.mongoose
     process.exit();
   });
 
-// simple route
+
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to CPC application." });
 });
 
-// ------------------------------------------------------
-// INSERT NEW BUDGET
-// ------------------------------------------------------
+
 app.post("/insertBudget/:budgetInfo", (req, res) => {
   console.log(JSON.parse(req.params.budgetInfo))
   var data = JSON.parse(req.params.budgetInfo);
@@ -148,11 +146,11 @@ app.get("/getUserCategory/:userID", async (req, res) => {
   })
 });
 
-// routes
+
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
-// set port, listen for requests
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

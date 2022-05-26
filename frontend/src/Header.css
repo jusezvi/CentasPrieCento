@@ -1,20 +1,17 @@
 .header {
     height: 50px;
     padding: 30px 30px 30px 50px;
-    /* width: 100%; */
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 
-/* .nav ul{
-    list-style: none; 
-} */
+
 .nav ul li {
     margin-right: 15px;
-    /* text-decoration: none; */
-    /* color: #929CAB; */
+ 
     list-style-type: none;
     display: inline;
    
