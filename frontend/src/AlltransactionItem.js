@@ -135,8 +135,8 @@ function AllTransactionItem({ transactionBudget, index, isUpdated, setIsUpdated,
                      
                     {/* <input type="submit" value="Išsaugoti" /> */}
                     <div className='block2'>
-                    <button type="submit">Išsaugoti</button>
-                    <button onClick={reset}>Atšaukti</button>
+                    <button className='btn3' type="submit">Išsaugoti</button>
+                    <button  onClick={reset}>Atšaukti</button>
 
                     </div>
                     

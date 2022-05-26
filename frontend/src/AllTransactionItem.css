@@ -73,9 +73,27 @@ form button {
   }
 
   .block2{
-    display: flex;
+      display: flex;
+  }
+  .btn3{
+    background-color: #3444CE;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px 0 0 8px;
+    margin-left: 0px;
+  }
+
+
+  
+/* @media only screen and (min-width:1024px){
+    .block2 {
+        display: inline-block;
  
-    margin: 10px;
+        margin: 5px;
+        justify-content: space-between;
+    }
     
 
-  }
+} */

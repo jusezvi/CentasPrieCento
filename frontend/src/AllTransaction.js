@@ -107,7 +107,7 @@ function AllTransaction() {
     <>
       <Header />
       <form>
-        <div className='block2'>
+       
           <div className='block'>
             <div className='div-label item-inline' >
               <label className='alltransaction-label'>Tipas:</label>
@@ -149,7 +149,7 @@ function AllTransaction() {
               : null}
           </div>
 
-        </div>
+       
 
 
         <button className='buttons2 btn-secondary' onClick={handleTypeChange}>Filtruoti</button>
