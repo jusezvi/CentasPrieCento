@@ -28,7 +28,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Visų mėnesių išlaidos ir pajamos',
+      text: 'tes',
     },
   },
 };

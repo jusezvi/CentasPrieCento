@@ -48,7 +48,7 @@ function Header() {
             </nav>
             <div className="user">
                 <div className="user__name">
-                    <h3>Vardas Pavardė</h3>
+                    <h3>{read_cookie('username')}</h3>
                     <p>Vartotojas</p>
                 </div>
                 <button onClick={logOut} className="user__icon">

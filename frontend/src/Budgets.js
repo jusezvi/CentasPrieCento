@@ -5,7 +5,8 @@ import { BiCar } from "react-icons/bi";
 import { BiFoodMenu } from "react-icons/bi";
 import { exVar } from "./ExtendVariables";
 import UserCategory from "./UserCategory";
-import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
+import UserCategoryChart from './charts/UserCategoryChart'
 
 function Budgets({ user }) {
     const [category, setCategory] = useState("Automobilis");
@@ -213,6 +214,7 @@ function Budgets({ user }) {
             </div>
 
             {currentMonthCategorySum && currentMonthCategorySum.map((x) => x + ",")}
+            <UserCategoryChart userCategories={userCategories} currentMonthCategorySum={currentMonthCategorySum} categories={categories} />
         </div>
     );
 }
