@@ -119,7 +119,7 @@ function Transactions({ user }) {
 
     return (
         <>
-            <h4>Visos piniginės operacijos:</h4>
+            <h4>Paskutinės piniginės operacijos:</h4>
             <div>
                 {transactions.slice(Math.max(transactions.length - 5, 0)).map(transaction => (
                     <Transaction key={transaction._id} name={transaction.name}
