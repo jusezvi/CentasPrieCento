@@ -81,5 +81,10 @@
 .select-input5 {
   width: 183px;
   height: 30px;
-  margin: 10px 0;
+  margin: 20px 0 0 0;
+}
+
+.modal-dialog{
+  width: 300px;
+  padding: 30px;
 }
