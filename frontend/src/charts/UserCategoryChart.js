@@ -51,22 +51,25 @@ function UserCategoryChart({ userCategories, currentMonthCategorySum, categories
     SetCatSumsArray(sums())
   }, [currentMonthCategorySum])
 
+  function financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+
   function sums() {
     let res = categories.map((cat, index) => {
       let catName = cat.name;
-      let sum = currentMonthCategorySum[index];
+      let sum = financial(currentMonthCategorySum[index]);
 
       return { catName, sum }
     })
 
     let catArray = []
-    res.map((el) => {
-      uCategories.forEach(c => {
-        if (el.catName === c) {
-          catArray = [...catArray, el.sum]
+    uCategories.map((el) => {
+      res.forEach((c) => {
+        if (el === c.catName) {
+          catArray = [...catArray, c.sum]
         }
       });
-
     })
 
 
@@ -90,7 +93,7 @@ function UserCategoryChart({ userCategories, currentMonthCategorySum, categories
 
     ],
   };
-  // sums()
+
   return (
     <div>
       <Bar options={options} data={data} />

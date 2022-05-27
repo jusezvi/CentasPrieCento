@@ -119,11 +119,15 @@ function UserCategory({ limit, category, catSum, user, id }) {
         <p>Kategorijos suma: {catSum}</p>
       </div>
       <Modal
-        isOpen={modalIsOpen}
+            
+      isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
+        <div className='transaction-modal-content'>
+
+        
         <h5>Limito redagavimas</h5>
         <form onSubmit={editCategory}>
           {error && (
@@ -151,6 +155,7 @@ function UserCategory({ limit, category, catSum, user, id }) {
             </button>
           </div>
         </form>
+        </div>
       </Modal>
       {/* <div
         className="modal fade"
