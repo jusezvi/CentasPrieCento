@@ -28,7 +28,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Išlaidų kategorijos',
+      text: 'Einamojo mėnesio išlaidų kategorijos',
     },
   },
 };

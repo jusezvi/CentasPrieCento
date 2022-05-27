@@ -135,7 +135,7 @@ function Budgets({ user }) {
     return (
         <div className="budgets">
 
-            <h2>Piniginė</h2>
+            <h2>Einamojo mėnesio išlaidų planavimo įrankis</h2>
             <div className="budgets__main">
                 {userCategories.map((cat, index) => (
 
