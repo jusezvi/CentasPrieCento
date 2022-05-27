@@ -13,4 +13,4 @@ Užėję į Frontend aplanką
 1. Įdiegiamos technologijos "npm i"\ naujame terminalo lange
 2. npm start
 
-Vartotojo vadovas pridėtas į Dokumentacija aplanką
+Vartotojo vadovas pridėtas į "Dokumentacija" aplanką
