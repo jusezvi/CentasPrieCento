@@ -60,13 +60,12 @@ function UserCategoryChart({ userCategories, currentMonthCategorySum, categories
     })
 
     let catArray = []
-    res.map((el) => {
-      uCategories.forEach(c => {
-        if (el.catName === c) {
-          catArray = [...catArray, el.sum]
+    uCategories.map((el) => {
+      res.forEach((c) => {
+        if (el === c.catName) {
+          catArray = [...catArray, c.sum]
         }
       });
-
     })
 
 
