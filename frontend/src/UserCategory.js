@@ -119,88 +119,45 @@ function UserCategory({ limit, category, catSum, user, id }) {
         <p>Kategorijos suma: {catSum}</p>
       </div>
       <Modal
-            
-      isOpen={modalIsOpen}
+
+        isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <div className='transaction-modal-content'>
 
-        
-        <h5>Limito redagavimas</h5>
-        <form onSubmit={editCategory}>
-          {error && (
-            <p className="error">
-              Įvestas gali būti tik skaičius ir didesnis už 0 (pvz.
-              50.50)
-            </p>
-          )}
-          <label>Naujas limitas:</label> <br></br>
-          <input
-            className='select-input5'
-            type="text"
-            value={newLimit}
-            onChange={(e) => setNewLimit(e.target.value)}
-          />
-          <div className="modal-footer">
-            <input type="submit" className="btn8 " value="Išsaugoti" />
-            <button
-              type="button"
-              className="btn8 "
-              data-bs-dismiss="modal"
-              onClick={closeModal}
-            >
-              Uždaryti
-            </button>
-          </div>
-        </form>
+
+          <h5 className='transaction-modal__title'>Limito redagavimas</h5>
+          <form className='usercategory-modal' onSubmit={editCategory}>
+            {error && (
+              <p className="error">
+                Įvestas gali būti tik skaičius ir didesnis už 0 (pvz.
+                50.50)
+              </p>
+            )}
+            <label>Naujas limitas:</label> <br></br>
+            <input
+              className='select-input5'
+              type="text"
+              value={newLimit}
+              onChange={(e) => setNewLimit(e.target.value)}
+            />
+            <div className="modal-footer">
+              <input type="submit" className="btn8 " value="Išsaugoti" />
+              <button
+                type="button"
+                className="btn8 "
+                data-bs-dismiss="modal"
+                onClick={closeModal}
+              >
+                Uždaryti
+              </button>
+            </div>
+          </form>
         </div>
       </Modal>
-      {/* <div
-        className="modal fade"
-        id="edit"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content transaction-modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Išlaidų kategorijos limito redagavimas
-              </h5>
-            </div>
-            <div className="modal-body">
-              <form onSubmit={editCategory}>
-                {error && (
-                  <p className="error">
-                    Įvestas gali būti tik skaičius ir didesnis už 0 (pvz.
-                    50.50)
-                  </p>
-                )}
-                <label>Koreguoti išlaidų kategorijos limitą</label>
-                <input
-                  type="text"
-                  value={newLimit}
-                  onChange={(e) => setNewLimit(e.target.value)}
-                />
-                <div className="modal-footer">
-                  <input type="submit" className="btn " value="Išsaugoti" />
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                    onClick={reset}
-                  >
-                    Uždaryti
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div> */}
+
     </>
   );
 

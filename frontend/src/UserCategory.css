@@ -84,7 +84,23 @@
   margin: 20px 0 0 0;
 }
 
-.modal-dialog{
+.modal-dialog {
   width: 300px;
   padding: 30px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.usercategory-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.transaction-modal__title {
+  text-align: center;
 }

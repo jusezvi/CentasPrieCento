@@ -50,7 +50,7 @@ function AllTransaction() {
 
   function handleTypeChange(e) {
     e.preventDefault();
- 
+
 
     function filterByCategory(item) {
       if (category !== "all") {
@@ -98,55 +98,55 @@ function AllTransaction() {
     setEarningSum(inSum);
     setExpenseSum(outSum);
   }
- 
+
 
   return (
     <>
       <Header />
       <form>
-       
-          <div className='block'>
-            <div className='div-label item-inline' >
-              <label className='alltransaction-label'>Tipas:</label>
-            </div>
-            <div className='item-inline' >
-              <select className="alltransactions-select-input" value={type} onChange={e => setType(e.target.value)}>
-                <option value="all">Viso</option>
-                <option value="earning">Pajamos</option>
-                <option value="expense">Išlaidos</option>
-              </select>
-            </div>
-          </div>
 
-          <div className='block'>
-            <div className='div-label item-inline'>
-              <label className='alltransaction-label'>Nuo:</label>
-            </div>
-            <div className='item-inline'>
-              <input className="alltransactions-select-input" type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
-            </div>
+        <div className='block'>
+          <div className='div-label item-inline' >
+            <label className='alltransaction-label'>Tipas:</label>
           </div>
-
-          <div className='block'>
-
-            <div className='div-label item-inline'>
-              <label className='alltransaction-label'>Iki:</label>
-            </div>
-            <div className=' item-inline'>
-              <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
-            </div>
-          </div>
-          <div className='block' style={{ "justify-content": "right" }}>
-            {type === 'expense' ? <select className="alltransactions-select-input  select-category" value={category} onChange={e => setCategory(e.target.value)}>
-              <option value="all">Visos</option>
-              {categories.map((option) => (
-                <option value={option.name} key={option._id}>{option.name}</option>
-              ))}
+          <div className='item-inline' >
+            <select className="alltransactions-select-input" value={type} onChange={e => setType(e.target.value)}>
+              <option value="all">Viso</option>
+              <option value="earning">Pajamos</option>
+              <option value="expense">Išlaidos</option>
             </select>
-              : null}
           </div>
+        </div>
 
-       
+        <div className='block'>
+          <div className='div-label item-inline'>
+            <label className='alltransaction-label'>Nuo:</label>
+          </div>
+          <div className='item-inline'>
+            <input className="alltransactions-select-input" type="date" value={minDate} onChange={e => setMinDate(e.target.value)} />
+          </div>
+        </div>
+
+        <div className='block'>
+
+          <div className='div-label item-inline'>
+            <label className='alltransaction-label'>Iki:</label>
+          </div>
+          <div className=' item-inline'>
+            <input className="alltransactions-select-input" type="date" value={maxDate} onChange={e => setMaxDate(e.target.value)} />
+          </div>
+        </div>
+        <div className='block' style={{ "justify-content": "right", "margin": "0 15px" }}>
+          {type === 'expense' ? <select className="alltransactions-select-input  select-category" value={category} onChange={e => setCategory(e.target.value)}>
+            <option value="all">Visos</option>
+            {categories.map((option) => (
+              <option value={option.name} key={option._id}>{option.name}</option>
+            ))}
+          </select>
+            : null}
+        </div>
+
+
 
 
         <button className='buttons2 btn-secondary' onClick={handleTypeChange}>Filtruoti</button>
@@ -168,7 +168,7 @@ function AllTransaction() {
           </thead>
           <tbody>
 
-          
+
             {allData.map((transactionBudget, index) => (
 
               <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}
