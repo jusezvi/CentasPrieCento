@@ -41,41 +41,41 @@ form button {
 
 
 
-.react-confirm-alert-button-group > button{
-    background-color: #3444CE  !important;
-   
+.react-confirm-alert-button-group>button {
+    background-color: #3444CE !important;
+
     align-self: flex-end !important;
     outline: none !important;
     margin-top: 20px !important;
     padding: 10px !important;
     border-radius: 8px 0 0 8px !important;
     align-self: flex-end !important;
-    padding: 10px 40px  !important;
+    padding: 10px 40px !important;
 
 }
-.react-confirm-alert-button-group{
+
+.react-confirm-alert-button-group {
     justify-content: flex-end !important;
-    
+}
 
-} 
-
-.react-confirm-alert-button-group > button{
+.react-confirm-alert-button-group>button {
     font-size: 16px !important;
 }
 
 
-.react-confirm-alert-body{
+.react-confirm-alert-body {
     margin: 0;
     color: black !important;
     font-size: 30px !important;
     text-align: center !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
-  }
+}
 
-  .block2{
-      display: flex;
-  }
-  .btn3{
+.block2 {
+    display: flex;
+}
+
+.btn3 {
     background-color: #3444CE;
     color: #fff;
     border: none;
@@ -83,7 +83,4 @@ form button {
     padding: 5px;
     border-radius: 8px 0 0 8px;
     margin-left: 0px;
-  }
-
-
-  
+}
