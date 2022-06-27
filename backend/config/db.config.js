@@ -1,5 +1,7 @@
 module.exports = {
-    HOST: "mongodb+srv://admin",
-    PORT: "admin@centaspriecentocluster.dkfsd.mongodb.net",
-    DB: "myFirstDatabase?retryWrites=true&w=majority"
+    HOST: "mongodb+srv://vesia",
+    PORT: "123@cluster0.rol9uf0.mongodb.net",
+    DB: "manoPirmaDb?retryWrites=true&w=majority"
   };
+
+

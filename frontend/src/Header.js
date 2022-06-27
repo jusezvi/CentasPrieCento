@@ -31,15 +31,7 @@ function Header() {
                             <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div className="offcanvas-body">
-                            <ul className="navbar-nav  pe-3">
-                                <li className="nav-item">
-                                    <Link to="/" className='text-link'>Pradinis</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/alltransaction" className='text-link'>Piniginės operacijos</Link>
-                                </li>
-                                
-                            </ul>
+                           
                         </div>
                     </div>
                 </div>

@@ -60,6 +60,7 @@ app.post("/insertBudget/:budgetInfo", (req, res) => {
   var data = JSON.parse(req.params.budgetInfo);
   var budget = new Budget(data);
   var result = budget.save();
+  res.json({ok:true})
 })
 
 app.get("/getBudget/:userID", async (req, res) => {
@@ -81,20 +82,18 @@ app.delete("/delBudget/:itemID", async (req, res) => {
   Budget.remove({ _id: itemID }, {
     justOne: true
   }).then(x => {
-    console.log('Istrinta')
+    res.json()
+    // console.log('Istrinta')
   })
 
 })
 
 app.put("/updateBudget/:itemID", async (req, res) => {
   var itemID = req.params.itemID;
-  Budget.updateOne({ _id: itemID }, {
-    sum: req.body.sum,
-    name: req.body.name,
-    date: req.body.date,
-    category: req.body.category
-  }).then(x => {
-    console.log('edit')
+  // console.log(req.body)
+  Budget.updateOne({ _id: itemID }, req.body).then(x => {
+    res.json()
+    // console.log('edit')
   })
 })
 

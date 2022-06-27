@@ -5,13 +5,16 @@ import { exVar } from './ExtendVariables';
 import './AllTransaction.css';
 import { useNavigate } from 'react-router-dom';
 import AllTransactionItem from './AlltransactionItem';
-import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
-import { CSVLink } from 'react-csv'
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
+import { CSVLink } from 'react-csv';
+import Transactions from './Transactions';
+
 
 
 function AllTransaction() {
+
+  const user = read_cookie('auth_access_token');
   const [transactionDate, setTransactionDate] = useState([]);
-  const [isUpdated, setIsUpdated] = useState(false);
   const [type, setType] = useState('all');
   const [minDate, setMinDate] = useState('');
   const [maxDate, setMaxDate] = useState('');
@@ -20,33 +23,75 @@ function AllTransaction() {
   const [expenseSum, setExpenseSum] = useState('');
   const [earningSum, setEarningSum] = useState('');
   const [categories, setCategories] = useState([]);
+  const [date, setDate] = useState('');
+  const [error, setError] = useState(false);
+  const [dateError, setDateError] = useState(false);
+
+
+
+  const [pavadinimas, setPavadinimas] = useState('');
+
+  const [kodas, setKodas] = useState('');
+  const [adresas, setAdresas] = useState('');
 
   const navigate = useNavigate();
+  function financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+
+  const loadData = () => {
+    fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      setTransactionDate(data.data);
+      setAllData(data.data);
+      pavadinimas(data.data)
+    });
+  fetch('http://localhost:8080/getCategory/')
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      setCategories(data.data);
+    });
+  }
 
 
   useEffect(() => {
     if (read_cookie('auth_access_token').length === 0) {
       navigate('/login')
     }
-    fetch('http://localhost:8080/getBudget/' + read_cookie('auth_access_token'))
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setTransactionDate(data.data);
-        setAllData(data.data);
-        sum(data.data)
-      });
-    fetch('http://localhost:8080/getCategory/')
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setCategories(data.data);
-      });
+    loadData()
+   
 
 
-  }, [isUpdated]);
+  }, []);
+
+  const submitEarning = e => {
+    e.preventDefault();
+    
+        // let correctSum = financial(sum);
+        const newEarning = { pavadinimas, kodas, adresas, type: "earning", date, user, test:1 };
+
+
+        fetch('http://localhost:8080/insertBudget/' + JSON.stringify(newEarning), {
+          method: 'POST',
+          mode: 'cors',
+          headers: { 'Content-Type': "application/json" },
+        }).then(() => {
+          setPavadinimas('');
+          setKodas('');
+          setError(false);
+          // window.location.reload();
+          loadData()
+          // exVar.IS_NEW_EARNING = true;
+        });
+
+    
+  }
+
 
   function handleTypeChange(e) {
     e.preventDefault();
@@ -68,7 +113,7 @@ function AllTransaction() {
       ) return true
     });
     setAllData(filteredData);
-    sum(filteredData)
+  pavadinimas(filteredData)
   }
 
   function deleteChanges(e) {
@@ -78,26 +123,22 @@ function AllTransaction() {
     setType('all');
     setCategory('all');
     setAllData(transactionDate);
-    sum(transactionDate)
+    pavadinimas(transactionDate)
+  }
+  function reset(e) {
+    e.preventDefault();
+    setPavadinimas('');
+    setAdresas('');
+    setDate('');
+    setKodas('');
+
   }
 
   function financial(x) {
     return Number.parseFloat(x).toFixed(2);
   }
 
-  function sum(data) {
-    let inSum = 0;
-    let outSum = 0;
-    data.forEach(item => {
-      if (item.type === 'earning') {
-        inSum += Number(item.sum)
-      } else if (item.type === 'expense') {
-        outSum += Number(item.sum)
-      }
-    });
-    setEarningSum(inSum);
-    setExpenseSum(outSum);
-  }
+
 
 
   return (
@@ -172,19 +213,39 @@ function AllTransaction() {
             {allData.map((transactionBudget, index) => (
 
               <AllTransactionItem key={transactionBudget._id} transactionBudget={transactionBudget} index={index}
-                isUpdated={isUpdated} setIsUpdated={setIsUpdated} categories={categories} />
+                 categories={categories} loadData={loadData}/>
             ))}
           </tbody>
         </table>
-        {maxDate}
-        <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>
+        {/* {maxDate} */}
+        {/* <p className='filtered-sum'>Pajamos ir išlaidos pasirinktu laikotarpiu:</p>
         <p>išlaidos: {financial(expenseSum)} &euro;, pajamos: {financial(earningSum)} &euro;</p>
-        <br></br>
+        <br></br> */}
+
 
 
         <CSVLink data={allData}>
           <button className='buttons2 btn-secondary '>Detali išklotinė</button>
         </CSVLink>
+        <form onSubmit={submitEarning}>
+          {error && <p className='error'>Įvestas gali būti tik skaičius, didesnis už 0 (pvz. 50.50) ir pavadinimas mažiau nei 10 simbolių!</p>}
+          <input className='transactions-select-input' type="text" required placeholder='Įveskite pavadinimą' value={pavadinimas} onChange={e => setPavadinimas(e.target.value)} /> <br></br>
+          <input className='transactions-select-input' type="text" required placeholder='Įveskite kodą' value={kodas} onChange={e => setKodas(e.target.value)} /> <br></br>
+          <input className='transactions-select-input' type="text" required placeholder='Įveskite adres1' value={adresas} onChange={e => setAdresas(e.target.value)} /> <br></br>
+          <label>Pasirinkite datą:</label> <br></br>
+          <input className='transactions-select-input' type="date" required value={date} onChange={e => setDate(e.target.value)} />
+          {dateError && <p className='error'>data negali būti vėlesnė, nei šiandien</p>}
+          <div className="modal-footer">
+            <input type="submit" className="btn btn-secondary" value="Išsaugoti" />
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={reset}>Uždaryti</button>
+          </div>
+        </form>
+
+
+
+
+
+
 
       </div>
     </>

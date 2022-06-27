@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const Budget = mongoose.model(
   "Budget",
   new mongoose.Schema({
-    sum: Number,
-    name: String,
-    category: String,
+    pavadinimas: String,
+    kodas: Number,
+    adresas: String,
     type: String,
     date: Date,
     user: String,
+    test: Number,
   })
 );
 module.exports = Budget;

@@ -1,6 +1,5 @@
 import './App.css';
-import Home from './Home';
-import Testas from './AllTransaction';
+
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import AllTransaction from './AllTransaction';
@@ -21,12 +20,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
-            <Route exact path="/" element={<Home setTest={setTest} />} />
+            {/* <Route exact path="/" element={<Home setTest={setTest} />} /> */}
 
 
 
-            <Route path="/alltransaction" element={<AllTransaction />} />
-            <Route path="/home" element={<Home />} />
+            <Route exact path="/" element={<AllTransaction />} />
+            {/* <Route path="/home" element={<Home />} /> */}
             <Route path="/welcome" element={<WelcomeHtmlRender />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
